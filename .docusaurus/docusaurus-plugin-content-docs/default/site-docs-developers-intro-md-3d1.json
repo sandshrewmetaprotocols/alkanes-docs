@@ -1,0 +1,18 @@
+{
+  "id": "developers/intro",
+  "title": "Introduction",
+  "description": "Welcome to the Alkanes Developer Documentation. This section contains technical documentation for developers working with the Alkanes protocol.",
+  "source": "@site/docs/developers/intro.md",
+  "sourceDirName": "developers",
+  "slug": "/developers/intro",
+  "permalink": "/docs/developers/intro",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/sandshrewmetaprotocols/alkanes-wiki/tree/main/docs/docs/developers/intro.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  }
+}

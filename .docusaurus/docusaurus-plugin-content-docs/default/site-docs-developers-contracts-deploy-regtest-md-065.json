@@ -1,0 +1,27 @@
+{
+  "id": "developers/contracts/deploy-regtest",
+  "title": "Deploy to Regtest",
+  "description": "",
+  "source": "@site/docs/developers/contracts/deploy-regtest.md",
+  "sourceDirName": "developers/contracts",
+  "slug": "/developers/contracts/deploy-regtest",
+  "permalink": "/docs/developers/contracts/deploy-regtest",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/sandshrewmetaprotocols/alkanes-wiki/tree/main/docs/docs/developers/contracts/deploy-regtest.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2
+  },
+  "sidebar": "mainSidebar",
+  "previous": {
+    "title": "Build a contract",
+    "permalink": "/docs/developers/contracts/build"
+  },
+  "next": {
+    "title": "Deploy to Signet",
+    "permalink": "/docs/developers/contracts/deploy-testnet"
+  }
+}

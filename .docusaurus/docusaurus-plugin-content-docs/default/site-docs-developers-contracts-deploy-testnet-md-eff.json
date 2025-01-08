@@ -1,0 +1,27 @@
+{
+  "id": "developers/contracts/deploy-testnet",
+  "title": "Deploy to Signet",
+  "description": "",
+  "source": "@site/docs/developers/contracts/deploy-testnet.md",
+  "sourceDirName": "developers/contracts",
+  "slug": "/developers/contracts/deploy-testnet",
+  "permalink": "/docs/developers/contracts/deploy-testnet",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/sandshrewmetaprotocols/alkanes-wiki/tree/main/docs/docs/developers/contracts/deploy-testnet.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3
+  },
+  "sidebar": "mainSidebar",
+  "previous": {
+    "title": "Deploy to Regtest",
+    "permalink": "/docs/developers/contracts/deploy-regtest"
+  },
+  "next": {
+    "title": "Introduction",
+    "permalink": "/docs/developers/intro"
+  }
+}

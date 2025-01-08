@@ -1,0 +1,27 @@
+{
+  "id": "developers/quickstart/deploy-regtest",
+  "title": "Deploy to Regtest",
+  "description": "",
+  "source": "@site/docs/developers/quickstart/deploy-regtest.md",
+  "sourceDirName": "developers/quickstart",
+  "slug": "/developers/quickstart/deploy-regtest",
+  "permalink": "/docs/developers/quickstart/deploy-regtest",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/sandshrewmetaprotocols/alkanes-wiki/tree/main/docs/docs/developers/quickstart/deploy-regtest.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2
+  },
+  "sidebar": "mainSidebar",
+  "previous": {
+    "title": "Build a contract",
+    "permalink": "/docs/developers/quickstart/build"
+  },
+  "next": {
+    "title": "Deploy to Signet",
+    "permalink": "/docs/developers/quickstart/deploy-testnet"
+  }
+}

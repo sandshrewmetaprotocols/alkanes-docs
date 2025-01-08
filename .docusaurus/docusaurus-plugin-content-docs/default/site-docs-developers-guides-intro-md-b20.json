@@ -1,0 +1,23 @@
+{
+  "id": "developers/guides/intro",
+  "title": "Advanced Guide",
+  "description": "",
+  "source": "@site/docs/developers/guides/intro.md",
+  "sourceDirName": "developers/guides",
+  "slug": "/developers/guides/intro",
+  "permalink": "/docs/developers/guides/intro",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/sandshrewmetaprotocols/alkanes-wiki/tree/main/docs/docs/developers/guides/intro.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "mainSidebar",
+  "previous": {
+    "title": "Deploy to Signet",
+    "permalink": "/docs/developers/quickstart/deploy-testnet"
+  }
+}

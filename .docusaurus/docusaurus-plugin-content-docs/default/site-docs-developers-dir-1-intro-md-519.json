@@ -1,0 +1,23 @@
+{
+  "id": "developers/dir1/intro",
+  "title": "Tutorial Intro",
+  "description": "Let's discover Docusaurus in less than 5 minutes.",
+  "source": "@site/docs/developers/dir1/intro.md",
+  "sourceDirName": "developers/dir1",
+  "slug": "/developers/dir1/intro",
+  "permalink": "/docs/developers/dir1/intro",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/sandshrewmetaprotocols/alkanes-wiki/tree/main/docs/docs/developers/dir1/intro.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "developersSidebar",
+  "previous": {
+    "title": "Developer Documentation",
+    "permalink": "/docs/developers/intro"
+  }
+}

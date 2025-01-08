@@ -1,0 +1,27 @@
+{
+  "id": "developers/getting-started/prereq",
+  "title": "Prerequisites",
+  "description": "",
+  "source": "@site/docs/developers/getting-started/prereq.md",
+  "sourceDirName": "developers/getting-started",
+  "slug": "/developers/getting-started/prereq",
+  "permalink": "/docs/developers/getting-started/prereq",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/sandshrewmetaprotocols/alkanes-wiki/tree/main/docs/docs/developers/getting-started/prereq.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2
+  },
+  "sidebar": "mainSidebar",
+  "previous": {
+    "title": "Introduction",
+    "permalink": "/docs/developers/intro"
+  },
+  "next": {
+    "title": "Setting up environment",
+    "permalink": "/docs/developers/getting-started/setup"
+  }
+}

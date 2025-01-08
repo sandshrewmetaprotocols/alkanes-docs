@@ -1,0 +1,84 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/docs",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/docs",
+          "mainDocId": "learn/intro",
+          "docs": [
+            {
+              "id": "developers/guides/intro",
+              "path": "/docs/developers/guides/intro",
+              "sidebar": "mainSidebar"
+            },
+            {
+              "id": "developers/intro",
+              "path": "/docs/developers/intro"
+            },
+            {
+              "id": "developers/quickstart/build",
+              "path": "/docs/developers/quickstart/build",
+              "sidebar": "mainSidebar"
+            },
+            {
+              "id": "developers/quickstart/deploy-regtest",
+              "path": "/docs/developers/quickstart/deploy-regtest",
+              "sidebar": "mainSidebar"
+            },
+            {
+              "id": "developers/quickstart/deploy-testnet",
+              "path": "/docs/developers/quickstart/deploy-testnet",
+              "sidebar": "mainSidebar"
+            },
+            {
+              "id": "developers/quickstart/intro",
+              "path": "/docs/developers/quickstart/intro",
+              "sidebar": "mainSidebar"
+            },
+            {
+              "id": "developers/quickstart/prereq",
+              "path": "/docs/developers/quickstart/prereq",
+              "sidebar": "mainSidebar"
+            },
+            {
+              "id": "developers/quickstart/setup",
+              "path": "/docs/developers/quickstart/setup",
+              "sidebar": "mainSidebar"
+            },
+            {
+              "id": "learn/intro",
+              "path": "/docs/learn/intro",
+              "sidebar": "mainSidebar"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "learnSidebar": {
+              "link": {
+                "path": "/docs/learn/intro",
+                "label": "learn/intro"
+              }
+            },
+            "developersSidebar": {
+              "link": {
+                "path": "/docs/developers/quickstart/intro",
+                "label": "developers/quickstart/intro"
+              }
+            },
+            "mainSidebar": {
+              "link": {
+                "path": "/docs/learn/intro",
+                "label": "learn/intro"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  }
+}

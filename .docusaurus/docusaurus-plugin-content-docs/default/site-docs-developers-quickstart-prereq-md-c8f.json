@@ -1,0 +1,27 @@
+{
+  "id": "developers/quickstart/prereq",
+  "title": "Prerequisites",
+  "description": "There are several requisites you will need:",
+  "source": "@site/docs/developers/quickstart/prereq.md",
+  "sourceDirName": "developers/quickstart",
+  "slug": "/developers/quickstart/prereq",
+  "permalink": "/docs/developers/quickstart/prereq",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/sandshrewmetaprotocols/alkanes-wiki/tree/main/docs/docs/developers/quickstart/prereq.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2
+  },
+  "sidebar": "mainSidebar",
+  "previous": {
+    "title": "Tutorial Intro",
+    "permalink": "/docs/developers/quickstart/intro"
+  },
+  "next": {
+    "title": "Set up environment",
+    "permalink": "/docs/developers/quickstart/setup"
+  }
+}

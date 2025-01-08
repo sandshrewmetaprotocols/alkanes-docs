@@ -1,0 +1,27 @@
+{
+  "id": "developers/quickstart/deploy-testnet",
+  "title": "Deploy to Signet",
+  "description": "",
+  "source": "@site/docs/developers/quickstart/deploy-testnet.md",
+  "sourceDirName": "developers/quickstart",
+  "slug": "/developers/quickstart/deploy-testnet",
+  "permalink": "/docs/developers/quickstart/deploy-testnet",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/sandshrewmetaprotocols/alkanes-wiki/tree/main/docs/docs/developers/quickstart/deploy-testnet.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3
+  },
+  "sidebar": "mainSidebar",
+  "previous": {
+    "title": "Deploy to Regtest",
+    "permalink": "/docs/developers/quickstart/deploy-regtest"
+  },
+  "next": {
+    "title": "Advanced Guide",
+    "permalink": "/docs/developers/guides/intro"
+  }
+}

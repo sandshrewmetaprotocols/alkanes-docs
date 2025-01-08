@@ -1,0 +1,27 @@
+{
+  "id": "developers/getting-started/setup",
+  "title": "Setting up environment",
+  "description": "",
+  "source": "@site/docs/developers/getting-started/setup.md",
+  "sourceDirName": "developers/getting-started",
+  "slug": "/developers/getting-started/setup",
+  "permalink": "/docs/developers/getting-started/setup",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/sandshrewmetaprotocols/alkanes-wiki/tree/main/docs/docs/developers/getting-started/setup.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3
+  },
+  "sidebar": "mainSidebar",
+  "previous": {
+    "title": "Prerequisites",
+    "permalink": "/docs/developers/getting-started/prereq"
+  },
+  "next": {
+    "title": "Build a contract",
+    "permalink": "/docs/developers/contracts/build"
+  }
+}
