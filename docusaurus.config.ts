@@ -51,7 +51,7 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
+    image: 'img/sandshrew.svg',
     navbar: {
       title: 'ALKANES',
       logo: {
@@ -72,7 +72,7 @@ const config: Config = {
           label: 'Developers',
         },
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/sandshrewmetaprotocols/alkanes-docs',
           label: 'GitHub',
           position: 'right',
         },
@@ -94,12 +94,8 @@ const config: Config = {
           title: 'Community',
           items: [
             {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
               label: 'X',
-              href: 'https://x.com/docusaurus',
+              href: 'https://twitter.com/oylwallet',
             },
           ],
         },
@@ -112,12 +108,12 @@ const config: Config = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              href: 'https://github.com/sandshrewmetaprotocols',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Oyl Dynamics,Inc. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
