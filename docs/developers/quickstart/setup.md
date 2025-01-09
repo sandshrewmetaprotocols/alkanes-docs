@@ -149,7 +149,7 @@ make reset
 
 Next, you will initialize your local bitcoin chain. The init command will process the first 260 blocks and will send BTC to a faucet address and a test wallet that will be used during testing. 
 
-The default mnemonics and addresses are in the src/cli/constants.ts file. You can 
+The default mnemonics and addresses are in the src/cli/constants.ts file:
 
 ```
 export const REGTEST_FAUCET = {
@@ -210,4 +210,4 @@ curl http://localhost:3000/v1/regtest \
   }'
 ```
 
-The full set of sandshrew namespaces and RPC methods can be found in the sandshrew documentation.
+The full set of sandshrew namespaces and RPC methods can be found in the [sandshrew documentation](https://docs.sandshrew.io/).
