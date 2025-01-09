@@ -11,32 +11,32 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    title: 'Smart Contracts on Bitcoin L1',
+    Svg: require('@site/static/img/sandshrew.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Deploy Rust-based smart contracts compiled to WebAssembly directly on Bitcoin's base layer.
+        Leverage the security and decentralization of Bitcoin with modern smart contract capabilities.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    title: 'Built on Proven Standards',
+    Svg: require('@site/static/img/sandshrew.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        ALKANES builds on established Bitcoin protocols like Ordinals and Runes, 
+        enabling smart contract functionality while maintaining compatibility with existing standards.
       </>
     ),
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    title: 'Powered by Metashrew',
+    Svg: require('@site/static/img/sandshrew.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Utilize the powerful Metashrew indexing stack for contract deployment, execution, and state management.
+        Build with confidence using our comprehensive development tools.
       </>
     ),
   },

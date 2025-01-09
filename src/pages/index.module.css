@@ -8,6 +8,8 @@
   text-align: center;
   position: relative;
   overflow: hidden;
+  background: linear-gradient(145deg, #1a1b1e 0%, #2d2f34 100%);
+  color: white;
 }
 
 @media screen and (max-width: 996px) {
@@ -20,4 +22,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.features {
+  padding: 2rem 0;
+  width: 100%;
+}
+
+.featureSvg {
+  height: 200px;
+  width: 200px;
+  margin-bottom: 1.5rem;
 }

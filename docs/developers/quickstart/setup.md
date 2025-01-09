@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # Set up environment
 
-Alkanes Regtest Setup
+ALKANES Regtest Setup
 You will use a local Regtest instance to build and test your Alkane contract. 
 You will use the Oyl SDK methods to deploy your contract to regtest and to test your contract methods.
 Sandshrew-proxy is self-contained docker build comprised of four services:
@@ -17,7 +17,7 @@ metashrew
 metashrew-view
 
 ## Sandshrew
-The sandshrew-proxy repository contains everything you need to deploy and test a local version of your Alkanes contract. This section will guide you through the steps to get sandshrew and metashrew up and running.
+The sandshrew-proxy repository contains everything you need to deploy and test a local version of your ALKANES contract. This section will guide you through the steps to get sandshrew and metashrew up and running.
 
 1. Clone shandshrew-proxy
 
