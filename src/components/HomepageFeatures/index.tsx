@@ -11,29 +11,32 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Alkanes',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    title: 'Smart Contracts on Bitcoin L1',
+    Svg: require('@site/static/img/sandshrew.svg').default,
     description: (
       <>
-        ipsum.
+        Deploy Rust-based smart contracts compiled to WebAssembly directly on Bitcoin's base layer.
+        Leverage the security and decentralization of Bitcoin with modern smart contract capabilities.
       </>
     ),
   },
   {
-    title: 'Developer Quickstart',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    title: 'Built on Proven Standards',
+    Svg: require('@site/static/img/sandshrew.svg').default,
     description: (
       <>
-        ipsum.
+        ALKANES builds on established Bitcoin protocols like Ordinals and Runes, 
+        enabling smart contract functionality while maintaining compatibility with existing standards.
       </>
     ),
   },
   {
-    title: 'Developer Guides',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    title: 'Powered by Metashrew',
+    Svg: require('@site/static/img/sandshrew.svg').default,
     description: (
       <>
-        ipsum.
+        Utilize the powerful Metashrew indexing stack for contract deployment, execution, and state management.
+        Build with confidence using our comprehensive development tools.
       </>
     ),
   },

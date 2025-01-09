@@ -44,6 +44,8 @@ const sidebars: SidebarsConfig = {
       label: 'Learn',
       items: [
         'learn/intro',
+        'learn/alkanes',
+        'learn/metashrew',
       ],
     },
     {
@@ -53,8 +55,8 @@ const sidebars: SidebarsConfig = {
         'developers/quickstart/intro',
         'developers/quickstart/prereq', 
         'developers/quickstart/setup',
-        'developers/quickstart/build',
         'developers/quickstart/deploy-regtest',
+        'developers/quickstart/build',
         'developers/quickstart/deploy-testnet',
       ],
     },
@@ -63,6 +65,9 @@ const sidebars: SidebarsConfig = {
       label: 'Developer Guides',
       items: [
         'developers/guides/intro',
+        'developers/guides/alkanes-contracts',
+        'developers/guides/alkanes-libraries',
+        'developers/guides/dapp-integration',
       ],
     },
   ],
