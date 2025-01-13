@@ -26,12 +26,12 @@ const sidebars: SidebarsConfig = {
   ],
 
   developersSidebar: [
-    'developers/quickstart/intro',
+    'developers/intro',
     {
       type: 'category',
       label: 'Developers',
       items: [
-        'developers/quickstart/intro',
+        'developers/intro',
       ],
     },
   ],
@@ -46,28 +46,22 @@ const sidebars: SidebarsConfig = {
         'learn/intro',
         'learn/alkanes',
         'learn/metashrew',
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Developer Quickstart',
-      items: [
-        'developers/quickstart/intro',
-        'developers/quickstart/prereq', 
-        'developers/quickstart/setup',
-        'developers/quickstart/deploy-regtest',
-        'developers/quickstart/build',
-        'developers/quickstart/deploy-testnet',
+        'learn/faq',
       ],
     },
     {
       type: 'category',
       label: 'Developer Guides',
       items: [
-        'developers/guides/intro',
-        'developers/guides/alkanes-contracts',
-        'developers/guides/alkanes-libraries',
-        'developers/guides/dapp-integration',
+        'developers/intro',
+        'developers/quickstart',
+        'developers/regtest',
+        'developers/contracts-building',
+        'developers/contracts-interaction',
+        'developers/protorunes',
+        'developers/rpc',
+        'developers/alkanes-libraries',
+        'developers/dapp-integration',
       ],
     },
   ],

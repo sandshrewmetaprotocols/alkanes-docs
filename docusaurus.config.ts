@@ -5,8 +5,8 @@ import type * as Preset from '@docusaurus/preset-classic';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'ALKANES',
-  tagline: 'ALKANES Docs',
+  title: 'Alkanes',
+  tagline: 'Alkanes Docs',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -53,9 +53,9 @@ const config: Config = {
     // Replace with your project's social card
     image: 'img/sandshrew.svg',
     navbar: {
-      title: 'ALKANES',
+      title: 'Alkanes',
       logo: {
-        alt: 'ALKANES Logo',
+        alt: 'Alkanes Logo',
         src: 'img/logo.svg',
       },
       items: [
@@ -120,6 +120,24 @@ const config: Config = {
       darkTheme: prismThemes.dracula,
     },
   } satisfies Preset.ThemeConfig,
+
+  stylesheets: [
+    {
+      href: '/css/palette.css',
+    },
+    {
+      href: '/css/global.css',
+    },
+    {
+      href: '/css/fonts.css',
+    },
+    {
+      href: '/css/video.css',
+    },
+    {
+      href: '/css/modal.css',
+    },
+  ],
 };
 
 export default config;
