@@ -22,10 +22,10 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: 'Built on Proven Standards',
-    Svg: require('@site/static/img/sandshrew.svg').default,
+    Svg: require('@site/static/img/subfrost.svg').default,
     description: (
       <>
-        ALKANES builds on established Bitcoin protocols like Ordinals and Runes, 
+        Alkanes builds on established Bitcoin protocols like Ordinals and Runes, 
         enabling smart contract functionality while maintaining compatibility with existing standards.
       </>
     ),

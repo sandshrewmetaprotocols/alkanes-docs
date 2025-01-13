@@ -1,0 +1,244 @@
+@import url('palette.css');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+    --color-panel: var(--white-3);
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 215 20.2% 65.1%;
+
+    --radius: 24px;
+
+    --ifm-code-font-size: 95%;
+    --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  }
+
+  .dark {
+    --background: 224 71% 4%;
+    --foreground: 213 31% 91%;
+ 
+    --muted: 223 47% 11%;
+    --muted-foreground: 215.4 16.3% 56.9%;
+ 
+    --accent: 216 34% 17%;
+    --accent-foreground: 210 40% 98%;
+ 
+    --popover: 224 71% 4%;
+    --popover-foreground: 215 20.2% 65.1%;
+ 
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+ 
+    --card: 224 71% 4%;
+    --card-foreground: 213 31% 91%;
+ 
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 1.2%;
+ 
+    --secondary: 222.2 47.4% 11.2%;
+    --secondary-foreground: 210 40% 98%;
+ 
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+ 
+    --ring: 216 34% 17%;
+ 
+    --radius: 24px;
+
+    --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  }
+
+  p, h1, h2, h3, h4, h5, h6 {
+    @apply text-textColor;
+  }
+
+  ::-moz-selection { /* Code for Firefox */
+    @apply text-white bg-brand-blue-full;
+  }
+  
+  ::selection {
+    @apply text-white bg-brand-blue-full;
+  }
+
+  .snap-scroll section {
+    /* height: 100dvh; */
+    scroll-snap-align: start;
+    position: relative;
+    overflow: clip;
+  }
+
+  .animate-underline {
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+    width: fit-content;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%; /* 15.6px */
+    letter-spacing: 0.52px;
+    padding: 1px 0;
+  }
+
+  .animate-underline::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    border-radius: 5px;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background: #aaa;
+    color: #aaa;
+    transform-origin: right;
+    transition: transform 0.2s ease-out;
+  }
+  .animate-underline:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  .video-container video {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    object-fit: cover;
+    z-index: -1;
+  }
+
+  .rounded-video iframe {
+    border-radius: 18px;
+  }
+  
+  .loading-bar {
+    position: relative;
+    align-self: start;
+    width: var(--loading-bar_width);
+    height: var(--loading-bar_height);
+    border: var(--loading-bar_border) solid var(--color_secondary);
+    border-radius: 2px;
+    transition-duration: var(--dark-mode_transition-time);
+    z-index: 1;
+    animation: screen-glitch 8.3s step-end infinite;
+  }
+  
+  .loading-bar::before {
+    position: absolute;
+    top: 0px;
+    height: calc(100% - calc(var(--loading-bar_border) * 2));
+    margin: var(--loading-bar_border);
+    content: "";
+    background: var(--color_secondary);
+    transition-duration: var(--dark-mode_transition-time);
+    animation: loading-bar_progress 13.3s linear forwards infinite;
+  }
+
+  @keyframes screen-glitch {
+    0% {
+      filter: none;
+    }
+    97% {
+      filter: url(#screen-glitch);
+    }
+  }
+
+  @keyframes loading-bar_progress {
+    0% {
+      width: 0;
+    }
+    20% {
+      width: calc(6% - calc(var(--loading-bar_border) * 2));
+    }
+    25% {
+      width: calc(6% - calc(var(--loading-bar_border) * 2));
+    }
+    40% {
+      width: calc(10% - calc(var(--loading-bar_border) * 2));
+    }
+    50% {
+      width: calc(10% - calc(var(--loading-bar_border) * 2));
+    }
+    70% {
+      width: calc(40% - calc(var(--loading-bar_border) * 2));
+    }
+    80% {
+      width: calc(40% - calc(var(--loading-bar_border) * 2));
+    }
+    90% {
+      width: calc(60% - calc(var(--loading-bar_border) * 2));
+    }
+    95% {
+      width: calc(80% - calc(var(--loading-bar_border) * 2));
+    }
+    97% {
+      width: calc(80% - calc(var(--loading-bar_border) * 2));
+    }
+    100% {
+      width: calc(100% - calc(var(--loading-bar_border) * 2));
+    }
+  }
+
+  @keyframes bounce {
+    0%,
+    100% {
+      transform: translateY(-200%);
+      animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+    50% {
+      transform: none;
+      animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+  }
+
+  .animate-bounce-heavy {
+    animation: bounce 1s infinite;
+  }
+
+  /* clears the ‘X’ in search input from Internet Explorer */
+  input[type=search]::-ms-clear { display: none; width : 0; height: 0; }
+  input[type=search]::-ms-reveal { display: none; width : 0; height: 0; }
+  /* clears the ‘X’ in search input from Chrome */
+  input[type="search"]::-webkit-search-decoration,
+  input[type="search"]::-webkit-search-cancel-button,
+  input[type="search"]::-webkit-search-results-button,
+  input[type="search"]::-webkit-search-results-decoration { display: none; }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}

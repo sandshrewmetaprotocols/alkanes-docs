@@ -6,7 +6,7 @@ sidebar_position: 4
 
 Metashrew is an open source [indexer stack](https://github.com/sandshrewmetaprotocols/metashrew) for building bitcoin metaprotocols. It significantly simplifies the architecture and implementation of complex metaprotocols on Bitcoin L1, providing a comprehensive foundation for smart contract development.
 
-Metashrew is the core infrastructure that powers [ALKANES smart contracts](./alkanes.md). It provides:
+Metashrew is the core infrastructure that powers [Alkanes smart contracts](./alkanes.md). It provides:
 
 1. **Block Processing & Indexing**: 
    - Processes Bitcoin blocks and maintains indexes of relevant data

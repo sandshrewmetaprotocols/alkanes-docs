@@ -1,21 +1,16 @@
 import type {ReactNode} from 'react';
-import clsx from 'clsx';
-import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
-import Heading from '@theme/Heading';
+import SubfrostSvg from '@site/static/img/subfrost.svg';
+import {FeatureCard} from '@site/src/components/FeatureCard';
 
-import styles from './index.module.css';
 
 function HomepageHeader() {
-  const {siteConfig} = useDocusaurusContext();
   return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
-      <div className="container">
-        <Heading as="h1" className="hero__title">
-          {siteConfig.title}
-        </Heading>
+    <header className="py-16 px-4">
+      <div className="container flex justify-center">
+        <SubfrostSvg className="w-full max-w-[916px] h-auto mb-8" />
       </div>
     </header>
   );
@@ -25,11 +20,11 @@ export default function Home(): ReactNode {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      title={`Alkanes`}
+      description="Alkanes is a platform for building and deploying smart contracts on Bitcoin.">
       <HomepageHeader />
       <main>
-        <HomepageFeatures />
+        TODO
       </main>
     </Layout>
   );
