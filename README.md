@@ -18,6 +18,8 @@ This command starts a local development server and opens up a browser window. Mo
 
 ### Build
 
+Before creating a new PR, run the build command to ensure the site compiles correctly.
+
 ```
 $ yarn build
 ```

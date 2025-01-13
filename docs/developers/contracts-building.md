@@ -207,7 +207,7 @@ The `CallResponse` object is how your contract communicates back to the caller. 
 
 ## Testing
 
-It's recommended to test your contract thoroughly before deployment. You can use the [ALKANE Regtest framework](../quickstart/setup.md) to:
+It's recommended to test your contract thoroughly before deployment. You can use the [ALKANE Regtest framework](regtest) to:
 
 - Test individual opcode handlers
 - Verify storage operations
