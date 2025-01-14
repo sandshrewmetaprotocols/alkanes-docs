@@ -19,7 +19,8 @@ You will also install the Oyl SDK which supports command line interaction with t
 
 There are several requisites you will need:
 - Docker
-- ??
+- Node 20+
+- Yarn
 
 ## Sandshrew-proxy
 
@@ -53,14 +54,29 @@ http://localhost:3000/v1/regtest
 
 It is now possible to call any of the RPC endpoints surfaced in the bitcoin, esplora, ord, and alkanes namespaces. 
 
-**TODO: Add links to sandshrew docs and internal Alkanes rpc docs and explain the RPC endpoints**
+The full set of sandshrew namespaces and RPC methods can be found in the [sandshrew documentation](https://docs.sandshrew.io/).
 
 You can confirm the RPC endpoint by running:
 
 ```
-// getblock rpc endpoint
+curl http://localhost:3000/v1/regtest \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "jsonrpc": "2.0", 
+    "id": 1, 
+    "method": "btc_getblockcount",
+    "params": []
+}'
+```
 
-// returns...
+returns:
+
+```
+{
+  "jsonrpc": "2.0",
+  "result": 0,
+  "id": 1
+}
 ```
 
 ##  Oyl SDK
@@ -86,8 +102,10 @@ The test will execute a number of jest test cases and that should all PASS.
 
 You will use Oyl's command line interface to deploy and test Alkane's contracts. The following updates your environment to support the Oyl CLI:
 
+To install the `oyl` cli client, in the `oyl-sdk` root directory run:
+
 ```
-// Some code
+npm install -g
 ```
 
 ### 4. Test the CLI
@@ -145,7 +163,6 @@ Now, test that the CLI is working by running a simple command that generates a m
 oyl account generateMnemonic
 
 # fish invite model account aunt turn survey fit frog enforce replace frown
-Updating the SDK
 ```
 
 If you update the OYL SDK or CLI code you will need to rebuild the libraries:
@@ -202,7 +219,7 @@ You can now interact with your local Sandshrew (Bitcoin, Esplora, Ord) and Metsa
 For example, to confirm the UTXOs on the test address run:
 
 ```
-oyl address addressUtxos -a bcrt1qcr8te4kr609gcawutmrza0j4xv80jy8zeqchgx
+oyl utxo addressUtxos -a bcrt1qcr8te4kr609gcawutmrza0j4xv80jy8zeqchgx -p regtest
 ```
 
 You can also make direct calls to your local regtest instance:
@@ -215,7 +232,7 @@ curl http://localhost:3000/v1/regtest \
     "id": 1, 
     "method": "esplora_address::txs",
     "params": [
-      "bc1pqu8j3dlfwjkzt6tcx6w2dvf9j4wxku2n7mnp9eawegayu6k6x9xsgsff7n"
+      "bcrt1qcr8te4kr609gcawutmrza0j4xv80jy8zeqchgx"
     ]
   }'
 ```
