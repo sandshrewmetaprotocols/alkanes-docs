@@ -4,6 +4,7 @@
 
 package-lock.json
 yarn.lock
+yarn-error.log
 
 node_modules
 build

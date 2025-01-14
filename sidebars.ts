@@ -15,7 +15,6 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
 const sidebars: SidebarsConfig = {
   // Link the menu items to the sidebar
   learnSidebar: [
-    'learn/intro',
     {
       type: 'category',
       label: 'Learn',
@@ -38,8 +37,8 @@ const sidebars: SidebarsConfig = {
       link: undefined,
       items: [
         'developers/intro',
+        'developers/setup',
         'developers/quickstart',
-        'developers/regtest',
       ],
     },
     {
