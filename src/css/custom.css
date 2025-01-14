@@ -4,27 +4,130 @@
  * work well for content-centric websites.
  */
 
+
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
+  --background: 0 0% 100%;
+  --foreground: 222.2 47.4% 11.2%;
+
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 47.4% 11.2%;
+
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 47.4% 11.2%;
+  --color-panel: var(--white-3);
+
+  --primary: 222.2 47.4% 11.2%;
+  --primary-foreground: 210 40% 98%;
+
+  --secondary: 210 40% 96.1%;
+  --secondary-foreground: 222.2 47.4% 11.2%;
+
+  --accent: 210 40% 96.1%;
+  --accent-foreground: 222.2 47.4% 11.2%;
+
+  --destructive: 0 100% 50%;
+  --destructive-foreground: 210 40% 98%;
+
+  --ring: 215 20.2% 65.1%;
+
+  --radius: 24px;
+
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
+  --background: 224 71% 4%;
+  --foreground: 213 31% 91%;
+
+  --muted: 223 47% 11%;
+  --muted-foreground: 215.4 16.3% 56.9%;
+
+  --accent: 216 34% 17%;
+  --accent-foreground: 210 40% 98%;
+
+  --popover: 224 71% 4%;
+  --popover-foreground: 215 20.2% 65.1%;
+
+  --border: 216 34% 17%;
+  --input: 216 34% 17%;
+
+  --card: 224 71% 4%;
+  --card-foreground: 213 31% 91%;
+
+  --primary: 210 40% 98%;
+  --primary-foreground: 222.2 47.4% 1.2%;
+
+  --secondary: 222.2 47.4% 11.2%;
+  --secondary-foreground: 210 40% 98%;
+
+  --destructive: 0 63% 31%;
+  --destructive-foreground: 210 40% 98%;
+
+  --ring: 216 34% 17%;
+
+  --radius: 24px;
+
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* Override Tailwind's reset for specific Docusaurus elements */
+.markdown {
+  @apply text-base leading-7;
+}
+
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown h6 {
+  @apply font-bold mb-4 mt-8;
+}
+
+.markdown h1 {
+  @apply font-bold mb-4 mt-8 text-3xl;
+}
+
+.markdown h2 {
+  @apply font-bold mb-4 mt-8 text-2xl;
+}
+
+.markdown h3 {
+  @apply font-bold mb-4 mt-8 text-lg;
+}
+
+.markdown h4,
+.markdown h5,
+.markdown h6 {
+  @apply font-bold mb-4 mt-8 text-base;
+}
+
+.markdown p {
+  @apply mb-4;
+}
+
+.markdown ul,
+.markdown ol {
+  @apply mb-4 ml-4;
+}
+
+.markdown li {
+  @apply mb-2;
+}
+
+.markdown code {
+  @apply px-1.5 py-0.5 rounded;
+}
+
+.markdown pre {
+  @apply p-4 mb-4 rounded overflow-x-auto;
 }

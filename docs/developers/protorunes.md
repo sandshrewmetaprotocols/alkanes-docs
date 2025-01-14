@@ -3,7 +3,7 @@ sidebar_position: 2
 title: Protorunes
 ---
 
-# Protorunes (may not need this section...)
+# Protorunes
 
 Overview of protorunes and how they work.
 

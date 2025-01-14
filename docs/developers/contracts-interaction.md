@@ -5,76 +5,62 @@ title: Interacting with Contracts
 
 # Interacting with Contracts
 
+This section covers how to interact with Alkane contracts and tokens. It covers the AlkaneId system, cellpacks, and how to interact with deployed contracts.
+
 ## Alkane IDs
 
-Alkane IDs 
+Every Alkane (smart contract) has a unique identifier called an AlkaneId, structured as `[block, tx]` where both components are u128 numbers. Alkane IDs, also referred to as alkane addresses,are used to identify and interact with contracts as well as to perform system operations like deploying contracts.
 
-Every Alkane (smart contract) has a unique identifier called an AlkaneId, structured as `[block, tx]` where both components are u128 numbers. 
+:::info
+While Alkanes uses block/transaction terminology, these numbers do not refer to actual bitcoin blocks and transactions.
+:::
 
-Note: While Alkanes uses block/transaction terminology, these numbers do not refer to actual bitcoin blocks and transactions.
+## Cellpacks / call data
 
-## Cellpacks
-
-A cellpack is a special type of message used to interact with Alkanes. Think of it as an envelope containing:
+A cellpack is a special type of message (call data) used to interact with Alkanes. Think of it as an envelope containing:
 
 1. **Target** (first two numbers):
-   - Either a standard [AlkaneId](#understanding-alkane-ids) of an existing contract
-   - Or, a reserved system Alkane ID (like `[1, 0]` to create a new contract)
+    - Either a standard [AlkaneId](#alkane-ids) of an existing contract
+    - Or, a reserved system Alkane ID (e.g., [1, 0] is used to deploy a new contract)
 
 2. **Inputs** (remaining numbers):
-   - Additional data needed for the operation
+    - Additional data needed for the operation
 
 Example Structure:
 
 ```
-[Header1, Header2, Input1, Input2, ...]
+[Target_block, Target_tx, Input1, Input2, ...]
 ```
 
+## Reserved call data IDs
 
+There are several reserved call data IDs that are used for system operations, like deploying contracts.
 
-
-
-
-There are several reserved block codes that are used for system operations, like deploying contracts:
-
-**Standard contract addresses: `[2, n]`**
-- All active contracts eventually get a `[2, n]` address
-- Addresses start at `[2, 0]` and increment sequentially
-- Used for regular contract deployments
-
-**Reserved system addresses: `[4, n]`**
-- Special addresses for factory contracts
-- Can use any unused `n` value
-- Often used for system-level contracts
-
-### Standard contract addresses
-
-**Direct Creation** (`[1, 0]`)
+**Single contract deploy** (`[1, 0]`)
 - Deploys a new WASM contract
 - Contract receives next available `[2, n]` Alkane ID
 
-
-### Factory contract addresses
-   
-**Factory reserved deploy** (`[3, n]`)
+**Factory deploy** (`[3, n]`)
 - Used to deploy a contract to a specific reserved number `n`
 - The deployed contract will be assigned the `[4, n]` Alkane ID
 - Commonly used for factory contracts
 
 **Factory clone** (`[6, n]`)
 - Clones contracts with `[4, n]` addresses (e.g., a factory contract)
-- The deployed clone contract (the alkane token) will be assigned thenext available `[2, n]` address
+- The deployed clone contract (the alkane token) will be assigned the next available `[2, n]` address
 
 
 
 ## Contract opcodes
 
+Cellpacks are also used to interact with deployed contracts. In these cases, the first two numbers of the cellpack are the alkane address of the contract and the remaining numbers are the contract "opcodes" and input data for the functions associated with the opcodes.
+
 Opcodes are like function selectors that tell a contract which action to perform. When you interact with an Alkane contract, you send:
-1. The contract's address (AlkaneId)
+1. The contract's AlkaneId
 2. An opcode number (what action you want)
 3. Any additional data the action needs
 
-In this contract we can see several opcodes in action:
+For example, in this contract we can see several available opcodes:
 
 ```rust
 match shift_or_err(&mut inputs)? {
@@ -96,27 +82,44 @@ match shift_or_err(&mut inputs)? {
 }
 ```
 
-For example, to mint new tokens you would:
-- Target this contract's address
+In this example, the contract has an opcode for minting tokens, and several opcodes for getting information about the token. Setter opcodes, like the mint, require you to submit a transaction to bitcoin with the appropriate call data packed, in the form of a [protorune](protorunes), into an OP_RETURN output. Getter opcodes, like the token name, can be called directly from the contract without submitting a transaction using a "simulation" call.
+
+### Sending a transaction
+
+To mint tokens from an alkane token that has been deployed using this contract, you would:
+- Target the token's address
 - Use opcode `77` (the mint function)
-- Include the amount of tokens to mint as an argument
 
+```Typescript
+const calldata = [
+  BigInt(alkaneId.block),
+  BigInt(alkaneId.tx),
+  BigInt(77)
+]
+```
 
+Then you would send the calldata to an appropriately formatted bitcoin transaction.
 
+## Simulating a transaction 
 
-## Simulating a transaction
+You can call an Alkanes RPC `simulate` endpoint directly to get data from an alkane contract or token. For example, to get the name of a token deployed using the contract above, you would use the following call data:
 
-## Sending a transaction
+```Typescript
+alkanes.simulate({
+  alkanes: [],
+  transaction: '0x',
+  block: '0x',
+  height: '20000',
+  txindex: 0,
+  target: {
+    block: alkaneId.block,
+    tx: alkaneId.tx,
+  },
+  inputs: ['99'],
+  pointer: 0,
+  refundPointer: 0,
+  vout: 0,
+})
+```
 
-
-
-### Message Flow
-
-Every Alkane interaction happens through a protocol message that can include:
-- Asset transfers
-- Edicts (commands)
-- Pointers (references to other messages)
-- Refund pointers (for returned assets)
-
-This ensures all contract actions and asset movements are properly tracked and executed.
 
