@@ -58,7 +58,7 @@ The deployment process:
 
 ## Deploy a custom contract
 
-Next we will deploy a custom "user owned" tokencontract. This contract will allow users to mint tokens where the entire supply is sent to the user.
+Next we will deploy a custom "user owned" token contract. This contract will allow users to mint tokens where the entire supply is sent to the user.
 
 If you have not already done so, familiarize yourself with [alkane contract development](./contracts-building).
 
@@ -87,7 +87,7 @@ In your Cargo.toml file, add the following dependencies. For more information se
 
 ```rust
 [package]
-name = "owned-token"
+name = "my-token-contract"
 version = "0.1.0"
 edition = "2021"
 
@@ -129,17 +129,17 @@ use alkane_factory_support::factory::MintableToken;
 
 ### 5. Add the contract code
 
-TODO: break thid out and explain
+TODO: break this out and explain
 
 ```rust
 #[derive(Default)]
-pub struct OwnedToken(());
+pub struct MyTokenContract(());
 
-impl MintableToken for OwnedToken {}
+impl MintableToken for MyTokenContract {}
 
-impl AuthenticatedResponder for OwnedToken {}
-
-impl AlkaneResponder for OwnedToken {
+impl AuthenticatedResponder for MyTokenContract {}
+  
+impl AlkaneResponder for MyTokenContract {
     fn execute(&self) -> Result<CallResponse> {
         let context = self.context()?;
         let mut inputs = context.inputs.clone();
@@ -199,15 +199,48 @@ Now add the `_execute` function to your contract. This function will be called w
 ```rust
 #[no_mangle]
 pub extern "C" fn __execute() -> i32 {
-    let mut response = to_arraybuffer_layout(&OwnedToken::default().run());
+    let mut response = to_arraybuffer_layout(&MyTokenContract::default().run());
     to_ptr(&mut response) + 4
 }
 ```
 
-### N. Compile the contract
+You should now have a complete contract. The full contract code can be found [here](https://github.com/kungfuflex/alkane-factory/blob/master/alkanes/owned-token/src/lib.rss).
 
-### N. Deploy to regtest
+### 6. Compile the contract
+
+You are now ready to compile your contract. 
+
+:::info
+There are several additional steps enable compiling on macOS. See [this issue](https://github.com/kungfuflex/alkanes-rs/issues/32) for more details.
+:::
+
+
+From the root of the `alkane-factory` repo, run the following command:
+
+```sh
+cargo build --target wasm32-unknown-unknown
+```
+
+Your wasm will be built to `target/alkanes/wasm32-unknown-unknown/release/my_token_contract.wasm`.
+
+### 7. Deploy to regtest
+
+Copy the was file to the SDK:
+
+```sh
+cp target/alkanes/wasm32-unknown-unknown/release/my_token_contract.wasm ../oyl-sdk/src/alkanes/
+```
+
+Similar to the free_mint example above, use the SDK CLI to deploy the contract to the regtest instance.
+
+```sh
+cd ../oyl-sdk
+oyl alkane factoryWasmDeploy -c ./src/alkanes/my_token_contract.wasm -r "0x8" 
+```
+
+This command does a gzip compression level 9 to compress the wasm to a `*.wasm.gz` and then deploys to your Bitcoin regtest.
+
+### 8. Interact with the contract
 
 TODO
 
-Can refer to the regtest deplpoyment above...

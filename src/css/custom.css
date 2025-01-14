@@ -4,8 +4,9 @@
  * work well for content-centric websites.
  */
 
+/* Import Inter font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-/* You can override the default Infima variables here. */
 :root {
   --background: 0 0% 100%;
   --foreground: 222.2 47.4% 11.2%;
@@ -41,6 +42,12 @@
 
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+
+  /* default font family */
+  --ifm-font-family-base: 'Inter', system-ui, -apple-system, sans-serif;
+  
+  /* font family for headings */
+  --ifm-heading-font-family: 'Your-Heading-Font', sans-serif;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -130,4 +137,34 @@
 
 .markdown pre {
   @apply p-4 mb-4 rounded overflow-x-auto;
+}
+
+/* Style for the category headers in sidebar */
+.theme-doc-sidebar-item-category > .menu__list-item-collapsible {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 900;
+  color: #000000;
+}
+
+/* Dark mode version of the headers */
+[data-theme='dark'] .theme-doc-sidebar-item-category > .menu__list-item-collapsible {
+  color: #ffffff;
+}
+
+/* Remove ALL possible indentation from sidebar items */
+.theme-doc-sidebar-menu .menu__list .menu__list,
+.menu__list-item--collapsed .menu__list,
+.menu__list-item .menu__list {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+
+/* Style for the regular items under headers */
+.theme-doc-sidebar-item-link {
+  font-family: var(--ifm-font-family-base);
+  font-size: 0.9rem;
+  font-weight: 400;
+  margin-left: 0;
+  padding-left: 0;
 }
