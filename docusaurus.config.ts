@@ -40,7 +40,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/sandshrewmetaprotocols/alkanes-wiki/tree/main/docs',
+            'https://github.com/sandshrewmetaprotocols/alkanes-wiki/tree/main',
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -123,19 +123,7 @@ const config: Config = {
 
   stylesheets: [
     {
-      href: '/css/palette.css',
-    },
-    {
-      href: '/css/global.css',
-    },
-    {
-      href: '/css/fonts.css',
-    },
-    {
-      href: '/css/video.css',
-    },
-    {
-      href: '/css/modal.css',
+      href: '/css/custom.css',
     },
   ],
 };
