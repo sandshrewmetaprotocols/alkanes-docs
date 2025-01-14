@@ -17,7 +17,7 @@ In this tutorial, you will:
 
 ## Set up and run Alkanes regtest
 
-If you have not already done so, [set up and run your local Alkanes development environment](./regtest.md). 
+If you have not already done so, [set up and run your local Alkanes development environment](setup). 
 
 ## Deploy a pre-compiled contract
 

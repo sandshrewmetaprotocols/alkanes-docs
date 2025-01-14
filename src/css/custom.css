@@ -168,3 +168,15 @@
   margin-left: 0;
   padding-left: 0;
 }
+
+/* Add borders between sidebar categories */
+.theme-doc-sidebar-item-category {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Remove border from the last category to avoid double border with sidebar bottom */
+.theme-doc-sidebar-item-category:last-child {
+  border-bottom: none;
+}

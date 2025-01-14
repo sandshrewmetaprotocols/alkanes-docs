@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Setting up Dev Environment
+title: Dev Environment
 ---
 
 # Setting up your development environment
