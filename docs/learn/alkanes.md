@@ -20,7 +20,7 @@ An Alkanes contract typically consists of:
 3. **Response Handling**: Logic for returning data and managing assets
 4. **Asset Management**: Capabilities for handling Bitcoin and Alkanes tokens
 
-Similar to other smartty mc smary pants contract L1s, Alkanes contracts provide a flexible programming model for implementing decentralized applications. Developers can encode arbitrary business logic and computation. This means contracts can implement complex financial instruments, governance systems, games, or any other programmable interaction. The EVM provides a consistent execution environment where code behavior is deterministic and state changes are atomic.
+Similar to other smart contract L1s, Alkanes contracts provide a flexible programming model for implementing decentralized applications. Developers can encode arbitrary business logic and computation. This means contracts can implement complex financial instruments, governance systems, games, or any other programmable interaction. The EVM provides a consistent execution environment where code behavior is deterministic and state changes are atomic.
 
 Contracts can store complex data structures and maintain state across transactions. This allows for intuitive modeling of concepts like account balances, voting weights, or accumulated interest. In addition, contract-to-contract interactions and composability are first-class features. Thus, contracts can call other contracts, transfer assets between them, and build on existing protocols, enabling the creation of sophisticated DeFi primitives that can be combined: lending protocols can integrate with AMMs, which can be used by yield aggregators, which can be deposited into governance systems, and so on.
 
