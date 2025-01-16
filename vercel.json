@@ -1,0 +1,6 @@
+{
+  "buildCommand": "yarn build",
+  "outputDirectory": "build",
+  "framework": "docusaurus-2",
+  "cleanUrls": true
+}
