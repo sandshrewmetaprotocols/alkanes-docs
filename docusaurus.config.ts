@@ -75,6 +75,28 @@ const config: Config = {
           position: 'left',
           label: 'Developers',
         },
+        {
+          type: 'search',
+          position: 'right',
+        },
+        {
+          href: 'https://twitter.com/oylwallet',
+          position: 'right',
+          className: 'header-twitter-link',
+          'aria-label': 'Twitter',
+        },
+        {
+          href: 'https://discord.gg/your-discord-invite',
+          position: 'right',
+          className: 'header-discord-link',
+          'aria-label': 'Discord',
+        },
+        {
+          href: 'https://github.com/sandshrewmetaprotocols',
+          position: 'right',
+          className: 'header-github-link',
+          'aria-label': 'GitHub',
+        },
       ],
     },
     footer: {
