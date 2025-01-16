@@ -85,7 +85,7 @@ const config: Config = {
       title: 'Alkanes',
       logo: {
         alt: 'Alkanes Logo',
-        src: 'img/alkanelogo.png',
+        src: 'img/AlkaneLogo.png',
         className: 'navbar-logo',
         style: {
           height: '32px',
