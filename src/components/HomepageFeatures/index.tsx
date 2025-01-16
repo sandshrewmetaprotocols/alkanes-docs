@@ -1,71 +1,84 @@
-import type {ReactNode} from 'react';
-import clsx from 'clsx';
-import Heading from '@theme/Heading';
+import type { ReactNode } from 'react';
 import styles from './styles.module.css';
 
 type FeatureItem = {
   title: string;
-  Svg: React.ComponentType<React.ComponentProps<'svg'>>;
-  description: ReactNode;
+  description: string;
+  icon: string;
+  link?: string;
 };
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Smart Contracts on Bitcoin L1',
-    Svg: require('@site/static/img/sandshrew.svg').default,
-    description: (
-      <>
-        Deploy Rust-based smart contracts compiled to WebAssembly directly on Bitcoin's base layer.
-        Leverage the security and decentralization of Bitcoin with modern smart contract capabilities.
-      </>
-    ),
+    title: 'Developer Quickstart',
+    description:
+      'Start building in minutes. Set up your environment, deploy your first contract, and understand the basics of Alkane development.',
+    icon: '🚀',
+    link: '/docs/developers/quickstart',
   },
   {
-    title: 'Built on Proven Standards',
-    Svg: require('@site/static/img/subfrost.svg').default,
-    description: (
-      <>
-        Alkanes builds on established Bitcoin protocols like Ordinals and Runes, 
-        enabling smart contract functionality while maintaining compatibility with existing standards.
-      </>
-    ),
+    title: 'Developer Guides',
+    description:
+      'Comprehensive guides for building and deploying smart contracts, including SDK references and best practices.',
+    icon: '📘',
+    link: '/docs/developers/contracts-building',
   },
   {
-    title: 'Powered by Metashrew',
-    Svg: require('@site/static/img/sandshrew.svg').default,
-    description: (
-      <>
-        Utilize the powerful Metashrew indexing stack for contract deployment, execution, and state management.
-        Build with confidence using our comprehensive development tools.
-      </>
-    ),
+    title: 'Learn Alkane',
+    description:
+      'New to Alkane? Start here to understand the fundamentals of Bitcoin smart contracts and the Alkane protocol.',
+    icon: '🎓',
+    link: '/docs/learn/intro',
+  },
+  {
+    title: 'Technical Background',
+    description:
+      "Deep dive into Alkane's architecture, including Ordinals integration, WebAssembly runtime, and protocol specifications.",
+    icon: '🔬',
+    link: '/docs/learn/background/runtime',
+  },
+  {
+    title: 'Use Cases',
+    description:
+      'Explore real-world applications and examples of smart contracts built on Bitcoin using Alkane.',
+    icon: '💡',
+    link: '/docs/learn/use-cases',
+  },
+  {
+    title: 'Blog & Updates',
+    description:
+      'Stay up to date with the latest developments, technical deep dives, and community updates.',
+    icon: '📰',
+    link: '/docs/blog/weapons-grade-metaprotocols',
   },
 ];
 
-function Feature({title, Svg, description}: FeatureItem) {
-  return (
-    <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
-      </div>
-      <div className="text--center padding-horiz--md">
-        <Heading as="h3">{title}</Heading>
-        <p>{description}</p>
-      </div>
+function Feature({ title, description, icon, link }: FeatureItem) {
+  const content = (
+    <div className={styles.featureCard}>
+      <div className={styles.featureIcon}>{icon}</div>
+      <h3 className={styles.featureTitle}>{title}</h3>
+      <p className={styles.featureDescription}>{description}</p>
     </div>
+  );
+
+  return link ? (
+    <a href={link} className={styles.featureLink}>
+      {content}
+    </a>
+  ) : (
+    content
   );
 }
 
 export default function HomepageFeatures(): ReactNode {
   return (
-    <section className={styles.features}>
-      <div className="container">
-        <div className="row">
-          {FeatureList.map((props, idx) => (
-            <Feature key={idx} {...props} />
-          ))}
-        </div>
+    <div className="container">
+      <div className={styles.featureGrid}>
+        {FeatureList.map((props, idx) => (
+          <Feature key={idx} {...props} />
+        ))}
       </div>
-    </section>
+    </div>
   );
 }

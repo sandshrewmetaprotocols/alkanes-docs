@@ -8,17 +8,20 @@ Metashrew is an open source [indexer stack](https://github.com/sandshrewmetaprot
 
 Metashrew is the core infrastructure that powers [Alkanes smart contracts](./alkanes.md). It provides:
 
-1. **Block Processing & Indexing**: 
+1. **Block Processing & Indexing**:
+
    - Processes Bitcoin blocks and maintains indexes of relevant data
    - Supports deterministic indexing through WASM-based indexer programs
    - Ensures integrity through verifiable WASM binary hashes
 
-2. **State Management**: 
+2. **State Management**:
+
    - Uses a key-value store (KeyDB) to maintain smart contract state
    - Handles state rollbacks during chain reorganizations
    - Provides historical state access at any block height
 
-3. **Contract Execution**: 
+3. **Contract Execution**:
+
    - Executes WASM-based smart contracts and indexers
    - Supports contracts written in Rust with Metashrew runtime bindings
    - Provides isolated execution environments for view functions
@@ -40,7 +43,7 @@ Metashrew consists of several key components:
 
 - **Indexer**: Processes Bitcoin blocks and maintains relevant indexes through WASM-based programs
 - **KeyDB**: Stores contract state and execution data
-- **View Layer (metashrew-view)**: 
+- **View Layer (metashrew-view)**:
   - Handles read-only contract function calls
   - Provides parallel processing capabilities
   - Ensures side-effect-free execution
@@ -55,4 +58,3 @@ As a smart contract developer, you'll primarily interact with Metashrew through:
 3. Integrating with the key-value store for state management
 
 The platform handles all the complex infrastructure needed for Bitcoin smart contracts, allowing you to focus on writing contract logic and building your dApp.
-

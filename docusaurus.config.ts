@@ -1,5 +1,5 @@
-import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
+import { themes as prismThemes } from 'prism-react-renderer';
+import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
@@ -39,8 +39,7 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/sandshrewmetaprotocols/alkanes-wiki/tree/main',
+          editUrl: 'https://github.com/sandshrewmetaprotocols/alkanes-wiki/tree/main',
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -56,7 +55,12 @@ const config: Config = {
       title: 'Alkanes',
       logo: {
         alt: 'Alkanes Logo',
-        src: 'img/logo.svg',
+        src: 'img/alkanelogo.png',
+        className: 'navbar-logo',
+        style: {
+          height: '32px',
+          width: 'auto',
+        },
       },
       items: [
         {
@@ -71,40 +75,34 @@ const config: Config = {
           position: 'left',
           label: 'Developers',
         },
-        {
-          href: 'https://github.com/sandshrewmetaprotocols/alkanes-docs',
-          label: 'GitHub',
-          position: 'right',
-        },
       ],
     },
     footer: {
-      style: 'dark',
+      style: 'light',
       links: [
         {
-          title: 'Docs',
+          title: 'Product',
           items: [
             {
-              label: 'Tutorial',
+              label: 'Documentation',
               to: '/docs/developers/intro',
+            },
+            {
+              label: 'Learn',
+              to: '/docs/learn/background/alkanes',
             },
           ],
         },
         {
-          title: 'Community',
+          title: 'Connect',
           items: [
+            {
+              label: 'Discord',
+              href: 'https://discord.gg/your-discord-invite',
+            },
             {
               label: 'X',
               href: 'https://twitter.com/oylwallet',
-            },
-          ],
-        },
-        {
-          title: 'More',
-          items: [
-            {
-              label: 'Oyl',
-              href: 'https://oyl.io',
             },
             {
               label: 'GitHub',
@@ -113,7 +111,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Oyl Dynamics,Inc. Built with Docusaurus.`,
+      copyright: `© ${new Date().getFullYear()} Oyl Dynamics, Inc.`,
     },
     prism: {
       theme: prismThemes.github,

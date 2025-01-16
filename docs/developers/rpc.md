@@ -6,12 +6,15 @@ title: Alkanes RPC
 # Alkanes RPC
 
 ## Overview
+
 The Alkanes RPC interface provides methods for interacting with the Alkanes protocol on Bitcoin. It enables querying balances, simulating transactions, and managing protorunes/alkanes assets.
 
 ## Base URL
+
 All RPC methods are available via HTTP POST requests to your Alkanes node endpoint.
 
 ## Common Parameters
+
 - `blockTag`: Optional parameter for historical queries
   - Type: string
   - Default: "latest"
@@ -20,6 +23,7 @@ All RPC methods are available via HTTP POST requests to your Alkanes node endpoi
 ## Methods
 
 ### protorunesbyaddress
+
 Query protorunes balances for a specific address.
 
 ```typescript
@@ -33,14 +37,17 @@ async protorunesbyaddress({
 ```
 
 **Parameters:**
+
 - `address`: Bitcoin address to query
 - `protocolTag`: Protocol identifier (1n for Alkanes)
 
 **Returns:**
+
 - `outpoints`: Array of UTXOs containing protorunes
 - `balanceSheet`: Array of protorune balances
 
 ### protorunesbyheight
+
 Query protorunes state at a specific block height.
 
 ```typescript
@@ -51,10 +58,12 @@ async protorunesbyheight({
 ```
 
 **Parameters:**
+
 - `height`: Block height to query
 - `protocolTag`: Protocol identifier
 
 ### protorunesbyoutpoint
+
 Query protorunes at a specific UTXO.
 
 ```typescript
@@ -66,11 +75,13 @@ async protorunesbyoutpoint({
 ```
 
 **Parameters:**
+
 - `txid`: Transaction ID
 - `vout`: Output index
 - `protocolTag`: Protocol identifier
 
 ### simulate
+
 Simulate execution of an Alkanes transaction.
 
 ```typescript
@@ -92,6 +103,7 @@ async simulate({
 ```
 
 **Parameters:**
+
 - `alkanes`: Array of Alkane transfers
 - `transaction`: Raw transaction hex
 - `height`: Block height
@@ -103,8 +115,8 @@ async simulate({
 - `pointer`: Success pointer
 - `refundPointer`: Refund pointer
 
-
 ## Error Handling
+
 All methods may throw errors with the following structure:
 
 ```typescript
@@ -123,7 +135,7 @@ const alkanes = new AlkanesRpc('http://your-node-url');
 // Query protorunes balance
 const balance = await alkanes.protorunesbyaddress({
   address: 'bc1...',
-  protocolTag: 1n
+  protocolTag: 1n,
 });
 
 // Simulate transaction
@@ -134,11 +146,11 @@ const simulation = await alkanes.simulate({
   txindex: 0,
   target: {
     block: 2n,
-    tx: 0n
+    tx: 0n,
   },
   inputs: [101n],
   pointer: 0,
   refundPointer: 0,
-  vout: 0
+  vout: 0,
 });
 ```

@@ -17,34 +17,38 @@ In this tutorial, you will:
 
 ## Set up and run Alkanes regtest
 
-If you have not already done so, [set up and run your local Alkanes development environment](setup). 
+If you have not already done so, [set up and run your local Alkanes development environment](setup).
 
 ## Deploy a pre-compiled contract
 
 Next you will deploy an example Alkanes "Free Mint" contract to the regtest instance. The Free Mint contract is a simple [factory contract](/docs/learn/alkanes#alkanes-factory-contracts) that allows anyone to deploy and mint Alkanes tokens. We are deploying a factory contract because we only want to deploy the factory contract once, and then clone the factory contract to deploy new alkanes mintable tokens.
 
-A version of the Free Mint contract is included in the [SDK](https://github.com/Oyl-Wallet/oyl-sdk/blob/main/src/alkanes/free_mint.wasm). 
+A version of the Free Mint contract is included in the [SDK](https://github.com/Oyl-Wallet/oyl-sdk/blob/main/src/alkanes/free_mint.wasm).
 
 ### 1. Deploy the Free Mint wasm
 
 To deploy the precompiledFree Mint contract wasm file to the regtest instance, run the following command from the root of the SDK:
 
 ```bash
-oyl alkane factoryWasmDeploy -c ./src/alkanes/free_mint.wasm -r "0x7" 
+oyl alkane factoryWasmDeploy -c ./src/alkanes/free_mint.wasm -r "0x7"
 ```
 
 This [CLI command](https://github.com/Oyl-Wallet/oyl-sdk/blob/main/src/cli/alkane.ts) uses default settings (mnemonic, fee rate, network) and reserve number "0x7" to deploy the contract using the SDK's `factoryWasmDeploy` command. It uses the [commit-reveal pattern](https://docs.ordinals.com/guides/wallet.html?highlight=reveal#creating-inscriptions), familiar to Ordinals developers, to deploy the contract.
 
 The deployment process:
+
 1. **Setup**
+
    - Creates wallet instance
    - Processes and compresses WASM contract
 
 2. **Commit Phase**
+
    - Broadcasts commit transaction
    - Generates block and waits for confirmation
 
 3. **Reveal Phase**
+
    - Broadcasts reveal transaction with factory reserve number
    - Generates block and waits for confirmation
 
@@ -55,7 +59,6 @@ The deployment process:
 
 ### 3. Send a token
 
-
 ## Deploy a custom contract
 
 Next we will deploy a custom "user owned" token contract. This contract will allow users to mint tokens where the entire supply is sent to the user.
@@ -64,7 +67,7 @@ If you have not already done so, familiarize yourself with [alkane contract deve
 
 ### 1. Clone the Alkanes example repo
 
-The first step is to clone the `alkane-factory` example repository. 
+The first step is to clone the `alkane-factory` example repository.
 
 ```bash
 git clone https://github.com/kungfuflex/alkane-factory
@@ -138,7 +141,7 @@ pub struct MyTokenContract(());
 impl MintableToken for MyTokenContract {}
 
 impl AuthenticatedResponder for MyTokenContract {}
-  
+
 impl AlkaneResponder for MyTokenContract {
     fn execute(&self) -> Result<CallResponse> {
         let context = self.context()?;
@@ -191,8 +194,7 @@ impl AlkaneResponder for MyTokenContract {
 }
 ```
 
-
-### N. Add the _execute function
+### N. Add the \_execute function
 
 Now add the `_execute` function to your contract. This function will be called when the contract is executed.
 
@@ -208,12 +210,11 @@ You should now have a complete contract. The full contract code can be found [he
 
 ### 6. Compile the contract
 
-You are now ready to compile your contract. 
+You are now ready to compile your contract.
 
 :::info
 There are several additional steps enable compiling on macOS. See [this issue](https://github.com/kungfuflex/alkanes-rs/issues/32) for more details.
 :::
-
 
 From the root of the `alkane-factory` repo, run the following command:
 
@@ -235,7 +236,7 @@ Similar to the free_mint example above, use the SDK CLI to deploy the contract t
 
 ```sh
 cd ../oyl-sdk
-oyl alkane factoryWasmDeploy -c ./src/alkanes/my_token_contract.wasm -r "0x8" 
+oyl alkane factoryWasmDeploy -c ./src/alkanes/my_token_contract.wasm -r "0x8"
 ```
 
 This command does a gzip compression level 9 to compress the wasm to a `*.wasm.gz` and then deploys to your Bitcoin regtest.
@@ -243,4 +244,3 @@ This command does a gzip compression level 9 to compress the wasm to a `*.wasm.g
 ### 8. Interact with the contract
 
 TODO
-

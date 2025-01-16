@@ -26,13 +26,13 @@ Contracts can store complex data structures and maintain state across transactio
 
 ## Alkanes Tokens
 
-Alkanes token contracts are a standardized implementation pattern that represent fungible tokens - digital assets where each unit is identical and interchangeable. 
+Alkanes token contracts are a standardized implementation pattern that represent fungible tokens - digital assets where each unit is identical and interchangeable.
 
 At their core, Alkanes token contracts maintain a mapping of addresses to a balance sheet, tracking token ownership through key-value state storage. The critical operations are transfers (moving tokens between addresses) and approvals (allowing another address, often a contract, to transfer tokens on your behalf).
 
 State management typically involves two key mappings: balances tracking how many tokens each address owns, and allowances tracking approved spending permissions between addresses. When tokens are transferred, these mappings are atomically updated, ensuring invariants like "total supply equals sum of all balances" are maintained.
 
-The approval mechanism is particularly important for composability - it enables tokens to be seamlessly integrated with other smart contracts like AMMs, lending markets, or other DeFi protocols. A user can approve a DEX contract to spend their tokens, then that contract can execute trades by transferring those tokens in response to function calls. 
+The approval mechanism is particularly important for composability - it enables tokens to be seamlessly integrated with other smart contracts like AMMs, lending markets, or other DeFi protocols. A user can approve a DEX contract to spend their tokens, then that contract can execute trades by transferring those tokens in response to function calls.
 
 But, Alkanes token implementations extend beyond the basic standard to add features like:
 
@@ -48,7 +48,7 @@ This combination of standardized interface and extensible implementation enables
 
 Alkanes factory contracts are a design pattern that enables programmatic deployment of new Alkanes token contracts. A factory contract is essentially a smart contract that contains the bytecode and deployment logic for creating new Alkanes token contracts. Rather than directly deploying each token contract, users interact with the factory, which handles the creation process. The factory uses Alkanes's FACTORYRESERVED opcode to deploy new contract instances, typically taking parameters like token name, symbol, total supply, and mint parameters.
 
-Using FACTORYRESERVED, factories can generate deterministic Alkane IDs (block and transaction index) for new tokens based on initialization parameters, enabling consistent implementation patterns, security features, and upgrade paths across all tokens they create. 
+Using FACTORYRESERVED, factories can generate deterministic Alkane IDs (block and transaction index) for new tokens based on initialization parameters, enabling consistent implementation patterns, security features, and upgrade paths across all tokens they create.
 
 Advanced factory patterns may include:
 
@@ -60,5 +60,3 @@ Advanced factory patterns may include:
 - Fee mechanisms for token creation
 
 In DeFi protocols, factories are commonly used to deploy pairs of tokens for AMMs, create wrapped asset tokens, or mint governance tokens for new projects. They provide a standardized, gas-efficient way to programmatically expand token ecosystems while maintaining consistent security and implementation patterns.
-
-

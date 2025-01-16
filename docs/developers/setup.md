@@ -8,6 +8,7 @@ title: Dev Environment
 In this section, you will set up your local regtest development environment which you will use to build and test your Alkanes contract. The regtest environment uses several services to simulate a local Bitcoin network. We refer to this as the "Sandshrew-proxy" environment because it is a regtest version of [Oyl's Sandshrew indexing service](http://sandshrew.io)
 
 Sandshrew-proxy is a self-contained docker build comprised of several services:
+
 - bitcoind
 - esplora
 - ord
@@ -18,6 +19,7 @@ You will also install the Oyl SDK which supports command line interaction with t
 ## Prerequisites
 
 There are several requisites you will need:
+
 - Docker
 - Node 20+
 - Yarn
@@ -35,9 +37,9 @@ git clone https://github.com/sandshrewmetaprotocols/sandshrew-proxy --recurse-su
 ### 2. Build sandshrew-proxy and run the docker container
 
 ```
-yarn install  
-yarn build  
-docker compose build 
+yarn install
+yarn build
+docker compose build
 ```
 
 ### 3. Launch the sandshrew-proxy services
@@ -52,7 +54,7 @@ Sandshrew and metashrew should now be running in the background with an uninitia
 http://localhost:3000/v1/regtest
 ```
 
-It is now possible to call any of the RPC endpoints surfaced in the bitcoin, esplora, ord, and alkanes namespaces. 
+It is now possible to call any of the RPC endpoints surfaced in the bitcoin, esplora, ord, and alkanes namespaces.
 
 The full set of sandshrew namespaces and RPC methods can be found in the [sandshrew documentation](https://docs.sandshrew.io/).
 
@@ -62,8 +64,8 @@ You can confirm the RPC endpoint by running:
 curl http://localhost:3000/v1/regtest \
   -H 'Content-Type: application/json' \
   -d '{
-    "jsonrpc": "2.0", 
-    "id": 1, 
+    "jsonrpc": "2.0",
+    "id": 1,
     "method": "btc_getblockcount",
     "params": []
 }'
@@ -79,7 +81,7 @@ returns:
 }
 ```
 
-##  Oyl SDK
+## Oyl SDK
 
 You will use the utility methods in the Oyl SDK to support testing and deployment of your Alkanes contracts.
 
@@ -173,7 +175,7 @@ make reset
 
 ## Using Regtest
 
-Next, you will initialize your local bitcoin chain. The init command will process the first 260 blocks and will send BTC to a faucet address and a test wallet that will be used during testing. 
+Next, you will initialize your local bitcoin chain. The init command will process the first 260 blocks and will send BTC to a faucet address and a test wallet that will be used during testing.
 
 The default mnemonics and addresses are in the `src/cli/constants.ts` file:
 
@@ -211,7 +213,7 @@ Use the OYL CLI to initialize your local chain.
 oyl regtest init
 ```
 
-This will execute the blocks and send BTC to the test address. 
+This will execute the blocks and send BTC to the test address.
 
 ### 2. Chain commands
 
@@ -228,8 +230,8 @@ You can also make direct calls to your local regtest instance:
 curl http://localhost:3000/v1/regtest \
   -H 'Content-Type: application/json' \
   -d '{
-    "jsonrpc": "2.0", 
-    "id": 1, 
+    "jsonrpc": "2.0",
+    "id": 1,
     "method": "esplora_address::txs",
     "params": [
       "bcrt1qcr8te4kr609gcawutmrza0j4xv80jy8zeqchgx"

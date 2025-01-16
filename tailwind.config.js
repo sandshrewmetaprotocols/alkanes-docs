@@ -1,15 +1,13 @@
 /** @type {import('tailwindcss').Config} */
-const tailwindCssAnimatePlugin = require('tailwindcss-animate');
+import tailwindCssAnimatePlugin from 'tailwindcss-animate';
+import typography from '@tailwindcss/typography';
 
-module.exports = {
+export default {
   future: {
     hoverOnlyWhenSupported: true,
   },
   darkMode: ['class'],
-  content: [
-    './src/**/*.{js,ts,jsx,tsx,md,mdx}',
-    './docs/**/*.{md,mdx}',
-  ],
+  content: ['./src/**/*.{js,ts,jsx,tsx,md,mdx}', './docs/**/*.{md,mdx}'],
   theme: {
     screens: {
       sm: '640px',
@@ -46,8 +44,7 @@ module.exports = {
         },
       },
       backgroundImage: {
-        'hero-gradient':
-          'linear-gradient(to bottom, #F8FAFC, #F2EAEA, #D2D9E2)',
+        'hero-gradient': 'linear-gradient(to bottom, #F8FAFC, #F2EAEA, #D2D9E2)',
         'chrome-footer-gradient':
           'linear-gradient(to bottom, #FFFFFF 0%, #F2F2EB 81%, #FEF4D8 100%)',
         'card-header-gradient': `linear-gradient(180deg, hsl(var(--black) / 0), hsl(var(--black) / .02))`,
@@ -69,10 +66,8 @@ module.exports = {
         103: '1.03',
       },
       boxShadow: {
-        normal:
-          '0px 0px 8px 0px rgba(0, 0, 0, 0.08), 0px 0px 1px 0px rgba(0, 0, 0, 0.40)',
-        checkbox:
-          '0px 0px 1px 0px rgba(0, 0, 0, 0.7), 0px 1px 2px 0px rgba(0, 0, 0, 0.05)',
+        normal: '0px 0px 8px 0px rgba(0, 0, 0, 0.08), 0px 0px 1px 0px rgba(0, 0, 0, 0.40)',
+        checkbox: '0px 0px 1px 0px rgba(0, 0, 0, 0.7), 0px 1px 2px 0px rgba(0, 0, 0, 0.05)',
         high: '0px 8px 30px 0px rgba(0, 0, 0, 0.08), 0px 0px 1px 0px hsl(var(--black-9) / 0.40)',
         mid: '0px 3px 12px 0px rgba(0, 0, 0, 0.08), 0px 0px 1px 0px hsl(var(--black-9) / 0.40)',
         low: '0px 1px 3px 0px rgba(9, 10, 12, 0.08), 0px 0px 1px 0px hsl(var(--black-9) / 0.50)',
@@ -163,7 +158,7 @@ module.exports = {
           green: 'hsl(var(--supporting-green))',
           blue: 'hsl(var(--supporting-blue))',
           orange: 'hsl(var(--supporting-orange))',
-          red: 'hsl(var(--supporting-red))'
+          red: 'hsl(var(--supporting-red))',
         },
         'word-carousel': 'hsl(220, 14%, 4%, 0.08)',
       },
@@ -195,8 +190,5 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    tailwindCssAnimatePlugin,
-    require('@tailwindcss/typography'),
-  ],
+  plugins: [tailwindCssAnimatePlugin, typography],
 };

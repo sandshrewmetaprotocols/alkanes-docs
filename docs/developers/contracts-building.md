@@ -33,9 +33,9 @@ impl AlkaneResponder for MyContract {
         let context = self.context().unwrap();
         let mut inputs = context.inputs.clone();
         let mut response = CallResponse::forward(&context.incoming_alkanes);
-        
+
         // Your opcode handling logic here
-        
+
         Ok(response)
     }
 }
@@ -57,12 +57,12 @@ impl MyContract {
     pub fn some_value_pointer(&self) -> StoragePointer {
         StoragePointer::from_keyword("/some-value")
     }
-    
+
     // Getter
     pub fn some_value(&self) -> u128 {
         self.some_value_pointer().get_value::<u128>()
     }
-    
+
     // Setter
     pub fn set_some_value(&self, v: u128) {
         self.some_value_pointer().set_value::<u128>(v);
@@ -80,7 +80,7 @@ impl AlkaneResponder for MyContract {
         let context = self.context().unwrap();
         let mut inputs = context.inputs.clone();
         let mut response = CallResponse::forward(&context.incoming_alkanes);
-        
+
         match shift_or_err(&mut inputs)? {
             // Initialization opcode
             0 => {
@@ -89,7 +89,7 @@ impl AlkaneResponder for MyContract {
                 self.set_some_value(initial_value);
                 Ok(response)
             },
-            
+
             // Custom action opcode
             1 => {
                 // Handle some custom action
@@ -97,14 +97,14 @@ impl AlkaneResponder for MyContract {
                 // Process the action...
                 Ok(response)
             },
-            
+
             // Query opcode
             2 => {
                 // Return some stored value
                 response.data = self.some_value().to_le_bytes().to_vec();
                 Ok(response)
             },
-            
+
             _ => Err(anyhow!("unrecognized opcode"))
         }
     }
@@ -131,16 +131,16 @@ impl MintableAlkane {
     pub fn minted_pointer(&self) -> StoragePointer {
         StoragePointer::from_keyword("/minted")
     }
-    
+
     pub fn cap_pointer(&self) -> StoragePointer {
         StoragePointer::from_keyword("/cap")
     }
-    
+
     // Storage getters/setters
     pub fn minted(&self) -> u128 {
         self.minted_pointer().get_value::<u128>()
     }
-    
+
     pub fn set_cap(&self, v: u128) {
         self.cap_pointer()
             .set_value::<u128>(if v == 0 { u128::MAX } else { v })
@@ -152,7 +152,7 @@ impl AlkaneResponder for MintableAlkane {
         let context = self.context().unwrap();
         let mut inputs = context.inputs.clone();
         let mut response = CallResponse::forward(&context.incoming_alkanes);
-        
+
         match shift_or_err(&mut inputs)? {
             // Initialize contract
             0 => {
@@ -161,27 +161,27 @@ impl AlkaneResponder for MintableAlkane {
                 self.set_cap(shift_or_err(&mut inputs)?);
                 Ok(response)
             },
-            
+
             // Mint tokens
             77 => {
                 response.alkanes.0.push(
                     self.mint(&context, self.value_per_mint())?
                 );
                 self.increment_mint()?;
-                
+
                 if self.minted() > self.cap() {
                     Err(anyhow!("supply has reached cap"))
                 } else {
                     Ok(response)
                 }
             },
-            
+
             // Query total minted
             103 => {
                 response.data = self.minted().to_le_bytes().to_vec();
                 Ok(response)
             },
-            
+
             _ => Err(anyhow!("unrecognized opcode"))
         }
     }
