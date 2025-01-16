@@ -4,7 +4,18 @@ sidebar_position: 6
 
 # StarkWare
 
-![StarkWare Case Study](https://picsum.photos/seed/starkware/800/400)
+<div style={{ width: '100%', marginBottom: '2rem', marginTop: '40px' }}>
+  <img 
+    src="https://picsum.photos/seed/starkware/800/400"
+    alt="StarkWare Banner"
+    style={{
+      width: '100%',
+      height: '300px',
+      objectFit: 'cover',
+      borderRadius: '8px'
+    }}
+  />
+</div>
 
 Starknet's ambition is to become a premier settlement layer for Bitcoin via starks. The broader ecosystem has presented many paths towards a trustless zk verifier and bridge, but either require consensus upgrades or are premature in their development or design.
 
