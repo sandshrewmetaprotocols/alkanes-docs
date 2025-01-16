@@ -7,7 +7,18 @@ sidebar_position: 2
 
 # Beyond Case Study
 
-![Beyond Case Study](https://picsum.photos/seed/beyond/800/400)
+<div style={{ marginTop: '40px', marginBottom: '2rem' }}>
+  <img 
+    src="https://picsum.photos/seed/beyond/800/400"
+    alt="Beyond Case Study"
+    style={{
+      width: '100%',
+      height: '300px',
+      objectFit: 'cover',
+      borderRadius: '8px'
+    }}
+  />
+</div>
 
 Beyond is a native Bitcoin L1 interoperability protocol, providing the necessary infrastructure for users to securely bridge any token to, from, and within Bitcoin L1.
 

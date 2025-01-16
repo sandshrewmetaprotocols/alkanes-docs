@@ -7,7 +7,18 @@ sidebar_position: 4
 
 # Laser Eyes Case Study
 
-![Laser Eyes Case Study](https://picsum.photos/seed/laser/800/400)
+<div style={{ marginTop: '40px', marginBottom: '2rem' }}>
+  <img 
+    src="https://picsum.photos/seed/laser/800/400"
+    alt="Laser Eyes Case Study"
+    style={{
+      width: '100%',
+      height: '300px',
+      objectFit: 'cover',
+      borderRadius: '8px'
+    }}
+  />
+</div>
 
 LaserEyes is a robust, open-source Bitcoin wallet library designed to standardize and simplify wallet integration across diverse applications. LaserEyes enables seamless wallet connectivity, transaction signing, and Bitcoin-based authentication. Its streamlined approach ensures consistent behavior across different wallets, facilitating the development of high-quality dApps without unnecessary overhead.
 

@@ -12,21 +12,21 @@ const FeatureList: FeatureItem[] = [
   {
     title: 'Developer Quickstart',
     description:
-      'Start building in minutes. Set up your environment, deploy your first contract, and understand the basics of Alkane development.',
+      'Get started with Alkane in minutes. Set up your environment, deploy your first smart contract, and begin building—no prior experience required.',
     icon: '🚀',
     link: '/docs/developers/quickstart',
   },
   {
     title: 'Developer Guides',
     description:
-      'Comprehensive guides for building and deploying smart contracts, including SDK references and best practices.',
+      'Comprehensive guides for professionals covering SDK integration, contract deployment strategies, and development best practices.',
     icon: '📘',
     link: '/docs/developers/contracts-building',
   },
   {
     title: 'Learn Alkane',
     description:
-      'New to Alkane? Start here to understand the fundamentals of Bitcoin smart contracts and the Alkane protocol.',
+      'New to Alkane? Start here to understand Bitcoin-native smart contracts and how Alkane redefines blockchain programmability.',
     icon: '🎓',
     link: '/docs/learn/intro',
   },
@@ -35,19 +35,19 @@ const FeatureList: FeatureItem[] = [
     description:
       "Deep dive into Alkane's architecture, including Ordinals integration, WebAssembly runtime, and protocol specifications.",
     icon: '🔬',
-    link: '/docs/learn/background/runtime',
+    link: '/docs/learn/background/metaprotocols',
   },
   {
     title: 'Use Cases',
     description:
-      'Explore real-world applications and examples of smart contracts built on Bitcoin using Alkane.',
+      'Explore real-world applications from DeFi to advanced cryptographic proofs. See how Alkane empowers developers on Bitcoin.',
     icon: '💡',
-    link: '/docs/learn/use-cases',
+    link: '/docs/case-studies/bound-stablecoin',
   },
   {
     title: 'Blog & Updates',
     description:
-      'Stay up to date with the latest developments, technical deep dives, and community updates.',
+      'Stay connected with the latest insights, technical updates, and ecosystem developments from the Alkane community.',
     icon: '📰',
     link: '/docs/blog/weapons-grade-metaprotocols',
   },

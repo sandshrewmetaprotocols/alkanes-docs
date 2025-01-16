@@ -4,7 +4,18 @@ sidebar_position: 3
 
 # Bound Stablecoin
 
-![Bound Stablecoin Case Study](https://picsum.photos/seed/bound/800/400)
+<div style={{ marginTop: '40px', marginBottom: '2rem' }}>
+  <img 
+    src="https://picsum.photos/seed/bound/800/400"
+    alt="Bound Stablecoin Case Study"
+    style={{
+      width: '100%',
+      height: '300px',
+      objectFit: 'cover',
+      borderRadius: '8px'
+    }}
+  />
+</div>
 
 Bound uses a similar model to USDC and other fully backed stable coin assets, Bound envisions a world where stablecoins can be used to enable fluid and permissionless financial applications like lending, trading, yield, and more.
 

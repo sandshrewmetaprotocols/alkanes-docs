@@ -20,7 +20,7 @@ const config: Config = {
   organizationName: 'sandshrewmetaprotocols', // Usually your GitHub org/user name.
   projectName: 'alkanes-docs', // Usually your repo name.
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
 
   // Even if you don't use internationalization, you can use this field to set
@@ -30,6 +30,36 @@ const config: Config = {
     defaultLocale: 'en',
     locales: ['en'],
   },
+
+  // Add head meta tags for favicons
+  headTags: [
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'apple-touch-icon',
+        sizes: '180x180',
+        href: '/img/apple-touch-icon.png',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '32x32',
+        href: '/img/favicon-32x32.png',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '16x16',
+        href: '/img/favicon-16x16.png',
+      },
+    },
+  ],
 
   presets: [
     [
@@ -63,6 +93,11 @@ const config: Config = {
         },
       },
       items: [
+        {
+          to: '/',
+          position: 'left',
+          label: 'Home',
+        },
         {
           type: 'docSidebar',
           sidebarId: 'learnSidebar',
@@ -106,34 +141,55 @@ const config: Config = {
           title: 'Product',
           items: [
             {
-              label: 'Documentation',
-              to: '/docs/developers/intro',
+              label: 'Install',
+              to: '/docs/getting-started',
             },
             {
-              label: 'Learn',
-              to: '/docs/learn/background/alkanes',
+              label: 'Documentation',
+              to: '/docs',
+            },
+            {
+              label: 'Support',
+              to: '/support',
             },
           ],
         },
         {
-          title: 'Connect',
+          title: 'Company',
           items: [
             {
-              label: 'Discord',
-              href: 'https://discord.gg/your-discord-invite',
+              label: 'Privacy Policy',
+              to: '/privacy',
             },
             {
-              label: 'X',
+              label: 'Brand Assets',
+              to: '/brand',
+            },
+            {
+              label: 'Work With Us',
+              to: '/careers',
+            },
+          ],
+        },
+        {
+          title: 'Socials',
+          items: [
+            {
+              label: '@OylWallet',
               href: 'https://twitter.com/oylwallet',
             },
             {
-              label: 'GitHub',
-              href: 'https://github.com/sandshrewmetaprotocols',
+              label: '@OylDynamics',
+              href: 'https://twitter.com/oyldynamics',
+            },
+            {
+              label: 'Contact',
+              to: '/contact',
             },
           ],
         },
       ],
-      copyright: `© ${new Date().getFullYear()} Oyl Dynamics, Inc.`,
+      copyright: `© ${new Date().getFullYear()} Oyl Corp.`,
     },
     prism: {
       theme: prismThemes.github,

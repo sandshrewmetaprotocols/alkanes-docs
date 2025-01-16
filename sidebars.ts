@@ -9,14 +9,34 @@ const sidebars: SidebarsConfig = {
       collapsed: false,
       link: undefined,
       items: [
-        'learn/intro',
-        'learn/alkanes',
-        'learn/metashrew',
-        'learn/faq',
-        'learn/newpage',
+        {
+          type: 'doc',
+          id: 'learn/intro',
+          label: 'What is Alkanes?',
+        },
+        {
+          type: 'doc',
+          id: 'learn/alkanes',
+          label: 'Alkanes Asset vs Contract?',
+        },
+        {
+          type: 'doc',
+          id: 'learn/metashrew',
+          label: 'What is Metashrew?',
+        },
+        {
+          type: 'doc',
+          id: 'learn/what-can-we-build',
+          label: 'What Can We Build?',
+        },
+        {
+          type: 'doc',
+          id: 'learn/faq',
+          label: 'FAQ',
+        },
         {
           type: 'category',
-          label: 'Blog',
+          label: 'Blog & Updates',
           collapsible: false,
           collapsed: false,
           link: undefined,
@@ -75,6 +95,65 @@ const sidebars: SidebarsConfig = {
         'developers/rpc',
         'developers/alkanes-libraries',
         'developers/dapp-integration',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Contract References',
+      collapsible: false,
+      collapsed: false,
+      link: undefined,
+      items: [
+        {
+          type: 'doc',
+          id: 'developers/contracts/diesel',
+          label: 'Diesel: Genesis Token',
+        },
+        {
+          type: 'doc',
+          id: 'developers/contracts/swap',
+          label: 'Swap Contracts',
+        },
+        {
+          type: 'doc',
+          id: 'developers/contracts/stake',
+          label: 'Staking Contracts',
+        },
+        {
+          type: 'doc',
+          id: 'developers/contracts/lending',
+          label: 'Lending & Borrowing',
+        },
+        {
+          type: 'doc',
+          id: 'developers/contracts/stablecoin',
+          label: 'Stablecoin Mechanics',
+        },
+        {
+          type: 'doc',
+          id: 'developers/contracts/governance',
+          label: 'Governance Systems',
+        },
+        {
+          type: 'doc',
+          id: 'developers/contracts/quantum',
+          label: 'Quantum Contracts',
+        },
+        {
+          type: 'doc',
+          id: 'developers/contracts/vault',
+          label: 'Yield Vaults',
+        },
+        {
+          type: 'doc',
+          id: 'developers/contracts/orbitals',
+          label: 'Non-Fungible: Orbitals',
+        },
+        {
+          type: 'doc',
+          id: 'developers/contracts/cairokane',
+          label: 'Cairo VM: Cairokane',
+        },
       ],
     },
   ],

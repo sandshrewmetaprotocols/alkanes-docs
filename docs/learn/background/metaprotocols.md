@@ -12,7 +12,7 @@ A metaprotocol is a set of rules and conditions for a state machine whose inputs
 
 ### Ordinals (NFTs)
 
-The best example of this, which brought great attention to the metaprotocol space on Bitcoin, is the ordinals metaprotocol, which defines a structure called an `inscription`. An inscription functions similarly to an NFT as we have seen them on smart contract platforms like Ethereum. The data that an inscription represents can be packed into Bitcoin transactions and interpreted by an ordinals metaprotocol indexer, then rendered in a browser or application.
+The best example of this, which brought great attention to the metaprotocol space on Bitcoin, is the ordinals metaprotocol, which defines a structure called an inscription. An inscription functions similarly to an NFT as we have seen them on smart contract platforms like Ethereum. The data that an inscription represents can be packed into Bitcoin transactions and interpreted by an ordinals metaprotocol indexer, then rendered in a browser or application.
 
 ### Runes
 

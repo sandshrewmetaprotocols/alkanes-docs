@@ -1,10 +1,12 @@
 ---
+title: What is Alkanes?
+description: Technical Overview of the Alkanes Protocol
 sidebar_position: 1
 ---
 
-# Alkanes
+# What is Alkanes?
 
-Alkanes implements a full smart contract environment on Bitcoin L1. Alkanes smart contracts are developed in Rust, compiled to WebAssembly (WASM), and are deployed as gzipped WASM files through witness reveal payloads, similar to ordinals inscriptions. The smart contract methods are executed through protocol messages encoded in OP_RETURN outputs which are structured similar to Runestones. Data for methods calls is stored in a Protocol field (tag 16383) within a Runestone, which enables the embedding of "Protostone" (contract execution) messages without disrupting the base Runes protocol. All of the indexing of Alakanes data and the execution of Alkanes smart contracts is done using "Metashrew" an open source indexing stack.
+Alkanes implements a full smart contract environment on Bitcoin L1. Alkanes smart contracts are developed in Rust, compiled to WebAssembly (WASM), and are deployed as gzipped WASM files through witness reveal payloads, similar to ordinals inscriptions. The smart contract methods are executed through protocol messages encoded in OP_RETURN outputs which are structured similar to Runestones. Data for methods calls is stored in a Protocol field (tag 16383) within a Runestone, which enables the embedding of "Protostone" (contract execution) messages without disrupting the base Runes protocol. All of the indexing of Alkanes data and the execution of Alkanes smart contracts is done using "Metashrew" an open source indexing stack.
 
 Let's unpack this...
 
@@ -37,8 +39,3 @@ Metashrew provides comprehensive infrastructure including:
 - Transaction simulation capabilities including fuel costs and state updates
 
 For a detailed overview of Metashrew's architecture and capabilities, see [Metashrew](./metashrew.md).
-
-## Protorunes
-
-(TODO)
-Protorunes is a protocol that allows for the creation and execution of smart contracts on Bitcoin L1. It is built on top of the Bitcoin L1 blockchain and uses a variety of techniques to enable smart contracts to be created and executed on Bitcoin L1.

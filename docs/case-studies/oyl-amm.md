@@ -4,7 +4,18 @@ sidebar_position: 5
 
 # OYL AMM
 
-![OYL AMM Case Study](https://picsum.photos/seed/oylamm/800/400)
+<div style={{ marginTop: '40px', marginBottom: '2rem' }}>
+  <img 
+    src="https://picsum.photos/seed/oylamm/800/400"
+    alt="OYL AMM Case Study"
+    style={{
+      width: '100%',
+      height: '300px',
+      objectFit: 'cover',
+      borderRadius: '8px'
+    }}
+  />
+</div>
 
 Oyl is building the first trustless AMM to Bitcoin designed to fit the UTXO model.
 
