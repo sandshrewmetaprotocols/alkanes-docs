@@ -67,7 +67,7 @@ const sidebars: SidebarsConfig = {
           collapsible: false,
           collapsed: false,
           link: undefined,
-          items: ['learn/background/metaprotocols'],
+          items: ['learn/background/metaprotocols', 'learn/background/glossary'],
         },
       ],
     },
