@@ -1,6 +1,6 @@
 # Ordinals
 
-The Ordinals module provides functionality for managing and transferring Ordinal inscriptions on Bitcoin. This module handles the complexities of working with inscribed satoshis, ensuring safe transfers while maintaining inscription integrity.
+The Ordinals module provides functionality for managing and transferring Ordinal inscriptions on Bitcoin. This module handles the complexities of working with Ordinal inscriptions, ensuring safe transfers while maintaining inscription integrity.
 
 ## Overview
 
