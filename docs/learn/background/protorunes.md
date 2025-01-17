@@ -2,11 +2,11 @@
 sidebar_position: 2
 ---
 
-# ProtoRunes: A Fungible Token Standard
+# Protorunes: A Fungible Token Standard
 
 ## Overview
 
-ProtoRunes is a fungible token standard for Bitcoin, designed to be simple and efficient. It uses OP_RETURN outputs to encode token operations, making it compatible with any Bitcoin implementation that supports standard transactions.
+Protorunes is a fungible token standard for Bitcoin, designed to be simple and efficient. It uses OP_RETURN outputs to encode token operations, making it compatible with any Bitcoin implementation that supports standard transactions.
 
 ## Key Features
 
@@ -18,7 +18,7 @@ ProtoRunes is a fungible token standard for Bitcoin, designed to be simple and e
 
 ## Protocol Design
 
-ProtoRunes uses a simple prefix-based encoding scheme in OP_RETURN outputs:
+Protorunes uses a simple prefix-based encoding scheme in OP_RETURN outputs:
 
 - Deploy: `OP_RETURN <PROTORUNES_PREFIX> <DEPLOY> <symbol> <supply>`
 - Transfer: `OP_RETURN <PROTORUNES_PREFIX> <TRANSFER> <id> <amount>`
@@ -27,7 +27,7 @@ The protocol is designed to be as minimal as possible while still providing the 
 
 ## Implementation Details
 
-ProtoRunes messages are encoded in OP_RETURN outputs with a maximum size of 80 bytes. The protocol prefix helps identify ProtoRunes transactions during chain scanning.
+Protorunes messages are encoded in OP_RETURN outputs with a maximum size of 80 bytes. The protocol prefix helps identify Protorunes transactions during chain scanning.
 
 ### Message Types
 

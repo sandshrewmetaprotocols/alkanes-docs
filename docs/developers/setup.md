@@ -5,14 +5,15 @@ title: Dev Environment
 
 # Setting up your development environment
 
-In this section, you will set up your local regtest development environment which you will use to build and test your Alkanes contract. The regtest environment uses several services to simulate a local Bitcoin network. We refer to this as the "Sandshrew-proxy" environment because it is a regtest version of [Oyl's Sandshrew indexing service](http://sandshrew.io)
+In this section, you will set up your local regtest development environment which you will use to build and test your Alkanes contract. The regtest environment uses several services to simulate a local Bitcoin network. These services are bundled into the [alkanes repository](https://github.com/kungfuflex/alkanes)
 
-Sandshrew-proxy is a self-contained docker build comprised of several services:
+The alkanes docker build comprised of several bitcoin indexing services:
 
 - bitcoind
 - esplora
 - ord
 - metashrew
+- alkanes
 
 You will also install the Oyl SDK which supports command line interaction with the Alkanes regtest environment.
 
@@ -24,17 +25,17 @@ There are several requisites you will need:
 - Node 20+
 - Yarn
 
-## Sandshrew-proxy
+## Alkanes 
 
-The [sandshrew-proxy repository](https://github.com/sandshrewmetaprotocols/sandshrew-proxy) contains everything you need to deploy and test a local version of your Alkanes contract. This section will guide you through the steps to get sandshrew-proxy up and running.
+The [alkanes testing and development repository](https://github.com/kungfuflex/alkanes) contains everything you need to deploy and test a local version of your Alkanes contract. This section will guide you through the steps to get alkanes up and running.
 
-### 1. Clone shandshrew-proxy
+### 1. Clone alkanes
 
 ```
-git clone https://github.com/sandshrewmetaprotocols/sandshrew-proxy --recurse-submodules
+git clone https://github.com/kungfuflex/alkanes --recurse-submodules
 ```
 
-### 2. Build sandshrew-proxy and run the docker container
+### 2. Build alkanes and run the docker container
 
 ```
 yarn install
@@ -42,26 +43,26 @@ yarn build
 docker compose build
 ```
 
-### 3. Launch the sandshrew-proxy services
+### 3. Launch the alkanes services
 
 ```
 docker compose up -d
 ```
 
-Sandshrew and metashrew should now be running in the background with an uninitialized regtest bitcoin instance. The sandshrew RPC endpoint is:
+Alkanes should now be running in the background with an uninitialized regtest bitcoin instance. The alkanes RPC endpoint is:
 
 ```
-http://localhost:3000/v1/regtest
+http://localhost:18888/v1/regtest
 ```
 
 It is now possible to call any of the RPC endpoints surfaced in the bitcoin, esplora, ord, and alkanes namespaces.
 
-The full set of sandshrew namespaces and RPC methods can be found in the [sandshrew documentation](https://docs.sandshrew.io/).
+The full set of bitcoin, esplora, and ord RPC methods can be found in the [sandshrew documentation](https://docs.sandshrew.io/).
 
 You can confirm the RPC endpoint by running:
 
 ```
-curl http://localhost:3000/v1/regtest \
+curl http://localhost:18888/v2/regtest \
   -H 'Content-Type: application/json' \
   -d '{
     "jsonrpc": "2.0",
@@ -71,7 +72,7 @@ curl http://localhost:3000/v1/regtest \
 }'
 ```
 
-returns:
+returns a block count:
 
 ```
 {
@@ -81,7 +82,7 @@ returns:
 }
 ```
 
-## Oyl SDK
+## [Oyl SDK](/docs/developers/sdk)
 
 You will use the utility methods in the Oyl SDK to support testing and deployment of your Alkanes contracts.
 
@@ -100,7 +101,7 @@ yarn test
 
 The test will execute a number of jest test cases and that should all PASS.
 
-### 3. Initialize the Oyl CLI
+### 3. Initialize the [Oyl CLI](/docs/developers/sdk/cli)
 
 You will use Oyl's command line interface to deploy and test Alkane's contracts. The following updates your environment to support the Oyl CLI:
 
@@ -217,7 +218,7 @@ This will execute the blocks and send BTC to the test address.
 
 ### 2. Chain commands
 
-You can now interact with your local Sandshrew (Bitcoin, Esplora, Ord) and Metsashrew instances.
+You can now interact with your local alkanes (Bitcoin, Esplora, Ord) and Metsashrew instances.
 For example, to confirm the UTXOs on the test address run:
 
 ```
@@ -227,7 +228,7 @@ oyl utxo addressUtxos -a bcrt1qcr8te4kr609gcawutmrza0j4xv80jy8zeqchgx -p regtest
 You can also make direct calls to your local regtest instance:
 
 ```
-curl http://localhost:3000/v1/regtest \
+curl http://localhost:18888/v2/regtest \
   -H 'Content-Type: application/json' \
   -d '{
     "jsonrpc": "2.0",
@@ -239,4 +240,3 @@ curl http://localhost:3000/v1/regtest \
   }'
 ```
 
-The full set of sandshrew namespaces and RPC methods can be found in the [sandshrew documentation](https://docs.sandshrew.io/).
