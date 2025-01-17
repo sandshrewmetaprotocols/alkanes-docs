@@ -998,14 +998,22 @@ button:active,
   padding: 0 calc(var(--spacing-4) + 0.75rem);
 }
 
-@media (min-width: 997px) {
+@media (max-width: 768px) {
   .footer__links {
-    max-width: 80%;
-    gap: 4rem;
+    grid-template-columns: 1fr; /* Stack columns on mobile */
+    gap: 1.5rem;
+    padding: 0 1rem;
   }
 
-  .footer__copyright {
-    max-width: 80%;
+  .footer__col {
+    width: 100%;
+  }
+}
+
+/* Medium screens */
+@media (min-width: 769px) and (max-width: 996px) {
+  .footer__links {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
   }
 }
 
@@ -1203,6 +1211,11 @@ button:active,
 
 /* TOC mobile */
 @media (max-width: 996px) {
+  /* Reset navbar items  */
+  .navbar__item {
+    display: flex;
+  }
+
   .theme-doc-toc-mobile {
     display: none !important;
   }
