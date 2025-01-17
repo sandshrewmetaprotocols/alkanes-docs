@@ -9,7 +9,7 @@ sidebar_position: 4
 
 <div style={{ marginTop: '40px', marginBottom: '2rem' }}>
   <img 
-    src="https://picsum.photos/seed/laser/800/400"
+    src="/img/lasereyes.png"
     alt="Laser Eyes Case Study"
     style={{
       width: '100%',

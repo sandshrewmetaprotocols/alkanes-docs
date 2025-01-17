@@ -1,8 +1,43 @@
 ---
 sidebar_position: 1
-title: Introduction
-description: Build the Future of Bitcoin with Alkanes
+title: Introduction to Alkanes Development
+description: Build powerful smart contracts and DeFi applications natively on Bitcoin with Alkanes - the first native smart contract platform for Bitcoin. Learn how to create AMMs, lending protocols, and more.
+keywords:
+  - Bitcoin smart contracts
+  - Alkanes development
+  - Bitcoin DeFi
+  - Bitcoin native contracts
+  - UTXO smart contracts
+  - Bitcoin AMM development
+  - Bitcoin lending protocol
+  - Trustless Bitcoin applications
+image: img/sandshrew.svg
 ---
+
+<div style={{
+  aspectRatio: '16/9',
+  borderRadius: '12px',
+  overflow: 'hidden',
+  border: '1px solid var(--ifm-color-emphasis-200)',
+  width: '100%',
+  height: '100%',
+  position: 'relative',
+  marginTop: '20px',
+}}>
+  <video
+    autoPlay
+    loop
+    playsInline
+    muted
+    style={{
+      width: '100%',
+      height: '100%',
+      objectFit: 'cover',
+    }}
+  >
+    <source src="/img/hexagon.mp4" type="video/mp4" />
+  </video>
+</div>
 
 # Meet Alkanes: A New Era for Bitcoin
 

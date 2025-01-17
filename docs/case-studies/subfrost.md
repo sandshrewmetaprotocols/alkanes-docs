@@ -9,7 +9,7 @@ sidebar_position: 1
 
 <div style={{ marginTop: '40px', marginBottom: '2rem' }}>
   <img 
-    src="https://picsum.photos/seed/subfrost/800/400"
+    src="/img/subfrost.png"
     alt="Subfrost Case Study"
     style={{
       width: '100%',

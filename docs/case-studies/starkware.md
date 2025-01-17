@@ -1,13 +1,16 @@
 ---
+id: starkware
+title: StarkWare
+sidebar_label: StarkWare
 sidebar_position: 6
 ---
 
-# StarkWare
+# StarkWare Case Study
 
-<div style={{ width: '100%', marginBottom: '2rem', marginTop: '40px' }}>
+<div style={{ marginTop: '40px', marginBottom: '2rem' }}>
   <img 
-    src="https://picsum.photos/seed/starkware/800/400"
-    alt="StarkWare Banner"
+    src="/img/starkware.png"
+    alt="StarkWare Case Study"
     style={{
       width: '100%',
       height: '300px',
@@ -17,8 +20,4 @@ sidebar_position: 6
   />
 </div>
 
-Starknet's ambition is to become a premier settlement layer for Bitcoin via starks. The broader ecosystem has presented many paths towards a trustless zk verifier and bridge, but either require consensus upgrades or are premature in their development or design.
-
-By expanding the indexer of Bitcoin asset standards unlocks insane scale. Alkanes enables zk-STARK based trustless teleportation to/from L1 via light-weight verifier/rollup in the indexer without consensus upgrades like OP_CAT.
-
-Enter high TPS and AMMs on Starknet.
+StarkWare is pioneering the integration of zero-knowledge proofs with Bitcoin's native smart contract capabilities. Through Alkanes, StarkWare is developing infrastructure to enable scalable, private computations directly on Bitcoin L1.

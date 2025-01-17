@@ -9,7 +9,7 @@ sidebar_position: 2
 
 <div style={{ marginTop: '40px', marginBottom: '2rem' }}>
   <img 
-    src="https://picsum.photos/seed/beyond/800/400"
+    src="/img/beyond.png"
     alt="Beyond Case Study"
     style={{
       width: '100%',

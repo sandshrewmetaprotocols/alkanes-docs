@@ -1,6 +1,17 @@
 ---
 sidebar_position: 2
-title: Protorunes
+title: ProtoRunes Protocol
+description: Deep dive into ProtoRunes - the foundational protocol layer for Alkanes that enables native Bitcoin token functionality. Learn about token creation, management, and the technical specifications of this revolutionary Bitcoin L1 protocol.
+keywords:
+  - ProtoRunes protocol
+  - Bitcoin tokens
+  - Bitcoin L1 tokens
+  - OP_RETURN tokens
+  - Bitcoin token standard
+  - Alkanes tokens
+  - Bitcoin fungible tokens
+  - UTXO tokens
+image: img/sandshrew.svg
 ---
 
 # Protorunes

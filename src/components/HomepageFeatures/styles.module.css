@@ -6,7 +6,7 @@
 .featureGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
+  gap: 1.25rem;
   padding: 1rem;
 }
 
@@ -34,9 +34,7 @@
 }
 
 .featureIcon {
-  font-size: 1.5rem;
-  line-height: 1;
-  margin-bottom: 0.25rem;
+  display: none;
 }
 
 .featureContent {
@@ -44,9 +42,9 @@
 }
 
 .featureTitle {
-  font-size: 1.125rem;
+  font-size: 1rem;
   margin-bottom: 0.25rem;
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-medium);
   color: var(--ifm-heading-color);
 }
 

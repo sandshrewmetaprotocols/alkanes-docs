@@ -6,7 +6,7 @@ sidebar_position: 3
 
 <div style={{ marginTop: '40px', marginBottom: '2rem' }}>
   <img 
-    src="https://picsum.photos/seed/bound/800/400"
+    src="/img/bound.png"
     alt="Bound Stablecoin Case Study"
     style={{
       width: '100%',

@@ -54,11 +54,12 @@ const sidebars: SidebarsConfig = {
           link: undefined,
           items: [
             'case-studies/bound-stablecoin',
+            'case-studies/beyond',
+            'case-studies/subfrost',
+            'case-studies/laser-eyes',
             'case-studies/oyl-amm',
             'case-studies/starkware',
-            'case-studies/laser-eyes',
-            'case-studies/subfrost',
-            'case-studies/beyond',
+            'case-studies/rebar',
           ],
         },
         {

@@ -1,6 +1,17 @@
 ---
 sidebar_position: 2
-title: Quickstart
+title: Quickstart Guide
+description: Get started with Alkanes development in minutes. Learn how to set up your environment, deploy your first smart contract, and build on Bitcoin with our step-by-step tutorial for developers.
+keywords:
+  - Alkanes tutorial
+  - Bitcoin smart contract tutorial
+  - Deploy Bitcoin contracts
+  - Alkanes quickstart
+  - Bitcoin development guide
+  - Protorunes framework
+  - Bitcoin regtest
+  - Smart contract deployment
+image: img/sandshrew.svg
 ---
 
 # Quickstart Tutorial

@@ -6,7 +6,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'Alkanes',
-  tagline: 'Alkanes Docs',
+  tagline: 'The Next Generation of DeFi Infrastructure | Secure, Scalable, and Efficient',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -57,6 +57,59 @@ const config: Config = {
         type: 'image/png',
         sizes: '16x16',
         href: '/img/favicon-16x16.png',
+      },
+    },
+    {
+      tagName: 'meta',
+      attributes: {
+        name: 'description',
+        content:
+          'Discover Alkanes - The revolutionary DeFi infrastructure platform built for security, scalability, and efficiency. Learn about our advanced protocols, developer tools, and ecosystem.',
+      },
+    },
+    {
+      tagName: 'meta',
+      attributes: {
+        name: 'keywords',
+        content:
+          'Alkanes, DeFi, blockchain, cryptocurrency, smart contracts, web3, infrastructure, protocols, developer tools',
+      },
+    },
+    {
+      tagName: 'meta',
+      attributes: {
+        property: 'og:description',
+        content:
+          'Discover Alkanes - The revolutionary DeFi infrastructure platform built for security, scalability, and efficiency. Learn about our advanced protocols, developer tools, and ecosystem.',
+      },
+    },
+    {
+      tagName: 'meta',
+      attributes: {
+        name: 'twitter:card',
+        content: 'summary_large_image',
+      },
+    },
+    {
+      tagName: 'meta',
+      attributes: {
+        name: 'twitter:site',
+        content: '@oylwallet',
+      },
+    },
+    {
+      tagName: 'meta',
+      attributes: {
+        name: 'twitter:title',
+        content: 'Alkanes - Next Generation DeFi Infrastructure',
+      },
+    },
+    {
+      tagName: 'meta',
+      attributes: {
+        name: 'twitter:description',
+        content:
+          'Discover Alkanes - The revolutionary DeFi infrastructure platform built for security, scalability, and efficiency. Learn about our advanced protocols, developer tools, and ecosystem.',
       },
     },
   ],

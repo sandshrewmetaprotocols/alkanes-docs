@@ -4,6 +4,31 @@ description: Technical Overview of the Alkanes Protocol
 sidebar_position: 1
 ---
 
+<div style={{
+  aspectRatio: '2/1',
+  borderRadius: '12px',
+  overflow: 'hidden',
+  border: '1px solid var(--ifm-color-emphasis-200)',
+  width: '100%',
+  height: '100%',
+  position: 'relative',
+  marginTop: '20px',
+}}>
+  <video
+    autoPlay
+    loop
+    playsInline
+    muted
+    style={{
+      width: '100%',
+      height: '100%',
+      objectFit: 'cover',
+    }}
+  >
+    <source src="/video/hero.mp4" type="video/mp4" />
+  </video>
+</div>
+
 # What is Alkanes?
 
 Alkanes implements a full smart contract environment on Bitcoin L1. Alkanes smart contracts are developed in Rust, compiled to WebAssembly (WASM), and are deployed as gzipped WASM files through witness reveal payloads, similar to ordinals inscriptions. The smart contract methods are executed through protocol messages encoded in OP_RETURN outputs which are structured similar to Runestones. Data for methods calls is stored in a Protocol field (tag 16383) within a Runestone, which enables the embedding of "Protostone" (contract execution) messages without disrupting the base Runes protocol. All of the indexing of Alkanes data and the execution of Alkanes smart contracts is done using "Metashrew" an open source indexing stack.
