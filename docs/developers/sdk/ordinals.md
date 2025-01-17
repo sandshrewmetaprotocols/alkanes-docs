@@ -19,7 +19,7 @@ Transfer an Ordinal inscription to a new address:
 ```typescript
 const sendResult = await send({
   gatheredUtxos,
-  toAddress: "bc1...",
+  toAddress: "bc1p...",
   inscriptionId: "abcdef123...",
   feeRate: 2,
   account,
