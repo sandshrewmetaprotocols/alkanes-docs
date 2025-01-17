@@ -39,6 +39,20 @@
   max-width: 80%;
 }
 
+.textOverlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 1.5rem;
+  font-weight: var(--ifm-font-weight-semibold);
+  text-align: center;
+  z-index: 10;
+  width: 100%;
+  padding: 0 20px;
+}
+
 @media screen and (max-width: 768px) {
   .videoContainer {
     margin: 0 1rem 1rem;

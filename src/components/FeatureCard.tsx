@@ -17,7 +17,7 @@ export const FeatureCard: React.FC<FeatureCardProps> = ({
   return (
     <article
       className={clsx(
-        'bg-black-opacity-06 border border-gray-400 rounded-lg',
+        'bg-black-opacity-06 rounded-lg',
         'transition-transform hover:transform hover:scale-105',
         className
       )}
