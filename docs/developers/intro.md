@@ -61,7 +61,7 @@ Our architecture is designed for the future. The Metashrew indexing layer provid
 
 ## The Technology That Makes It Possible
 
-At the heart of Alkanes is a revolutionary smart contract layer that brings full programmability to Bitcoin. Through WebAssembly, you can write complex contract logic that executes directly on Bitcoin's UTXO model. The ProtoRunes protocol enables efficient token operations and state management, while our comprehensive development framework provides everything you need to build and deploy with confidence.
+At the heart of Alkanes is a revolutionary smart contract layer that brings full programmability to Bitcoin. Through WebAssembly, you can write complex contract logic that executes directly on Bitcoin's UTXO model. The Protorunes protocol enables efficient token operations and state management, while our comprehensive development framework provides everything you need to build and deploy with confidence.
 
 The Metashrew architecture ensures your applications run smoothly, with optimized data structures for quick access and robust simulation capabilities for testing. This isn't just another layer on Bitcoin—it's a complete reimagining of what's possible on the world's most secure blockchain.
 

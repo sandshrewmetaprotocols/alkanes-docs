@@ -143,8 +143,6 @@ use alkane_factory_support::factory::MintableToken;
 
 ### 5. Add the contract code
 
-TODO: break this out and explain
-
 ```rust
 #[derive(Default)]
 pub struct MyTokenContract(());
@@ -205,7 +203,7 @@ impl AlkaneResponder for MyTokenContract {
 }
 ```
 
-### N. Add the \_execute function
+### 6. Add the \_execute function
 
 Now add the `_execute` function to your contract. This function will be called when the contract is executed.
 
@@ -219,7 +217,7 @@ pub extern "C" fn __execute() -> i32 {
 
 You should now have a complete contract. The full contract code can be found [here](https://github.com/kungfuflex/alkane-factory/blob/master/alkanes/owned-token/src/lib.rss).
 
-### 6. Compile the contract
+### 7. Compile the contract
 
 You are now ready to compile your contract.
 
@@ -235,7 +233,7 @@ cargo build --target wasm32-unknown-unknown
 
 Your wasm will be built to `target/alkanes/wasm32-unknown-unknown/release/my_token_contract.wasm`.
 
-### 7. Deploy to regtest
+### 8. Deploy to regtest
 
 Copy the was file to the SDK:
 
@@ -252,6 +250,4 @@ oyl alkane factoryWasmDeploy -c ./src/alkanes/my_token_contract.wasm -r "0x8"
 
 This command does a gzip compression level 9 to compress the wasm to a `*.wasm.gz` and then deploys to your Bitcoin regtest.
 
-### 8. Interact with the contract
 
-TODO

@@ -70,7 +70,7 @@ impl MyContract {
 }
 ```
 
-## Handling Opcodes
+## Contract Opcodes
 
 Opcodes are numbers that determine which action the contract should take. Here's how to implement opcode handling:
 
@@ -110,16 +110,6 @@ impl AlkaneResponder for MyContract {
     }
 }
 ```
-
-## Common Opcode Patterns
-
-Here are some common opcode patterns you might implement:
-
-- **0**: Initialization/deployment
-- **1-50**: Core functionality (transfers, mints, etc.)
-- **51-100**: Administrative actions
-- **101-200**: Query functions (view functions)
-- **1000+**: Custom functionality
 
 ## Example: Free Mint Contract
 

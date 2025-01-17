@@ -31,31 +31,36 @@ sidebar_position: 1
 
 # What is Alkanes?
 
-Alkanes implements a full smart contract environment on Bitcoin L1. Alkanes smart contracts are developed in Rust, compiled to WebAssembly (WASM), and are deployed as gzipped WASM files through witness reveal payloads, similar to ordinals inscriptions. The smart contract methods are executed through protocol messages encoded in OP_RETURN outputs which are structured similar to Runestones. Data for methods calls is stored in a Protocol field (tag 16383) within a Runestone, which enables the embedding of "Protostone" (contract execution) messages without disrupting the base Runes protocol. All of the indexing of Alkanes data and the execution of Alkanes smart contracts is done using "Metashrew" an open source indexing stack.
+Alkanes implements a full smart contract environment on Bitcoin L1. Alkanes smart contracts are developed in Rust, compiled to WebAssembly (WASM), and are deployed as gzipped WASM files through witness reveal payloads, similar to ordinals inscriptions. 
+
+The smart contract methods are executed through [Protorunes](#protorunes) protocol messages encoded in OP_RETURN outputs which are structured similar to Runestones. Data for method calls is stored in a field (tag 16383) within a Runestone, which enables the embedding of [Protostone](/docs/developers/protorunes#protostone) (contract execution) messages without disrupting the base Runes protocol. 
+
+All of the indexing of Alkanes data and the execution of Alkanes smart contracts is done using the [Metashrew](#metashrew) open source indexing stack.
 
 Let's unpack this...
 
 ## Alkanes Smart Contracts
 
-It utilizes WebAssembly (WASM) for both contract execution and indexing.
+Alkanes smart contracts are self-executing contracts that hold the business logic of decentralized applications (dApps), executing pre-defined rules based on the state of the Bitcoin blockchain and triggering actions when specific conditions are met. Alkanes smart contracts are WASM-based contracts that are deployed as gzipped WASM files through witness reveal payloads. Alkanes contract methods are called through Protorune commands encoded in OP_RETURN outputs.
 
-The execution environment supports contract-to-contract interactions, storage operations, and complex state transitions while maintaining Bitcoin's UTXO model.
+[Alkanes contracts](/docs/developers/contracts-building) follow a structured pattern where each contract implements some common interfaces and manages state through a key-value storage system. Contracts use [numeric opcodes](/docs/developers/contracts-building#contract-opcodes) to determine which actions to execute, with a standardized pattern for initialization, core functionality, administrative actions, and queries.
 
-All contracts inherently function as transferable assets, enabling composability similar to ERC20 tokens in Ethereum's ecosystem.
+Contract interaction happens through [cellpacks](/docs/developers/contracts-interaction#cellpacks--call-data) - specially formatted messages that contain a target AlkaneId (structured as [block, tx] pairs) and input data. The system uses reserved AlkaneIds for system operations like contract deployment and factory cloning, while regular contract interactions use opcodes to invoke specific functions. Contracts can be interacted with either through actual Bitcoin [transactions](/docs/developers/contracts-interaction#sending-a-transaction) (for state changes) or through [simulation](/docs/developers/contracts-interaction#simulating-a-transaction) calls (for reading data), providing a flexible way to both modify and query contract state.
 
-## Alkanes, Ordinals, and Runes
+## Protorunes
 
-Alkanes is built on top of Runes, a protocol that enables smart contract functionality on Bitcoin L1. It leverages Bitcoin's base layer blockchain and implements various techniques to facilitate smart contract creation and execution.
+Alkanes is built on top of Protorunes, a [specification](/docs/developers/protorunes) for building bitcoin metaprotocols. Protorunes inherits structures and design patterns from the [runes](https://docs.ordinals.com/runes/specification.html) metaprotocol project, authored by Casey Rodarmor. 
 
-Alkanes inherits structures and design patterns from the ordinals and runes metaprotocol projects, authored by Casey Rodarmor. Alkanes utilizes a minimal variant of Ordinals' inscription witness envelope, which is used to deploy \*.wasm.gz files to the Bitcoin blockchain, after which they can be transacted against as smart contract programs, using any combination of inputs of value, data, and the context of the transaction itself.
+Protorunes messages, or [protostones](/docs/developers/protorunes#protostone), hold the logic for intracting with Alkanes smart contracts as well as more general logic for transferring and minting assets like Alkanes tokens. Protostones are encoded into OP_RETURN outputs, which are then processed by the protorunes compatible indexers. Specifically, protostones are stored in a Protocol field (tag 16383) within a Runestone. This is done in a way that is compatible with the runes metaprotocol and ensures that the runes protocol is not disrupted.
 
-Alkanes also inherits functionality from the Runes metaprotocol. It uses the Runestone structure as defined in the runes specification, but in a way that is harmless to indexers tracking the state of runes.
+Protostones and protorune data are indexed and executed by Metashrew indexers.
+
 
 ## Metashrew
 
-Metashrew is an open source indexing stack that powers Alkanes smart contracts. It was architected to reduce the problem of building a metaprotocol to architecting an executable that handles solely the logic of processing a single block. The executables follow a portable calling convention and are compatible with AssemblyScript, but can also, themselves, be written in C or Rust, or anything that builds to a WASM target.
+Metashrew is an open source indexing stack that supports Prototrunes and powers Alkanes smart contracts. It was architected to enable the building of smart contract-based Bitcoin metaprotocols and inherits functionality from the [ordinals](https://docs.ordinals.com/overview.html) protocol. It is able to index [Protorune messages](/docs/developers/protorunes#indexing-protomessages) as well as WASM-based content or smart contracts deployed to an Ordinals' [inscription witness envelope](https://docs.ordinals.com/inscriptions.html). Once interpreted, the content can be transacted against as smart contract programs, using any combination of inputs of value, data, and the context of the transaction itself. 
 
-Metashrew provides comprehensive infrastructure including:
+Metashrew provides comprehensive indexing and execution infrastructure including:
 
 - Block processing and state management with reorg detection
 - A key-value store interface for contract state
@@ -63,4 +68,4 @@ Metashrew provides comprehensive infrastructure including:
 - WASM-based execution environment for both contracts and indexers
 - Transaction simulation capabilities including fuel costs and state updates
 
-For a detailed overview of Metashrew's architecture and capabilities, see [Metashrew](./metashrew.md).
+For more details, see [Metashrew](./metashrew.md).

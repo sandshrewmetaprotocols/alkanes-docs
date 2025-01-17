@@ -4,8 +4,6 @@ sidebar_position: 4
 
 # Integrating Alkanes
 
-Overview of alkanes repo, sdk, and a sample dapp
-
 ## Wallet Connection with Laser Eyes
 
 [Laser Eyes](https://lasereyes.build) is a comprehensive Bitcoin wallet connector that enables signing Partially Signed Bitcoin Transactions (PSBTs) using popular third-party wallets. It simplifies dapp development by providing a unified interface for wallet interactions, making it easy to request transaction signatures from users' preferred Bitcoin wallets. It addresses common challenges in Bitcoin application development by offering:
