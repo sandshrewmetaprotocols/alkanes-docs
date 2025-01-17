@@ -82,7 +82,11 @@ const sidebars: SidebarsConfig = {
       collapsed: false,
       link: undefined,
       items: [
-        'developers/disclaimer',
+        {
+          type: 'doc',
+          id: 'developers/disclaimer',
+          label: 'Welcome to the Future of Bitcoin',
+        },
         'developers/intro',
         'developers/setup',
         'developers/quickstart',
