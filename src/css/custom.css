@@ -820,6 +820,14 @@ button:active,
 }
 
 /* Desktop styles */
+
+@media (max-width: 996px) {
+  /* Note: This undo's the default styles for the navbar and keeps navbar items visible (not hidden) */
+  .navbar__item {
+    display: flex;
+  }
+}
+
 @media (min-width: 801px) {
   .navbar__inner {
     justify-content: center;
