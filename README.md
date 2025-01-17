@@ -1,4 +1,23 @@
-# Website
+# Alkanes Documentation
+
+The official documentation for Alkanes - Bitcoin-native smart contracts.
+
+## Preview Notes
+
+This branch contains:
+
+- SDK documentation integration
+- UI improvements
+- Mobile optimizations
+
+## Development
+
+To run locally:
+
+```bash
+yarn install
+yarn start
+```
 
 This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
 
