@@ -1741,3 +1741,88 @@ a[href='/'].navbar__link.navbar__link--active {
     overflow: hidden !important;
   }
 }
+
+/* Algolia DocSearch Styling */
+
+/* Search box styling */
+.DocSearch-Button {
+  margin: 0;
+  transition: all var(--ifm-transition-fast) var(--ifm-transition-timing-default);
+  border-radius: var(--ifm-button-border-radius);
+}
+
+/* Search box hover state */
+.DocSearch-Button:hover {
+  background: var(--ifm-color-emphasis-200);
+}
+
+/* Search box input text */
+.DocSearch-Button-Keys {
+  min-width: auto;
+}
+
+/* Search modal styling */
+.DocSearch-Modal {
+  border-radius: var(--ifm-button-border-radius);
+  box-shadow: var(--ifm-global-shadow-md);
+}
+
+/* Search results container */
+.DocSearch-Hit {
+  padding-bottom: 0;
+  border-radius: var(--ifm-button-border-radius);
+}
+
+/* Search result items */
+.DocSearch-Hit a {
+  border-radius: var(--ifm-button-border-radius);
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+/* Search result hover state */
+.DocSearch-Hit[aria-selected='true'] a {
+  background-color: var(--ifm-hover-overlay);
+}
+
+/* Search input in modal */
+.DocSearch-Form {
+  border-radius: var(--ifm-button-border-radius);
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+/* Search footer */
+.DocSearch-Footer {
+  border-radius: 0 0 var(--ifm-button-border-radius) var(--ifm-button-border-radius);
+}
+
+/* Dark mode adjustments */
+[data-theme='dark'] .DocSearch-Button {
+  color: var(--ifm-color-gray-100);
+}
+
+[data-theme='dark'] .DocSearch-Button:hover {
+  background: var(--ifm-color-emphasis-200);
+}
+
+[data-theme='dark'] .DocSearch-Search-Icon {
+  color: var(--ifm-color-gray-100);
+}
+
+/* Hide the keyboard shortcut display in the search button */
+.DocSearch-Button-Keys {
+  display: none !important;
+}
+
+/* Adjust the search button padding now that keys are hidden */
+.DocSearch-Button {
+  margin: 0;
+  transition: all var(--ifm-transition-fast) var(--ifm-transition-timing-default);
+  border-radius: var(--ifm-button-border-radius);
+  padding: 0 12px !important;
+}
+
+/* Center the search icon and text */
+.DocSearch-Search-Icon {
+  margin-right: 6px !important;
+  color: var(--ifm-color-gray-100);
+}
