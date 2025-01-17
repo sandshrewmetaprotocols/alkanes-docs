@@ -1,4 +1,4 @@
-# Welcome to the Future of Bitcoin Smart Contracts
+# Welcome to the Future of Bitcoin
 
 Hey there! 👋 We're stoked you're checking out Alkanes. You're looking at something pretty special - we've been cooking this up for over a year and have already deployed contracts to mainnet. But let's have a real talk about where we are.
 
@@ -13,6 +13,7 @@ Here's the deal - you're early. Like, really early. This is your chance to get i
 - For now, keep the high-value stuff in your back pocket.
 
 But here's why being early is awesome:
+
 - You get direct access to our team (hop in our Discord!)
 - Your voice actually matters - we're actively looking for feedback
 - The stuff you build today will become the foundation others build on tomorrow
