@@ -103,7 +103,6 @@ const sidebars: SidebarsConfig = {
         'developers/contracts-interaction',
         'developers/protorunes',
         'developers/rpc',
-        'developers/alkanes-libraries',
         'developers/dapp-integration',
       ],
     },
