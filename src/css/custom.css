@@ -797,6 +797,14 @@ button:active,
   text-decoration: underline;
 }
 
+/* Footer styling - ensures consistent theme appearance and proper spacing */
+.footer {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  background: transparent !important;
+  border-top: none !important;
+}
+
 /* Base navbar styles */
 .navbar {
   width: 100%;
@@ -950,12 +958,12 @@ button:active,
   color: hsl(var(--foreground));
 }
 
-/* Footer styling */
+/* Footer styling - ensures consistent theme appearance and proper spacing */
 .footer {
-  background: transparent;
-  border-top: 1px solid hsl(var(--border) / 0.1);
-  padding: 3rem 0;
-  margin-top: 6rem;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  background: transparent !important;
+  border-top: none !important;
 }
 
 .footer__links {
@@ -1797,7 +1805,7 @@ a[href='/'].navbar__link.navbar__link--active {
   margin: 0 !important;
 }
 
-/* Footer adjustments */
+/* Footer styling - ensures consistent theme appearance and proper spacing */
 .footer {
   margin-top: 0 !important;
   padding-top: 0 !important;
@@ -1826,8 +1834,8 @@ main {
 
 /* Dark mode background fixes */
 [data-theme='dark'] {
-  --background: #090A0C;
-  background: #090A0C !important;
+  --background: #090a0c;
+  background: #090a0c !important;
 }
 
 [data-theme='dark'] .footer,
