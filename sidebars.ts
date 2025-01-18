@@ -85,7 +85,7 @@ const sidebars: SidebarsConfig = {
         {
           type: 'doc',
           id: 'developers/disclaimer',
-          label: 'Welcome to the Future of Bitcoin',
+          label: 'Welcome Dreamers & Builders',
         },
         'developers/intro',
         'developers/setup',

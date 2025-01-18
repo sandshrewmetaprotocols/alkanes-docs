@@ -1,0 +1,11 @@
+.scrambleText {
+  display: inline-block;
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+.scrambleText:hover {
+  color: inherit;
+  text-decoration: none;
+}

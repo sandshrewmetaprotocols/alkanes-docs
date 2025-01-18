@@ -189,59 +189,6 @@ const config: Config = {
     },
     footer: {
       style: 'light',
-      links: [
-        {
-          title: 'Product',
-          items: [
-            {
-              label: 'Install',
-              to: '/docs/getting-started',
-            },
-            {
-              label: 'Documentation',
-              to: '/docs',
-            },
-            {
-              label: 'Support',
-              to: '/support',
-            },
-          ],
-        },
-        {
-          title: 'Company',
-          items: [
-            {
-              label: 'Privacy Policy',
-              to: '/privacy',
-            },
-            {
-              label: 'Brand Assets',
-              to: '/brand',
-            },
-            {
-              label: 'Work With Us',
-              to: '/careers',
-            },
-          ],
-        },
-        {
-          title: 'Socials',
-          items: [
-            {
-              label: '@OylWallet',
-              href: 'https://twitter.com/oylwallet',
-            },
-            {
-              label: '@OylDynamics',
-              href: 'https://twitter.com/oyldynamics',
-            },
-            {
-              label: 'Contact',
-              to: '/contact',
-            },
-          ],
-        },
-      ],
       copyright: `© ${new Date().getFullYear()} Oyl Corp.`,
     },
     prism: {
@@ -260,14 +207,8 @@ const config: Config = {
       // Optional: see doc section below
       contextualSearch: true,
 
-      // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
+      // Optional: Specify domains where the navigation should occur through window.location instead on history.push
       externalUrlRegex: 'external\\.com|domain\\.com',
-
-      // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
-      // replaceSearchResultPathname: {
-      //   from: '/docs/', // or as RegExp: /\/docs\//
-      //   to: '/',
-      // },
 
       // Optional: Algolia search parameters
       searchParameters: {},

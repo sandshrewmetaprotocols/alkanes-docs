@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react';
+import ScrambleText from '../ScrambleText';
 import styles from './styles.module.css';
 
 export default function HomepageVideo(): ReactNode {
@@ -60,7 +61,9 @@ export default function HomepageVideo(): ReactNode {
         <source src="/video/hero.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-      <div className={styles.textOverlay}>Nobody will build it for us</div>
+      <div className={styles.textOverlay}>
+        <ScrambleText text="Nobody will build it for us" />
+      </div>
     </div>
   );
 }

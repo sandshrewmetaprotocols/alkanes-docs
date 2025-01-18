@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Introduction to Alkanes Development
+title: Intro to Alkanes Development
 description: Build powerful smart contracts and DeFi applications natively on Bitcoin with Alkanes - the first native smart contract platform for Bitcoin. Learn how to create AMMs, lending protocols, and more.
 keywords:
   - Bitcoin smart contracts
@@ -39,7 +39,7 @@ image: img/sandshrew.svg
   </video>
 </div>
 
-# Meet Alkanes: A New Era for Bitcoin
+# Alkanes: A New Era for Bitcoin
 
 Alkanes is Bitcoin's first native smart contract platform and asset class. It empowers developers to build trustless decentralized applications and introduces a new category of programmable tokens that leverage Bitcoin's unparalleled security and decentralization.
 

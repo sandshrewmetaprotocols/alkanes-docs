@@ -128,12 +128,6 @@ export default {
         'shimmer-light-blue': '#B5D7FF',
         'cta-blue': '#4D8DEF',
         brand: {
-          // gray: {
-          //   DEFAULT: '#999999',
-          //   bg: '#f4f4f4',
-          //   text: '#5e5e5e',
-          //   gray: '#ebebeb',
-          // },
           gray: {
             DEFAULT: 'rgba(0,0,0,0.4)',
             '04': 'rgba(0, 0, 0, 0.04)',
