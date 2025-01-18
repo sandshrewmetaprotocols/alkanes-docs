@@ -820,14 +820,6 @@ button:active,
 }
 
 /* Desktop styles */
-
-@media (max-width: 996px) {
-  /* Note: This undo's the default styles for the navbar and keeps navbar items visible (not hidden) */
-  .navbar__item {
-    display: flex;
-  }
-}
-
 @media (min-width: 801px) {
   .navbar__inner {
     justify-content: center;
@@ -855,8 +847,13 @@ button:active,
   }
 }
 
-/* Mobile styles */
+/* Mobile styles for navbar*/
 @media (max-width: 800px) {
+  /* Note: This undoes the default styles for the navbar and keeps navbar items visible (not hidden) */
+  .navbar__item {
+    display: flex;
+  }
+
   .navbar__toggle {
     display: none !important;
   }
@@ -1649,12 +1646,12 @@ a[href='/'].navbar__link.navbar__link--active {
   margin-top: 3rem !important;
 }
 
-/* Mobile-specific adjustments */
+/* Mobile-specific adjustments for features and main content */
 @media (max-width: 800px) {
   .container {
     padding: 0;
-    width: 100vw;
-    max-width: 100vw;
+    width: 100%;
+    max-width: 100%;
     margin: 0;
   }
 
@@ -1663,8 +1660,8 @@ a[href='/'].navbar__link.navbar__link--active {
     grid-template-columns: 1fr;
     gap: 0.5rem;
     padding: 0.5rem;
-    width: 100vw;
-    max-width: 100vw;
+    width: 100%;
+    max-width: 100%;
     margin: 0;
   }
 
@@ -1677,15 +1674,15 @@ a[href='/'].navbar__link.navbar__link--active {
   }
 
   main {
-    width: 100vw;
-    max-width: 100vw;
+    width: 100%;
+    max-width: 100%;
     padding: 0;
     margin: 0;
   }
 
   .mainContent_Jinw {
-    width: 100vw;
-    max-width: 100vw;
+    width: 100%;
+    max-width: 100%;
     padding: 0;
     margin: 0;
   }
@@ -1710,35 +1707,6 @@ a[href='/'].navbar__link.navbar__link--active {
   padding: 1.5rem;
 }
 
-/* Mobile-specific adjustments */
-@media (max-width: 800px) {
-  .container {
-    padding: 0 1rem;
-    width: 100%;
-  }
-
-  .features,
-  .featureGrid_iZe0 {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    padding: 1rem;
-    margin: 0 -1rem;
-    width: calc(100% + 2rem);
-  }
-
-  .feature {
-    margin: 0;
-    width: 100%;
-    padding: 1.5rem;
-  }
-
-  main {
-    width: 100%;
-    max-width: 100%;
-    padding: 0;
-  }
-}
-
 @media screen and (min-width: 767px) and (max-width: 996px) {
   button[aria-label='Toggle navigation bar'].navbar__toggle.clean-btn {
     display: none !important;
@@ -1755,87 +1723,76 @@ a[href='/'].navbar__link.navbar__link--active {
   }
 }
 
-/* Algolia DocSearch Styling */
-
-/* Search box styling */
+/* DocSearch Button Styling */
 .DocSearch-Button {
+  /* Base styles */
+  height: 32px;
+  width: 32px !important;
   margin: 0;
-  transition: all var(--ifm-transition-fast) var(--ifm-transition-timing-default);
-  border-radius: var(--ifm-button-border-radius);
+  padding: 8px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  /* Remove outline and background */
+  outline: none !important;
+  box-shadow: none !important;
+  background: none !important;
 }
 
-/* Search box hover state */
-.DocSearch-Button:hover {
-  background: var(--ifm-color-emphasis-200);
-}
-
-/* Search box input text */
-.DocSearch-Button-Keys {
-  min-width: auto;
-}
-
-/* Search modal styling */
-.DocSearch-Modal {
-  border-radius: var(--ifm-button-border-radius);
-  box-shadow: var(--ifm-global-shadow-md);
-}
-
-/* Search results container */
-.DocSearch-Hit {
-  padding-bottom: 0;
-  border-radius: var(--ifm-button-border-radius);
-}
-
-/* Search result items */
-.DocSearch-Hit a {
-  border-radius: var(--ifm-button-border-radius);
-  border: 1px solid var(--ifm-color-emphasis-200);
-}
-
-/* Search result hover state */
-.DocSearch-Hit[aria-selected='true'] a {
-  background-color: var(--ifm-hover-overlay);
-}
-
-/* Search input in modal */
-.DocSearch-Form {
-  border-radius: var(--ifm-button-border-radius);
-  border: 1px solid var(--ifm-color-emphasis-200);
-}
-
-/* Search footer */
-.DocSearch-Footer {
-  border-radius: 0 0 var(--ifm-button-border-radius) var(--ifm-button-border-radius);
-}
-
-/* Dark mode adjustments */
-[data-theme='dark'] .DocSearch-Button {
-  color: var(--ifm-color-gray-100);
-}
-
-[data-theme='dark'] .DocSearch-Button:hover {
-  background: var(--ifm-color-emphasis-200);
-}
-
-[data-theme='dark'] .DocSearch-Search-Icon {
-  color: var(--ifm-color-gray-100);
-}
-
-/* Hide the keyboard shortcut display in the search button */
+/* Hide placeholder text and keyboard shortcut */
+.DocSearch-Button-Placeholder,
 .DocSearch-Button-Keys {
   display: none !important;
 }
 
-/* Adjust the search button padding now that keys are hidden */
-.DocSearch-Button {
-  margin: 0;
-  transition: all var(--ifm-transition-fast) var(--ifm-transition-timing-default);
-  border-radius: var(--ifm-button-border-radius);
-  padding: 0 12px !important;
+/* Search icon styling */
+.DocSearch-Search-Icon {
+  width: 20px !important;
+  height: 20px !important;
+  margin: 0 !important;
+  color: #000 !important;
 }
 
-/* Center the search icon and text */
-.DocSearch-Search-Icon {
-  margin-right: 6px !important;
-  color: var(--ifm-color-gray-100);
+/* Dark mode icon color */
+[data-theme='dark'] .DocSearch-Search-Icon {
+  color: #fff !important;
+}
+
+/* Underline hover effect */
+.DocSearch-Button::after {
+  content: '';
+  position: absolute;
+  width: calc(100% - 24px);
+  height: 2px;
+  bottom: 2px;
+  left: 12px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.2s cubic-bezier(0.2, 0, 0.15, 1);
+  border-radius: 999px;
+}
+
+.DocSearch-Button:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Dark mode underline color */
+[data-theme='dark'] .DocSearch-Button:hover::after {
+  background-color: hsl(var(--color-light-blue));
+}
+
+/* Fixes issue with docsearch button overlapping other navbar items */
+.navbar__items--right > div:has(.DocSearch-Button) {
+  position: static !important;
+  margin: 0 !important;
+}
+
+.DocSearch-Button {
+  position: relative !important;
+  width: auto !important;
+  margin: 0 !important;
 }

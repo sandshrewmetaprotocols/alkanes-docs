@@ -166,6 +166,7 @@ const config: Config = {
         {
           type: 'search',
           position: 'right',
+          className: 'header-search',
         },
         {
           href: 'https://twitter.com/oylwallet',
