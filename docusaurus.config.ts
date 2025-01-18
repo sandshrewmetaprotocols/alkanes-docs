@@ -222,12 +222,6 @@ const config: Config = {
       //... other Algolia params
     },
   } satisfies Preset.ThemeConfig,
-
-  stylesheets: [
-    {
-      href: '/css/custom.css',
-    },
-  ],
 };
 
 export default config;
