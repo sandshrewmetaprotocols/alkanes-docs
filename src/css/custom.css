@@ -1826,8 +1826,8 @@ main {
 
 /* Dark mode background fixes */
 [data-theme='dark'] {
-  --background: #090a0c;
-  background: #090a0c !important;
+  --background: #090A0C;
+  background: #090A0C !important;
 }
 
 [data-theme='dark'] .footer,
