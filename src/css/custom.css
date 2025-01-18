@@ -1796,3 +1796,71 @@ a[href='/'].navbar__link.navbar__link--active {
   width: auto !important;
   margin: 0 !important;
 }
+
+/* Footer adjustments */
+.footer {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  background: transparent !important;
+  border-top: none !important;
+}
+
+.footer--dark {
+  --ifm-footer-background-color: transparent !important;
+  background: transparent !important;
+}
+
+/* Ensure main content fills space and has proper background */
+#__docusaurus {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: transparent !important;
+}
+
+main {
+  flex: 1;
+  min-height: 0;
+  background: transparent !important;
+}
+
+/* Dark mode background fixes */
+[data-theme='dark'] {
+  --background: #090a0c;
+  background: #090a0c !important;
+}
+
+[data-theme='dark'] .footer,
+[data-theme='dark'] .footer--dark,
+[data-theme='dark'] main,
+[data-theme='dark'] article,
+[data-theme='dark'] .main-wrapper,
+[data-theme='dark'] .container,
+[data-theme='dark'] .theme-doc-markdown {
+  background: transparent !important;
+}
+
+/* Light mode background fixes */
+[data-theme='light'] {
+  --background: #ffffff;
+  background: #ffffff !important;
+}
+
+[data-theme='light'] .footer,
+[data-theme='light'] .footer--dark,
+[data-theme='light'] main,
+[data-theme='light'] article,
+[data-theme='light'] .main-wrapper,
+[data-theme='light'] .container,
+[data-theme='light'] .theme-doc-markdown {
+  background: transparent !important;
+}
+
+/* Copyright text color fix */
+.footer__copyright {
+  color: var(--ifm-color-emphasis-700) !important;
+}
+
+[data-theme='dark'] .footer__copyright {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
