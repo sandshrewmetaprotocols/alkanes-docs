@@ -9,31 +9,16 @@ const sidebars: SidebarsConfig = {
       collapsed: false,
       link: undefined,
       items: [
+        'learn/intro',
+        'learn/alkanes',
+        'learn/metashrew',
+        'learn/what-can-we-build',
         {
           type: 'doc',
-          id: 'learn/intro',
-          label: 'What is Alkanes?',
+          id: 'learn/diesel',
+          label: 'What is Diesel?',
         },
-        {
-          type: 'doc',
-          id: 'learn/alkanes',
-          label: 'Alkanes Asset vs Contract?',
-        },
-        {
-          type: 'doc',
-          id: 'learn/metashrew',
-          label: 'What is Metashrew?',
-        },
-        {
-          type: 'doc',
-          id: 'learn/what-can-we-build',
-          label: 'What Can We Build?',
-        },
-        {
-          type: 'doc',
-          id: 'learn/faq',
-          label: 'FAQ',
-        },
+        'learn/faq',
         {
           type: 'category',
           label: 'Blog & Updates',
@@ -58,7 +43,7 @@ const sidebars: SidebarsConfig = {
             'case-studies/subfrost',
             'case-studies/laser-eyes',
             'case-studies/oyl-amm',
-            'case-studies/starkware',
+            'case-studies/starknet',
             'case-studies/rebar',
           ],
         },
