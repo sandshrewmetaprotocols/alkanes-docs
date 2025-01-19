@@ -41,7 +41,7 @@ A version of the Free Mint contract is included in the [SDK](https://github.com/
 To deploy the precompiledFree Mint contract wasm file to the regtest instance, run the following command from the root of the SDK:
 
 ```bash
-oyl alkane factoryWasmDeploy -c ./src/alkanes/free_mint.wasm -r "0x7"
+oyl alkane factory-deploy -c ./src/alkanes/free_mint.wasm -r "0x7"
 ```
 
 This [CLI command](https://github.com/Oyl-Wallet/oyl-sdk/blob/main/src/cli/alkane.ts) uses default settings (mnemonic, fee rate, network) and reserve number "0x7" to deploy the contract using the SDK's `factoryWasmDeploy` command. It uses the [commit-reveal pattern](https://docs.ordinals.com/guides/wallet.html?highlight=reveal#creating-inscriptions), familiar to Ordinals developers, to deploy the contract.
@@ -275,7 +275,7 @@ Similar to the free_mint example above, use the SDK CLI to deploy the contract t
 
 ```sh
 cd ../oyl-sdk
-oyl alkane factoryWasmDeploy -c ./src/alkanes/my_token_contract.wasm -r "0x8"
+oyl alkane factory-deploy -c ./src/alkanes/my_token_contract.wasm -r "0x8"
 ```
 
 This command does a gzip compression level 9 to compress the wasm to a `*.wasm.gz` and then deploys to your Bitcoin regtest.
