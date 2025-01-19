@@ -45,6 +45,7 @@ export default function HomepageVideo(): ReactNode {
 
   return (
     <div className={styles.videoContainer}>
+      {isLoading && <div className={styles.loadingMessage}>Loading video...</div>}
       <video
         ref={videoRef}
         className={styles.video}
