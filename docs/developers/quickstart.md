@@ -275,7 +275,7 @@ Similar to the free_mint example above, use the SDK CLI to deploy the contract t
 
 ```sh
 cd ../oyl-sdk
-oyl alkane factoryWasmDeploy -c ./src/alkanes/my_token_contract.wasm -r "0x8"
+oyl alkane factory-deploy -c ./src/alkanes/my_token_contract.wasm -r "0x8"
 ```
 
 This command does a gzip compression level 9 to compress the wasm to a `*.wasm.gz` and then deploys to your Bitcoin regtest.
