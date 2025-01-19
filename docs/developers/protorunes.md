@@ -16,7 +16,7 @@ image: img/sandshrew.svg
 
 # Protorunes Specification
 
-In this section we describe a specification for a family of metaprotocols derived from the runes metaprotocol, to enable different classes of token standards with limited compatibility for trade, but within their own metaprotocol rules can be customized in arbitrary ways within the constraints of the overarching acheme.
+In this section we describe a specification for a family of metaprotocols derived from the runes metaprotocol, to enable different classes of token standards with limited compatibility for trade, but within their own metaprotocol rules can be customized in arbitrary ways within the constraints of the overarching scheme.
 
 ## ALKANES is a protorunes-compatible subprotocol
 
