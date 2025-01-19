@@ -6,7 +6,7 @@
 This is a placeholder page that will be replaced with detailed documentation about implementing stablecoin systems on Bitcoin using Alkanes.
 :::
 
-## Coming Soon
+## Coming Soon today!
 
 This section will include:
 

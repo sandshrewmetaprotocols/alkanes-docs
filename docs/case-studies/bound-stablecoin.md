@@ -22,3 +22,7 @@ Bound uses a similar model to USDC and other fully backed stable coin assets, Bo
 Stablecoins are an essential piece of an on chain economy, Alkanes enables more venues a composable DeFi landscape that gives native Bitcoin stablecoins a validated use case.
 
 Alkanes provides Bound unparalleled support in the metaprotocol space for stablecoin issuance and programmable money.
+
+Bound's implementation demonstrates how Alkanes can be used to create sophisticated financial instruments while maintaining the security and decentralization of the Bitcoin network. Their stablecoin protocol showcases the potential for building complex DeFi applications directly on Bitcoin.
+
+Learn more at [bound.money](https://bound.money/)
