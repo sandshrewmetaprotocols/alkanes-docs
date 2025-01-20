@@ -87,7 +87,7 @@ const config: Config = {
       tagName: 'meta',
       attributes: {
         name: 'twitter:card',
-        content: 'img/opengraphalkane.jpeg',
+        content: 'summary',
       },
     },
     {
@@ -102,6 +102,13 @@ const config: Config = {
       attributes: {
         name: 'twitter:title',
         content: 'Alkanes | Alkanes',
+      },
+    },
+    {
+      tagName: 'meta',
+      attributes: {
+        name: 'twitter:image',
+        content: '/img/opengraphalkane.jpeg',
       },
     },
     {
