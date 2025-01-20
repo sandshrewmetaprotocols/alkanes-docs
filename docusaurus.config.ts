@@ -6,7 +6,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'Alkanes',
-  tagline: 'The Next Generation of DeFi Infrastructure | Secure, Scalable, and Efficient',
+  tagline: 'Alkanes Docs',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
