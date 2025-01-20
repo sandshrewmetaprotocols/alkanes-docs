@@ -31,11 +31,11 @@ const FeatureList: FeatureItem[] = [
     link: '/docs/learn/intro',
   },
   {
-    title: 'Technical Background',
+    title: 'You are early',
+    link: '/docs/developers/disclaimer',
     description:
-      "Deep dive into Alkanes's architecture, including Ordinals integration, WebAssembly runtime, and protocol specifications.",
-    icon: '',
-    link: '/docs/learn/background/metaprotocols',
+      'A complete vertical stack for Bitcoin development that embraces UTXO constraints. Build trustless protocols and state machines with zero security compromises.',
+    icon: '🔓',
   },
   {
     title: 'What is Diesel?',
@@ -49,7 +49,7 @@ const FeatureList: FeatureItem[] = [
     description:
       'Stay connected with the latest insights, technical updates, and ecosystem developments from the Alkanes community.',
     icon: '',
-    link: '/docs/blog/weapons-grade-metaprotocols',
+    link: '/docs/blog/smart-contracts-bitcoin',
   },
 ];
 
