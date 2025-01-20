@@ -913,6 +913,20 @@ button:active,
   .navbar-sidebar {
     display: none !important;
   }
+
+  /* Mobile styles for navbar*/
+  @media (max-width: 800px) {
+    .navbar__items--right {
+      position: absolute;
+      right: 0.5rem;
+      display: flex;
+      gap: 0;
+    }
+
+    .navbar__brand {
+      margin-left: -0.5rem;
+    }
+  }
 }
 
 /* Shared styles */
@@ -1717,6 +1731,20 @@ a[href='/'].navbar__link.navbar__link--active {
     max-width: 100%;
     padding: 0;
     margin: 0;
+  }
+
+  /* Mobile styles for navbar*/
+  @media (max-width: 800px) {
+    .navbar__items--right {
+      position: absolute;
+      right: 0.5rem;
+      display: flex;
+      gap: 0;
+    }
+
+    .navbar__brand {
+      margin-left: -0.5rem;
+    }
   }
 }
 
