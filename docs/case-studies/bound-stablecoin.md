@@ -23,6 +23,4 @@ Stablecoins are an essential piece of an on chain economy, Alkanes enables more 
 
 Alkanes provides Bound unparalleled support in the metaprotocol space for stablecoin issuance and programmable money.
 
-Bound's implementation demonstrates how Alkanes can be used to create sophisticated financial instruments while maintaining the security and decentralization of the Bitcoin network. Their stablecoin protocol showcases the potential for building complex DeFi applications directly on Bitcoin.
-
 Learn more at [bound.money](https://bound.money/)

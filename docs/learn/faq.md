@@ -63,11 +63,6 @@ Yes, Alkanes supports full contract-to-contract interactions. Contracts can call
 </div>
 
 <div className="faq-item">
-### What are the limitations?
-Contracts must work within Bitcoin's block size and script limits. While Alkanes is powerful, very computation-heavy operations might be more expensive than on dedicated smart contract platforms. Contract size is also limited by practical deployment constraints.
-</div>
-
-<div className="faq-item">
 ### How do I get started with development?
 Start by setting up a Rust development environment and reviewing the quickstart guide in our documentation. We provide example contracts, templates, and development tools to help you begin building.
 </div>

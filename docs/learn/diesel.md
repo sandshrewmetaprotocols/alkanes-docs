@@ -1,7 +1,7 @@
 ---
 id: diesel
-title: What is Diesel?
-sidebar_label: What is Diesel?
+title: What is $DIESEL?
+sidebar_label: What is $DIESEL?
 sidebar_position: 7
 description: Understanding DIESEL - The First ALKANE Token
 ---
@@ -31,7 +31,7 @@ description: Understanding DIESEL - The First ALKANE Token
   </video>
 </div>
 
-# What is Diesel?
+# What is $DIESEL?
 
 DIESEL is the first example of a Bitcoin Layer-1 (L1) smart contract asset built on the ALKANES protocol—often referred to as the "first Alkanization of crude oil." Its design mirrors the Bitcoin block reward schedule and demonstrates how flexible ALKANES is for creating custom asset distributions on Bitcoin.
 
@@ -101,10 +101,6 @@ It reinforces Bitcoin's long-term fee market by incentivizing additional on-chai
 
 As the first ALKANE, DIESEL establishes a model for future on-chain tokens with unique distribution rules, no extra protocol fees, and direct alignment with Bitcoin's security.
 
-## Learn More
+View the code for the DIESEL Genesis Alkane contract here:
 
-- [How ALKANES Works: View the ALKANES Docs »](/docs/learn/introduction)
-- [Alkanes Wiki »](https://github.com/kungfuflex/alkanes-rs/wiki#2-0-a-genesis-alkane-with-incentives-for-block-optimization)
-- Airdrop Details: Stay Tuned follow [@oylwallet »](https://twitter.com/oylwallet)
-
-Dive deeper into ALKANES and see how you, too, can launch a novel asset—one that lives on Bitcoin, uses pure BTC fees, and never leaves the security of the main chain.
+https://github.com/kungfuflex/alkanes-rs/blob/main/crates/alkanes-std-genesis-alkane/src/lib.rs
