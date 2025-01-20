@@ -2,6 +2,32 @@
 sidebar_label: 'You are early'
 ---
 
+<div style={{
+  aspectRatio: '16/9',
+  borderRadius: '12px',
+  overflow: 'hidden',
+  border: '1px solid var(--ifm-color-emphasis-200)',
+  width: '100%',
+  height: '100%',
+  position: 'relative',
+  marginTop: '20px',
+  marginBottom: '40px',
+}}>
+  <video
+    autoPlay
+    loop
+    playsInline
+    muted
+    style={{
+      width: '100%',
+      height: '100%',
+      objectFit: 'cover',
+    }}
+  >
+    <source src="/img/video4.mp4" type="video/mp4" />
+  </video>
+</div>
+
 # You are early.
 
 You've discovered Alkanes. We've built a complete vertical stack for Bitcoin development - from low-level script to high-level tooling. We've solved Bitcoin's computational limitations by working with its constraints, not against them.

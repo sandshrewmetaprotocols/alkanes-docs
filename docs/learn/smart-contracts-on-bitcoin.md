@@ -1,8 +1,7 @@
 ---
-id: smart-contracts-bitcoin
-title: Alkanes Smart Contracts on Bitcoin
-sidebar_label: Smart Contracts on Bitcoin
-sidebar_position: 1
+title: Smart Contracts on Bitcoin
+description: Learn how Alkanes enables native smart contracts on Bitcoin without compromising security or decentralization
+sidebar_position: 2
 ---
 
 <div style={{
@@ -31,6 +30,4 @@ sidebar_position: 1
   </video>
 </div>
 
-# Alkanes Smart Contracts on Bitcoin
-
-Content coming soon...
+# Smart Contracts on Bitcoin

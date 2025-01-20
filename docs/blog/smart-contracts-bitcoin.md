@@ -8,6 +8,32 @@ sidebar_label: Smart Contracts on Bitcoin
 
 _Posted on Nov 28, 2024 • Edited on Dec 14, 2024_
 
+<div style={{
+  aspectRatio: '1/1',
+  borderRadius: '12px',
+  overflow: 'hidden',
+  border: '1px solid var(--ifm-color-emphasis-200)',
+  width: '100%',
+  height: '100%',
+  position: 'relative',
+  marginTop: '20px',
+  marginBottom: '40px',
+}}>
+  <video
+    autoPlay
+    loop
+    playsInline
+    muted
+    style={{
+      width: '100%',
+      height: '100%',
+      objectFit: 'cover',
+    }}
+  >
+    <source src="/img/video2.mp4" type="video/mp4" />
+  </video>
+</div>
+
 ALKANES is an application layer built directly on Bitcoin where individuals or teams can deploy smart contracts to Bitcoin L1. ALKANES is one example of a metaprotocol, which is a set of rules and definitions to process block history in a blockchain system, to add additional features and concepts built on its data.
 
 ALKANES is my conception of a metaprotocol project which inherits structures and design patterns from the very popular ordinals and runes metaprotocol projects, authored by Casey Rodarmor. From ordinals, we use the concept of the inscription envelope, but a more minimal variant of it, which we will simply call the witness envelope. We use the witness envelope, at minimum, to deploy \*.wasm.gz files to the Bitcoin blockchain, after which they can be transacted against as smart contract programs, using any combination of inputs of value, data, and the context of the transaction itself.

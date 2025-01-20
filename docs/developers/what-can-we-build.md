@@ -1,8 +1,5 @@
 ---
-id: smart-contracts-bitcoin
-title: Alkanes Smart Contracts on Bitcoin
-sidebar_label: Smart Contracts on Bitcoin
-sidebar_position: 1
+sidebar_label: 'What can we build?'
 ---
 
 <div style={{
@@ -27,10 +24,8 @@ sidebar_position: 1
       objectFit: 'cover',
     }}
   >
-    <source src="/img/video2.mp4" type="video/mp4" />
+    <source src="/img/video3.mp4" type="video/mp4" />
   </video>
 </div>
 
-# Alkanes Smart Contracts on Bitcoin
-
-Content coming soon...
+# What can we build?

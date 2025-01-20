@@ -1,4 +1,5 @@
 ---
+sidebar_label: 'What is Metashrew?'
 sidebar_position: 4
 ---
 
