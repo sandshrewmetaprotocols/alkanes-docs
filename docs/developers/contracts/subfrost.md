@@ -8,6 +8,14 @@ sidebar_position: 2
 import { RepoLink } from '@site/src/components/RepoLink';
 import { GithubReadme } from '@site/src/components/GithubReadme';
 
+## Overview
+
+SUBFROST is an application stack for L0 built on ALKANES, enabling synthetic BTC assets and a new ecosystem of BTC-native yield vaults. e.g:
+
+stake dxFROST for yield on FROST/BTC LP.
+
+SUBFROST adds native Bitcoin to the ALKANES framework, and provides a nexus point for which DeFi on Bitcoin L1 can take form.
+
 <RepoLink href="https://github.com/subfrost/subfrost-alkanes" />
 
 <GithubReadme owner="subfrost" repo="subfrost-alkanes" />
