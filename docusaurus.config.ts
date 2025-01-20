@@ -64,7 +64,7 @@ const config: Config = {
       attributes: {
         name: 'description',
         content:
-          'Discover Alkanes - The revolutionary DeFi infrastructure platform built for security, scalability, and efficiency. Learn about our advanced protocols, developer tools, and ecosystem.',
+          'Discover the Alkanes metaprotocol core docs for learning about smart contracts on Bitcoin, developer guides, and access to the indexer',
       },
     },
     {
@@ -80,7 +80,7 @@ const config: Config = {
       attributes: {
         property: 'og:description',
         content:
-          'Discover Alkanes - The revolutionary DeFi infrastructure platform built for security, scalability, and efficiency. Learn about our advanced protocols, developer tools, and ecosystem.',
+          'Discover the Alkanes metaprotocol core docs for learning about smart contracts on Bitcoin, developer guides, and access to the indexer',
       },
     },
     {
@@ -109,7 +109,7 @@ const config: Config = {
       attributes: {
         name: 'twitter:description',
         content:
-          'Discover Alkanes - The revolutionary DeFi infrastructure platform built for security, scalability, and efficiency. Learn about our advanced protocols, developer tools, and ecosystem.',
+          'Discover the Alkanes metaprotocol core docs for learning about smart contracts on Bitcoin, developer guides, and access to the indexer',
       },
     },
   ],
