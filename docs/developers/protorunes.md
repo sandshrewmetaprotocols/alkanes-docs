@@ -16,7 +16,7 @@ image: img/sandshrew.svg
 
 # Protorunes Specification
 
-In this section we describe a specification for a family of metaprotocols derived from the runes metaprotocol, to enable different classes of token standards with limited compatibility for trade, but within their own metaprotocol rules can be customized in arbitrary ways within the constraints of the overarching acheme.
+In this section we describe a specification for a family of metaprotocols derived from the runes metaprotocol, to enable different classes of token standards with limited compatibility for trade, but within their own metaprotocol rules can be customized in arbitrary ways within the constraints of the overarching scheme.
 
 ## ALKANES is a protorunes-compatible subprotocol
 
@@ -61,9 +61,10 @@ A predicate mechanism should be available to the user in any instance where a re
 ## Protocol Messages
 
 ### Design Goals
+
 To preserve the feature where we can execute atomic swaps and can allow for the use of PSBTs, to construct expressive market mechanics that transact between sibling subprotocols (not exclusively the canonical alkanes subprotocol of protocol ID 1), we would like to make use of the Runestone structure and extend its use in a way where we can embed protocol messages for protorunes within the Runestone structure without causing a cenotaph.
 
-We do this by adding a new ODD field of the Runestone structure and claim one protocol field which does not conflict with future versions of the runes metaprotocol. The runes specification indicates that a tag within the range of protocol field values will never exceed 1 byte in its leb128 encoding, thus why the author of the runes specification terminates the range of Tag values at 127. We have the remaining space of a u128 to claim territory safely. Thus, we choose 2**14 - 1 (16383) which is the largest possible value in the u128 byte space which occupies only 2 bytes in leb128 encoding. This, we are confident, will never disturb the evolution of the runes metaprotocol.
+We do this by adding a new ODD field of the Runestone structure and claim one protocol field which does not conflict with future versions of the runes metaprotocol. The runes specification indicates that a tag within the range of protocol field values will never exceed 1 byte in its leb128 encoding, thus why the author of the runes specification terminates the range of Tag values at 127. We have the remaining space of a u128 to claim territory safely. Thus, we choose 2\*\*14 - 1 (16383) which is the largest possible value in the u128 byte space which occupies only 2 bytes in leb128 encoding. This, we are confident, will never disturb the evolution of the runes metaprotocol.
 
 We end up with the final structure:
 
@@ -91,6 +92,7 @@ enum Tag {
 ```
 
 ### Parsing
+
 The Protocol field in a Runestone, consistent with the rest of the structure, is encoded as u128[]. These values are concatenated to form a single bytearray and parsed, intuitively, as an embedded list of leb128 encoded values. Encoding the array this way makes more efficient use of the Runestone structure by avoiding repeating the Tag for Protocol in most cases. To ensure the range of bytearrays does not exclude any bitfields within its terminal bytes, we choose a maximum length for a u128 value within a u128[] intended for interpretation as a u8[] to 15 bytes. This allows us to safely model an arbitrary bytearray within the Runestone paradigm.
 
 The u128[] produced by decoding the list of leb128 values is interpreted one Protostone at a time. First, a subprotocol tag is parsed which should declare the protocol that the message targets. For protoburns this is 13, the protocol tag for the runes protocol. The next leb128 decodes to the amount of leb128 encoded values which should follow that encode the field/value pairs in the Protostone. Finally, the leb128 values are parsed in the declared quantity and interpreted as pairs, similar to the parsing of Runestone. In the same way that a Runestone is parsed, when a 0 tag is encountered, the remaining leb128 values are interpreted in sets of 4 as Edict structures, but which operate on the subprotocol.
@@ -98,6 +100,7 @@ The u128[] produced by decoding the list of leb128 values is interpreted one Pro
 In Runestone and Protostone, respectively, we have Protocol and Message potentially present, which are each a u128[] array which must be interpreted as a u8[]. Again, to ensure that we can make use of the full bitvector we pack into each u128, it is required that no u128 packed in these fields exceed 15 bytes in size.
 
 ### ProtoTag
+
 Below are the different fields possible in a Protostone structure:
 
 ```json
@@ -114,6 +117,7 @@ enum ProtoTag {
 ```
 
 ### Protostone
+
 When constructing the full Protostone, the final data structure should be organized as follows:
 
 ```json
@@ -128,6 +132,7 @@ struct Protostone {
 ```
 
 ### Message field (calldata)
+
 Also known as the calldata to the MessageContext.
 
 This is an buffer of data that can be arbitrarily large. The sdk will automatically break down the calldata into tags that the indexer can pick up and piece back together. A magic number (0x01) is added to the start of the calldata to indicate the start of arbitrary data. If the first byte of calldata is not the magic number, then the entire calldata is zeroed out.
@@ -135,17 +140,21 @@ This is an buffer of data that can be arbitrarily large. The sdk will automatica
 Any bytes that are 0x00 starting from the end will be dropped, until we read the first non zero byte. If the first non zero byte is not the magic end number (0x01), then the calldata will be zeroed out.
 
 ### Delta-encoding
+
 Edicts in a Protostone are delta-encoded, the same as they are in a top-level Runestone. They also, naturally, must be sorted prior to their encoding.
 
 ### LEB128 Context
+
 LEB128 (Little Endian Base 128) is a variable-length encoding used to represent arbitrarily large integers in a compact form. The primary advantage of LEB128 is that it can represent small numbers in fewer bytes, which helps save space.
 
 More information can be found on the Rune Specification
 
 ### Indexing
+
 An indexer for a protorunes subprotocol will, as a requirement, evaluate and index the runes Runestone structure first, before parsing the Protostones from the Protocol field of the Runestone. A subprotocol indexer will, at the very least, evaluate Protostones tagged with the subprotocol ID it is indexing. For ALKANES, this is 1. If a subprotocol is descendent of another subprotocol, it will index its parent subprotocols as well and can opt in to honoring protoburns from them. The different types of Protostones are evaluated according to the logic described below.
 
 ### Indexing Protoburns
+
 A protoburn is used to burn runes onto a subprotocol, and is generally a one-way function. A subprotocol may allow a protoburn from a sibling subprotocol, if it decides that the indexer for the given subprotocol is sound and is willing to honor incoming assets. Alternatively, protorunes on different subprotocols or runes itself can be exchanged via the usual protocol features of runes and Bitcoin itself.
 
 A protoburn message is a Protostone embedded within the Protocol field of a Runestone, for which the protocol tag is 13 (the runes protocol tag).
@@ -161,6 +170,7 @@ All edicts in a Runestone that target a protoburn are delegated to the pointer i
 NOTE: Behavior of Runestone with respect to the multicast output (referenced as vout = outs.length) is, of course, preserved, in that the indexer must honor edicts that point to this output the normal way, where the value is spread across the range of all outputs, NOT including the shadow vout range. There is no equivalent to the runes multicast output within the protorunes standard, with respect to the shadow vout range.
 
 ### Indexing Protomessages
+
 A protomessage is a protocol message that an indexer must interpret as an action on the subprotocol.
 
 Upon parsing a Protostone, the Message field will contain a bytearray which SHOULD be then parsed with protobuf or any serializer expected by the subprotocol, then interpreted as an argument to the runtime of the subprotocol. Protorunes MUST be output to the locations pointed to by the pointer tag in Protostone or the inputs refunded to the refund_pointer if the runtime decides it should not execute against its input of runes and calldata.
@@ -174,6 +184,7 @@ Generally, the refund_pointer SHOULD be expected to be spendable by the entity w
 Recursion of protomessages within a transaction is not permitted by the protorunes design. See the section on ordering for details.
 
 ### Indexing Edicts
+
 Protostones can make use of the 0 tag to encode edicts. If edicts are present, only the edicts and the pointer within a Protostone have any effect. Balance changes marked by edicts are computed as deltas, as usual. If a pointer is present, unallocated protorunes follow the pointer. Otherwise, they are considered to be inputs to the following Protostone for that subprotocol.
 
 Edicts are processed after a message is evaluated, and the remaining balance sheet on the protostone follows the pointer.

@@ -41,7 +41,7 @@ A version of the Free Mint contract is included in the [SDK](https://github.com/
 To deploy the precompiledFree Mint contract wasm file to the regtest instance, run the following command from the root of the SDK:
 
 ```bash
-oyl alkane factoryWasmDeploy -c ./src/alkanes/free_mint.wasm -r "0x7"
+oyl alkane factory-deploy -c ./src/alkanes/free_mint.wasm -r "0x7"
 ```
 
 This [CLI command](https://github.com/Oyl-Wallet/oyl-sdk/blob/main/src/cli/alkane.ts) uses default settings (mnemonic, fee rate, network) and reserve number "0x7" to deploy the contract using the SDK's `factoryWasmDeploy` command. It uses the [commit-reveal pattern](https://docs.ordinals.com/guides/wallet.html?highlight=reveal#creating-inscriptions), familiar to Ordinals developers, to deploy the contract.
@@ -66,9 +66,40 @@ The deployment process:
 4. **Verification**
    - Verifies deployment and outputs contract trace
 
-### 2. Mint a token
+### 2. Deploy an Alkanes token
 
-### 3. Send a token
+Now that you have deployed the Factory contract, you can deploy Alkanes tokens by pointing to the reserve number of the factory contract. To deploy an Alkanes token, run the following command from the root of the SDK:
+
+```bash
+oyl alkane new-token -resNumber "0x7" -amount 1000 -name "MYTOKEN" -symbol "MTK" -cap 100000 -pre 5000
+```
+
+This command will deploy a new token with the following parameters:
+
+- **resNumber**: The reserve number of the factory contract
+- **amount**: The amount of tokens mintable in one call
+- **name**: The name of the token
+- **symbol**: The symbol of the token
+- **cap**: The supply cap of the token
+- **pre**: Amount of tokens to premine to the deployer's address
+
+### 3. Mint a token
+
+Once the token is deployed, you can mint tokens by calling the an `execute` with the mint opcode and [AlkaneId](#alkane-ids) on the token contract. For example, to mint MYTOKEN (MTK) which has an AlkaneId of `[800000, 25]` and a mint opcode of `77`, run the following command on CLI:
+
+```bash
+oyl alkane execute -data '800000, 25, 77'
+```
+
+This command will mint 1000 (amount set in the new-token command) tokens to the caller's address.
+
+### 4. Send a token
+
+To transfer tokens, you can use the `send` command on the CLI. For example, to send 100 MTK tokens with an AlkaneId of `[800000, 25]` to the address `bc1receiveraddress`, run the following command:
+
+```bash
+oyl alkane send -tx 25 -blk 800000 -amt 100 -to bc1receiveraddress
+```
 
 ## Deploy a custom contract
 
@@ -245,9 +276,7 @@ Similar to the free_mint example above, use the SDK CLI to deploy the contract t
 
 ```sh
 cd ../oyl-sdk
-oyl alkane factoryWasmDeploy -c ./src/alkanes/my_token_contract.wasm -r "0x8"
+oyl alkane factory-deploy -c ./src/alkanes/my_token_contract.wasm -r "0x8"
 ```
 
 This command does a gzip compression level 9 to compress the wasm to a `*.wasm.gz` and then deploys to your Bitcoin regtest.
-
-
