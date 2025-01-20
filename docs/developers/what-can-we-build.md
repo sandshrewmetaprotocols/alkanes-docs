@@ -1,5 +1,6 @@
 ---
 sidebar_label: 'What can we build?'
+description: 'Explore what you can build with Alkanes'
 ---
 
 <div style={{
