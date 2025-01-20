@@ -2045,3 +2045,26 @@ main {
 [data-theme='dark'] .DocSearch-Cancel {
   color: rgba(255, 255, 255, 0.6);
 }
+
+/* Mobile styles for navbar - Production */
+@media screen and (max-width: 800px) {
+  .navbar__items--right {
+    position: absolute !important;
+    right: 0.5rem !important;
+    display: flex !important;
+    gap: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .navbar__brand {
+    margin-left: -0.5rem !important;
+    padding-left: 0 !important;
+  }
+
+  /* Ensure container padding */
+  div.container.padding-top--md.padding-bottom--lg {
+    padding: 0 1rem !important;
+    margin: 0 !important;
+  }
+}
