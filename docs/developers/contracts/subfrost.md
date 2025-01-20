@@ -10,6 +10,10 @@ import { GithubReadme } from '@site/src/components/GithubReadme';
 
 ## Overview
 
+SUBFROST adds native Bitcoin to the ALKANES framework, providing the nexus point for which DeFi on Bitcoin L1 can take form.
+
+It is an application that enables synthetic BTC assets and therefore a new ecosystem of Bitcoin-native dApps
+
 <RepoLink href="https://github.com/subfrost/subfrost-alkanes" />
 
 <GithubReadme owner="subfrost" repo="subfrost-alkanes" />
