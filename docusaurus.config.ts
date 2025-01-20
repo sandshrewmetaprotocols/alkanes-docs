@@ -101,7 +101,7 @@ const config: Config = {
       tagName: 'meta',
       attributes: {
         name: 'twitter:title',
-        content: 'Alkanes - Next Generation DeFi Infrastructure',
+        content: 'Alkanes | Alkanes',
       },
     },
     {
@@ -149,7 +149,7 @@ const config: Config = {
       },
       {
         name: 'og:image:alt',
-        content: 'Alkanes - Next Generation DeFi Infrastructure',
+        content: 'Alkanes | Alkanes',
       },
     ],
     navbar: {
