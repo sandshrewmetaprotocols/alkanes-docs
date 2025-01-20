@@ -8,6 +8,8 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.25rem;
   padding: 1rem;
+  max-width: 1080px;
+  margin: 0 auto;
 }
 
 .featureCard {
