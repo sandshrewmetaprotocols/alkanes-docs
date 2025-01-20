@@ -87,7 +87,7 @@ const config: Config = {
       tagName: 'meta',
       attributes: {
         name: 'twitter:card',
-        content: 'summary_large_image',
+        content: './static/img/opengraphalkane.jpeg',
       },
     },
     {
