@@ -986,7 +986,7 @@ button:active,
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.5rem;
-  width: 100%;
+  width: calc(100% - 4rem);
   max-width: 1080px;
   padding: 1.5rem;
   margin: 0 auto;
@@ -1766,7 +1766,7 @@ a[href='/'].navbar__link.navbar__link--active {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.5rem;
-  width: 100%;
+  width: calc(100% - 4rem);
   max-width: 1080px;
   padding: 1.5rem;
   margin: 0 auto;
