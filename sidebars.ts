@@ -119,53 +119,28 @@ const sidebars: SidebarsConfig = {
       items: [
         {
           type: 'doc',
-          id: 'developers/contracts/diesel',
-          label: 'Diesel: Genesis Token',
+          id: 'developers/contracts/telestable',
+          label: 'Telestable',
         },
         {
           type: 'doc',
-          id: 'developers/contracts/swap',
-          label: 'Swap Contracts',
+          id: 'developers/contracts/subfrost',
+          label: 'Subfrost',
         },
         {
           type: 'doc',
-          id: 'developers/contracts/stake',
-          label: 'Staking Contracts',
+          id: 'developers/contracts/factory',
+          label: 'Alkane Factory',
         },
         {
           type: 'doc',
-          id: 'developers/contracts/lending',
-          label: 'Lending & Borrowing',
-        },
-        {
-          type: 'doc',
-          id: 'developers/contracts/stablecoin',
-          label: 'Stablecoin Mechanics',
-        },
-        {
-          type: 'doc',
-          id: 'developers/contracts/governance',
-          label: 'Governance Systems',
-        },
-        {
-          type: 'doc',
-          id: 'developers/contracts/quantum',
-          label: 'Quantum Contracts',
-        },
-        {
-          type: 'doc',
-          id: 'developers/contracts/vault',
-          label: 'Yield Vaults',
-        },
-        {
-          type: 'doc',
-          id: 'developers/contracts/orbitals',
-          label: 'Non-Fungible: Orbitals',
+          id: 'developers/contracts/shorcell',
+          label: 'Shorcell',
         },
         {
           type: 'doc',
           id: 'developers/contracts/cairokane',
-          label: 'Cairo VM: Cairokane',
+          label: 'Cairokane',
         },
       ],
     },

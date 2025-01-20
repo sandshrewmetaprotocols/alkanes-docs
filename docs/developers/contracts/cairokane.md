@@ -1,23 +1,23 @@
-# Cairo VM: Cairokane
+---
+sidebar_label: 'Cairokane'
+sidebar_position: 5
+---
 
-:::warning
-🚧 This documentation is currently under construction 🚧
+# Cairokane: Cairo VM
 
-This is a placeholder page that will be replaced with detailed documentation about implementing Cairo VM contracts on Bitcoin using Alkanes.
+import { RepoLink } from '@site/src/components/RepoLink';
+import { GithubReadme } from '@site/src/components/GithubReadme';
+
+<RepoLink href="https://github.com/kungfuflex/cairokane" />
+
+<GithubReadme owner="kungfuflex" repo="cairokane" />
+
+:::note
+This documentation is automatically imported from the repository's README.
 :::
 
-## Coming Soon
+[Content will be imported from README]
 
-This section will include:
+## Repository
 
-- Introduction to Cairo VM
-- Cairokane architecture
-- Cairo contract compilation
-- Proof generation and verification
-- State management
-- Integration with Alkanes
-- Security considerations
-- Performance optimizations
-- Example implementations
-
-Check back soon for complete documentation.
+For implementation details and source code, visit the [Cairokane repository](https://github.com/kungfuflex/cairokane).
