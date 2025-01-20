@@ -6,186 +6,73 @@ description: 'Implementation guide for Diesel, the Genesis Token standard on Alk
 
 # Diesel: Genesis Token
 
-Diesel is the Genesis Token standard implemented on Alkanes, representing a foundational approach to fungible token creation on Bitcoin. This guide covers the implementation details, features, and best practices for working with Diesel tokens.
+The [Genesis Alkane token contract](https://github.com/kungfuflex/alkanes-rs/blob/main/crates/alkanes-std-genesis-alkane/src/lib.rs) implements a "DIESEL" token deployed on Alkanes. The minting of the token is tied to the block reward of the Bitcoin L1 chain. Anyone can broadcast a transaction that calls the DIESEL contract in a given block. If your transaction is included before anyone else's, you claim that block's DIESEL reward.
 
-## Overview
+For more information, see the [What is Diesel?](/docs/learn/diesel) page.
 
-Diesel tokens leverage Alkanes' native smart contract capabilities to provide a robust, secure, and efficient token standard. Key features include:
+## Contract Structure
 
-- Native Bitcoin L1 integration
-- Atomic transfers and swaps
-- Built-in supply management
-- Standardized interface
-- Optimized gas efficiency
-
-## Implementation
-
-### Contract Structure
+The contract includes different block reward, genesis block, average payout, and total supply parameters depending on the chain (fitcoin, dogecoin, fractal, etc.). The bitcoin mainnet parameters are defined in the "mainnet" implementation:
 
 ```rust
-#[contract]
-pub struct DieselToken {
-    total_supply: u64,
-    balances: Map<Address, u64>,
-    allowances: Map<(Address, Address), u64>,
-    name: String,
-    symbol: String,
-    decimals: u8,
-}
-```
-
-### Core Functions
-
-#### Initialization
-
-```rust
-#[init]
-pub fn init(name: String, symbol: String, initial_supply: u64) -> Self {
-    let mut token = Self {
-        total_supply: initial_supply,
-        balances: Map::new(),
-        allowances: Map::new(),
-        name,
-        symbol,
-        decimals: 18,
-    };
-    token.balances.insert(msg::sender(), initial_supply);
-    token
-}
-```
-
-#### Transfer Function
-
-```rust
-#[method]
-pub fn transfer(&mut self, to: Address, amount: u64) -> bool {
-    let from = msg::sender();
-    self._transfer(from, to, amount)
-}
-```
-
-## Integration Guide
-
-### Deploying a Diesel Token
-
-1. Prepare deployment parameters:
-
-```typescript
-const deployParams = {
-  name: 'MyToken',
-  symbol: 'MTK',
-  initialSupply: '1000000000000000000000000', // 1 million tokens
-};
-```
-
-2. Deploy using Alkanes SDK:
-
-```typescript
-const diesel = await Alkanes.deployContract('DieselToken', deployParams);
-```
-
-### Interacting with Diesel Tokens
-
-```typescript
-// Transfer tokens
-await diesel.transfer(recipientAddress, amount);
-
-// Check balance
-const balance = await diesel.balanceOf(address);
-```
-
-## Security Considerations
-
-- Implement proper access controls
-- Use safe math operations
-- Follow standardized patterns
-- Conduct thorough testing
-- Consider supply management implications
-
-## Best Practices
-
-1. **Supply Management**
-
-   - Carefully plan initial supply
-   - Consider implementing mint/burn mechanics
-   - Document supply changes
-
-2. **Integration Testing**
-
-   - Test all core functions
-   - Verify state transitions
-   - Validate error conditions
-
-3. **Upgrades and Maintenance**
-   - Plan for potential upgrades
-   - Document maintenance procedures
-   - Consider governance mechanisms
-
-## Example Implementation
-
-Here's a complete example of a basic Diesel token implementation:
-
-```rust
-#[contract]
-pub struct DieselToken {
-    total_supply: u64,
-    balances: Map<Address, u64>,
-    allowances: Map<(Address, Address), u64>,
-    name: String,
-    symbol: String,
-    decimals: u8,
-}
-
-#[methods]
-impl DieselToken {
-    #[init]
-    pub fn init(name: String, symbol: String, initial_supply: u64) -> Self {
-        let mut token = Self {
-            total_supply: initial_supply,
-            balances: Map::new(),
-            allowances: Map::new(),
-            name,
-            symbol,
-            decimals: 18,
-        };
-        token.balances.insert(msg::sender(), initial_supply);
-        token
+#[cfg(feature = "mainnet")]
+impl ChainConfiguration for GenesisAlkane {
+    fn block_reward(&self, n: u64) -> u128 {
+        return (50e8 as u128) / (1u128 << ((n as u128) / 210000u128));
     }
-
-    #[method]
-    pub fn transfer(&mut self, to: Address, amount: u64) -> bool {
-        let from = msg::sender();
-        self._transfer(from, to, amount)
+    fn genesis_block(&self) -> u64 {
+        840000
     }
-
-    #[method]
-    pub fn balance_of(&self, account: Address) -> u64 {
-        self.balances.get(&account).unwrap_or(0)
+    fn average_payout_from_genesis(&self) -> u128 {
+        312500000
     }
-
-    fn _transfer(&mut self, from: Address, to: Address, amount: u64) -> bool {
-        let from_balance = self.balance_of(from);
-        require!(from_balance >= amount, "Insufficient balance");
-
-        self.balances.insert(from, from_balance - amount);
-        let to_balance = self.balance_of(to);
-        self.balances.insert(to, to_balance + amount);
-
-        true
+    fn total_supply(&self) -> u128 {
+        131250000000000
     }
 }
 ```
 
-## Next Steps
+## Claiming DIESEL
 
-1. Review the [complete Diesel specification](link-to-spec)
-2. Explore [example implementations](link-to-examples)
-3. Join the [developer community](link-to-community)
-4. Start building with [Alkanes SDK](link-to-sdk)
+After Jump Start, DIESEL can be claimed block-by-block in real time as Bitcoin blocks are mined. Anyone can submit a mint transaction. There are no pre-sale and no VC allocations.
 
-## Additional Resources
+Anyone can broadcast a transaction that calls the DIESEL contract in a given block. If your transaction is included before anyone else's, you claim that block's DIESEL reward. The transaction must be a valid [transaction](/docs/developers/contracts-interaction#sending-a-transaction) with a [protostone message](/docs/developers/protorunes#protomessage) referencing the mint [opcode](/docs/developers/contracts-interaction#contract-opcodes) (`77`) for the DIESEL token contract.
 
-- [Diesel Technical Documentation](link)
-- [Security Considerations](link)
-- [Integration Examples](link)
-- [Community Forums](link)
+Because DIESEL is the genesis token, it is deployed to [2,0]. So, the mint transaction should use the following calldata:
+
+```javascript
+const calldata = [BigInt(2), BigInt(0), BigInt(77)];
+```
+
+Ths taproot script you need to submit constists of a protostone with this calldata:
+
+```javascript
+const script = encodeRunestoneProtostone({
+  protostones: [
+    envelope.ProtoStone.message({
+      protocolTag: 1n,
+      edicts: [],
+      pointer: 0,
+      refundPointer: 0,
+      calldata: envelope.encipher(calldata),
+    }),
+  ],
+}).encodedRunestone;
+```
+
+You can use the [alkanes library](https://github.com/kungfuflex/alkanes) and the [Alkanes SDK](/docs/developers/sdk/alkanes) to easily create and submit Alkane transactions.
+
+Use the SDK Alkanes [execute](/docs/developers/sdk/alkanes#contract-execution) method to submit a DIESEL mint transaction:
+
+```javascript
+const calldata = [BigInt(2), BigInt(0), BigInt(77)];
+
+const result = await execute({
+  gatheredUtxos: await user1.gatheredUtxos(),
+  feeRate: feeRate,
+  calldata,
+  account: user1.account,
+  signer: user1.signer,
+  provider: provider,
+});
+```
