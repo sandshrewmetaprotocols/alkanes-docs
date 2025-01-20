@@ -83,22 +83,8 @@ Begin your journey with our comprehensive documentation, from basic setup to adv
 
 Join our growing community of pioneers who are pushing the boundaries of what's possible on Bitcoin. Share ideas, get support, and collaborate on the future of finance:
 
-- [Developer Community](https://discord.gg/alkanes)
-- [GitHub Repository](https://github.com/alkanes)
-- [Twitter Updates](https://twitter.com/AlkanesL1)
+- [Developer Community](https://discord.com/invite/AtvGNVTq)
+- [GitHub Repository](https://github.com/kungfuflex/alkanes-rs)
+- [Twitter Updates](https://twitter.com/judoflexchop)
 
 ### Learn and Explore
-
-Dive into our extensive resources:
-
-- [Development Environment Setup](./setup.md)
-- [Quick Start Guide](./quickstart.md)
-- [Smart Contract Development](./contracts-building.md)
-
-:::note Be Part of History
-The tools for Bitcoin's next evolution are here. Start building now and claim your place in the foundation of a new world.
-:::
-
-## Ready to Build the Future?
-
-The moment to redefine what's possible on Bitcoin is here. Your journey starts now. Let's build the future of finance together.
