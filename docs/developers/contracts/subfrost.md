@@ -16,8 +16,6 @@ import { GithubReadme } from '@site/src/components/GithubReadme';
 This documentation is automatically imported from the repository's README.
 :::
 
-[Content will be imported from README]
-
 ## Repository
 
 For implementation details and source code, visit the [Subfrost repository](https://github.com/subfrost/subfrost-alkanes).
