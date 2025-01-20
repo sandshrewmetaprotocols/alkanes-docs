@@ -5,12 +5,12 @@ sidebar_label: Rebar
 sidebar_position: 3
 ---
 
-# Rebar Case Study
+# Rebar
 
 <div style={{ marginTop: '40px', marginBottom: '2rem' }}>
   <img 
     src="/img/rebar.png"
-    alt="Rebar Case Study"
+    alt="Rebar"
     style={{
       width: '100%',
       height: '300px',

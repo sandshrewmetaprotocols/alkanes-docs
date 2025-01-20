@@ -5,12 +5,12 @@ sidebar_label: Beyond
 sidebar_position: 2
 ---
 
-# Beyond Case Study
+# Beyond
 
 <div style={{ marginTop: '40px', marginBottom: '2rem' }}>
   <img 
     src="/img/beyond.png"
-    alt="Beyond Case Study"
+    alt="Beyond"
     style={{
       width: '100%',
       height: '300px',

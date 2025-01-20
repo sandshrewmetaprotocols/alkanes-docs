@@ -221,6 +221,15 @@ button:active {
   color: hsl(var(--foreground));
   transform: scale(1.02);
   border: none;
+  text-decoration: none;
+}
+
+[data-theme='light'] .menu__link:hover {
+  color: hsl(var(--color-blue));
+}
+
+[data-theme='dark'] .menu__link:hover {
+  color: hsl(var(--color-light-blue));
 }
 
 /* Only show blue indicator for active page links, not category headers or parent items */
@@ -230,6 +239,13 @@ button:active {
   font-weight: var(--font-weight-medium);
   position: relative;
   border: none;
+}
+
+[data-theme='light']
+  .menu__link--active:not(.menu__link--sublist):not(
+    .menu__list-item-collapsible > .menu__link
+  ):before {
+  background: hsl(var(--color-blue));
 }
 
 .menu__link--active:not(.menu__link--sublist):not(
@@ -244,6 +260,13 @@ button:active {
   height: 16px;
   background: hsl(var(--color-light-blue));
   border-radius: 0 2px 2px 0;
+}
+
+[data-theme='light']
+  .menu__link--active:not(.menu__link--sublist):not(
+    .menu__list-item-collapsible > .menu__link
+  ):before {
+  background: hsl(var(--color-blue));
 }
 
 /* Category headers in sidebar */
@@ -540,6 +563,7 @@ button:active,
   color: hsl(var(--foreground));
   transform: scale(1.02);
   border: none;
+  text-decoration: none;
 }
 
 /* Only show blue indicator for active page links, not category headers or parent items */
@@ -1871,4 +1895,125 @@ main {
 
 [data-theme='dark'] .footer__copyright {
   color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Sidebar section labels */
+.theme-doc-sidebar-item-category > .menu__list-item-collapsible > .menu__link,
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link {
+  font-size: 0.8rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.02em !important;
+  font-weight: 600 !important;
+  color: var(--ifm-color-emphasis-600) !important;
+}
+
+/* Adjust spacing for better hierarchy */
+.theme-doc-sidebar-item-category {
+  margin-top: 1.5rem !important;
+}
+
+.theme-doc-sidebar-item-category:first-child {
+  margin-top: 0 !important;
+}
+
+/* DocSearch Modal Customization */
+[data-theme='dark'] .DocSearch-Modal {
+  background: #090a0c;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme='dark'] .DocSearch-SearchBar {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-theme='dark'] .DocSearch-Form {
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow: none;
+}
+
+[data-theme='dark'] .DocSearch-Input {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+[data-theme='dark'] .DocSearch-Hit {
+  background: none;
+  border-radius: 6px;
+}
+
+[data-theme='dark'] .DocSearch-Hit[aria-selected='true'] {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme='dark'] .DocSearch-Hit-Container {
+  padding: 0.5rem;
+}
+
+[data-theme='dark'] .DocSearch-Hit a {
+  background: none;
+  box-shadow: none;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+}
+
+[data-theme='dark'] .DocSearch-Hit[aria-selected='true'] a {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme='dark'] .DocSearch-Hit-icon {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+[data-theme='dark'] .DocSearch-Hit-action {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+[data-theme='dark'] .DocSearch-Hit-source {
+  color: rgba(255, 255, 255, 0.6);
+  background: none;
+  padding: 1rem 1rem 0.5rem;
+}
+
+[data-theme='dark'] .DocSearch-Footer {
+  background: #090a0c;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-theme='dark'] .DocSearch-Commands-Key {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: none;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+[data-theme='dark'] .DocSearch-Logo svg path {
+  fill: rgba(255, 255, 255, 0.5);
+}
+
+/* Search result highlights */
+[data-theme='dark'] .DocSearch-Hit-title mark,
+[data-theme='dark'] .DocSearch-Hit-path mark {
+  color: hsl(var(--color-light-blue));
+  text-decoration: underline;
+  background: none;
+}
+
+/* No results state */
+[data-theme='dark'] .DocSearch-NoResults {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+[data-theme='dark'] .DocSearch-Screen-Icon {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* Loading state */
+[data-theme='dark'] .DocSearch-LoadingIndicator svg {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Cancel button */
+[data-theme='dark'] .DocSearch-Cancel {
+  color: rgba(255, 255, 255, 0.6);
 }

@@ -5,12 +5,12 @@ sidebar_label: Laser Eyes
 sidebar_position: 4
 ---
 
-# Laser Eyes Case Study
+# Laser Eyes
 
 <div style={{ marginTop: '40px', marginBottom: '2rem' }}>
   <img 
     src="/img/lasereyes.png"
-    alt="Laser Eyes Case Study"
+    alt="Laser Eyes"
     style={{
       width: '100%',
       height: '300px',

@@ -5,12 +5,12 @@ sidebar_label: Starknet
 sidebar_position: 6
 ---
 
-# Starknet Case Study
+# Starknet
 
 <div style={{ marginTop: '40px', marginBottom: '2rem' }}>
   <img 
     src="/img/starknet.png"
-    alt="Starknet Case Study"
+    alt="Starknet"
     style={{
       width: '100%',
       height: '300px',

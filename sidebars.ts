@@ -38,13 +38,13 @@ const sidebars: SidebarsConfig = {
           collapsed: false,
           link: undefined,
           items: [
-            'case-studies/bound-stablecoin',
-            'case-studies/beyond',
             'case-studies/subfrost',
-            'case-studies/laser-eyes',
+            'case-studies/bound-stablecoin',
             'case-studies/oyl-amm',
             'case-studies/starknet',
             'case-studies/rebar',
+            'case-studies/laser-eyes',
+            'case-studies/beyond',
           ],
         },
         {

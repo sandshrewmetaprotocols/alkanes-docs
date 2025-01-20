@@ -7,7 +7,7 @@ sidebar_position: 5
 <div style={{ marginTop: '40px', marginBottom: '2rem' }}>
   <img 
     src="https://picsum.photos/seed/oylamm/800/400"
-    alt="OYL AMM Case Study"
+    alt="OYL AMM"
     style={{
       width: '100%',
       height: '300px',

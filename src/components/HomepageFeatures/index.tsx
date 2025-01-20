@@ -38,11 +38,11 @@ const FeatureList: FeatureItem[] = [
     link: '/docs/learn/background/metaprotocols',
   },
   {
-    title: 'Use Cases',
+    title: 'What is Diesel?',
     description:
-      'Explore real-world applications from DeFi to advanced cryptographic proofs. See how Alkanes empowers developers on Bitcoin.',
+      'Learn about Diesel, the Genesis Token standard on Alkanes that enables robust and efficient fungible token creation on Bitcoin.',
     icon: '',
-    link: '/docs/case-studies/bound-stablecoin',
+    link: '/docs/learn/diesel',
   },
   {
     title: 'Blog & Updates',

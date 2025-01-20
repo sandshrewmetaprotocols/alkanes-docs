@@ -133,7 +133,25 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
-    image: 'img/sandshrew.svg',
+    image: 'img/opengraphalkane.jpeg',
+    metadata: [
+      {
+        name: 'og:image',
+        content: 'img/opengraphalkane.jpeg',
+      },
+      {
+        name: 'og:image:width',
+        content: '1200',
+      },
+      {
+        name: 'og:image:height',
+        content: '630',
+      },
+      {
+        name: 'og:image:alt',
+        content: 'Alkanes - Next Generation DeFi Infrastructure',
+      },
+    ],
     navbar: {
       title: 'Alkanes',
       logo: {
@@ -175,7 +193,7 @@ const config: Config = {
           'aria-label': 'Twitter',
         },
         {
-          href: 'https://discord.gg/your-discord-invite',
+          href: 'https://discord.gg/AtvGNVTq',
           position: 'right',
           className: 'header-discord-link',
           'aria-label': 'Discord',
