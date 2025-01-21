@@ -43,7 +43,7 @@ yarn build
 docker compose build
 ```
 
-**Note:** This docker compose has only been tested on Linux and MacOS systems. We currently do not guarantee support for Windows.
+**Note:** This docker compose has only been tested on Linux and MacOS systems. We currently do not guarantee support for Windows OS.
 
 ### 3. Launch the alkanes services
 
