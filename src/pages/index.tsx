@@ -18,7 +18,7 @@ export default function Home(): ReactNode {
         <HomepageFeatures />
       </main>
       <head>
-        <meta property="og:image" content="./static/img/opengraphalkane.jpeg" />
+        <meta property="og:image" content="https://asset.oyl.gg/opengraphalkane.jpeg" />
         <meta
           property="og:description"
           content="Discover the Alkanes metaprotocol core docs for learning about smart contracts on Bitcoin, developer guides, and access to the indexer"
