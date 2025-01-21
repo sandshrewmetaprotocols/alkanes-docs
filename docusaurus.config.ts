@@ -200,7 +200,7 @@ const config: Config = {
           'aria-label': 'Twitter',
         },
         {
-          href: 'https://discord.gg/AtvGNVTq',
+          href: 'https://discord.gg/anPUpQtPzg',
           position: 'right',
           className: 'header-discord-link',
           'aria-label': 'Discord',

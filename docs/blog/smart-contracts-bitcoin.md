@@ -102,7 +102,7 @@ Well, it is true that people are excited already. We have projects deploying sta
 
 Join us in the SANDSHREWサンド Discord where we discuss ALKANES and the greater ecosystem of metaprotocols we will come to know, as we enter the next chapter of Bitcoin.
 
-https://discord.gg/wSrZtSrnrf
+https://discord.gg/anPUpQtPzg
 
 ## Links
 

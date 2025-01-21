@@ -83,7 +83,7 @@ Begin your journey with our comprehensive documentation, from basic setup to adv
 
 Join our growing community of pioneers who are pushing the boundaries of what's possible on Bitcoin. Share ideas, get support, and collaborate on the future of finance:
 
-- [Developer Community](https://discord.com/invite/AtvGNVTq)
+- [Developer Community](https://discord.gg/anPUpQtPzg)
 - [GitHub Repository](https://github.com/kungfuflex/alkanes-rs)
 - [Twitter Updates](https://twitter.com/judoflexchop)
 
