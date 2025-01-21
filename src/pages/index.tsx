@@ -23,7 +23,7 @@ export default function Home(): ReactNode {
           property="og:description"
           content="Discover the Alkanes metaprotocol core docs for learning about smart contracts on Bitcoin, developer guides, and access to the indexer"
         />
-        <meta name="twitter:card" content="./static/img/opengraphalkane.jpeg" />
+        <meta name="twitter:card" content="summary" />
         <meta name="twitter:image" content="./static/img/opengraphalkane.jpeg" />
         <meta
           name="twitter:description"
