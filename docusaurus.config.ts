@@ -108,7 +108,7 @@ const config: Config = {
       tagName: 'meta',
       attributes: {
         name: 'twitter:image',
-        content: '/img/opengraphalkane.jpeg',
+        content: './static/img/opengraphalkane.jpeg',
       },
     },
     {
