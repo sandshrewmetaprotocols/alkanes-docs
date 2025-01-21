@@ -5,6 +5,7 @@ The Alkanes module provides functionality for interacting with Alkanes protocol 
 ## Overview
 
 The Alkanes module provides:
+
 - Smart contract deployment
 - Token creation and management
 - Token transfers between addresses
@@ -12,6 +13,20 @@ The Alkanes module provides:
 - Fee estimation for all operations
 
 ## Core Operations
+
+### Find Alkane Utxos
+
+Find Utxos that contain alkane tokens.
+
+```typescript
+const gatheredUtxos = await findAlkaneUtxos({
+  address,
+  greatestToLeast,
+  provider,
+  alkaneId,
+  targetNumberOfAlkanes,
+});
+```
 
 ### Deploying Smart Contracts
 
@@ -22,13 +37,13 @@ const deployResult = await contractDeployment({
   payload,
   gatheredUtxos,
   account,
-  reserveNumber: "1",
+  reserveNumber: '1',
   provider,
-  feeRate: 2,
-  signer
-})
+  feeRate,
+  signer,
+});
 
-console.log("Contract deployed:", deployResult.txId)
+console.log('Contract deployed:', deployResult.txId);
 ```
 
 ### Token Operations
@@ -43,21 +58,21 @@ const tokenResult = await tokenDeployment({
   account,
   calldata,
   provider,
-  feeRate: 2,
-  signer
-})
+  feeRate,
+  signer,
+});
 
 // Transfer tokens
 const sendResult = await send({
   gatheredUtxos,
-  toAddress: "bc1...",
+  toAddress,
   amount: 1000,
-  alkaneId: { block: "123", tx: "abc" },
+  alkaneId: { block: '2', tx: '1' },
   feeRate: 2,
   account,
   provider,
-  signer
-})
+  signer,
+});
 ```
 
 ### Contract Execution
@@ -70,9 +85,9 @@ const executeResult = await execute({
   account,
   calldata: [BigInt(1), BigInt(2)],
   provider,
-  feeRate: 2,
-  signer
-})
+  feeRate,
+  signer,
+});
 ```
 
 ## Error Handling
@@ -93,6 +108,7 @@ try {
 ## Safety Features
 
 The module includes several safety checks:
+
 - Validates contract deployments
 - Ensures sufficient balance for operations
 - Optimizes fee calculations
@@ -101,7 +117,8 @@ The module includes several safety checks:
 ## Best Practices
 
 When working with Alkanes:
+
 1. Always verify contract deployment status
 2. Use appropriate fee rates based on network conditions
 3. Handle token operations with proper error checking
-4. Monitor transaction confirmations for multi-step operations 
+4. Monitor transaction confirmations for multi-step operations

@@ -15,6 +15,7 @@ oyl <namespace> <command> [options]
 ```
 
 ### Example Usage:
+
 ```bash
 # Basic CLI invocation
 oyl
@@ -30,6 +31,7 @@ oyl utxo availableBalance -m "your mnemonic" -p regtest
 ```
 
 Use `--help` at any level to see available options:
+
 ```bash
 oyl --help
 oyl utxo --help
@@ -50,6 +52,7 @@ oyl utxo availableBalance --help
 ## Core Commands
 
 ### Account Management
+
 ```bash
 oyl account generate           # Generate new account
 oyl account generateMnemonic   # Generate mnemonic phrase
@@ -57,6 +60,7 @@ oyl account privateKeys        # Display private keys
 ```
 
 ### UTXO Operations
+
 ```bash
 oyl utxo availableBalance     # Check available balance
 oyl utxo accountUtxos         # List account UTXOs
@@ -64,6 +68,7 @@ oyl utxo addressUtxos         # List address UTXOs
 ```
 
 ### Protocol Operations
+
 ```bash
 oyl btc send                  # Send BTC
 oyl collectible send          # Transfer collectibles
@@ -74,14 +79,26 @@ oyl rune mint                # Mint Runes
 ```
 
 ### Provider Interactions
+
 ```bash
 oyl provider api             # API operations
 oyl provider ord            # Ord server operations
 ```
 
+### Alkanes Operations
+
+```bash
+oyl alkane new-contract       # Deploy contract
+oyl alkane new-token          # Deploy token contract
+oyl alkane execute            # Execute contract function
+oyl alkane trace              # Trace contract execution
+oyl alkane send               # Send alkane tokens
+```
+
 ## Recommended Workflow
 
 1. Generate an account:
+
    ```bash
    oyl account generateMnemonic
    ```
@@ -89,6 +106,7 @@ oyl provider ord            # Ord server operations
 2. Fund the account with BTC or Ordinals
 
 3. Check balances:
+
    ```bash
    oyl utxo availableBalance -m "your mnemonic" -p regtest
    ```
@@ -104,10 +122,10 @@ The CLI includes a Wallet helper class for simplified management:
 
 ```typescript
 const wallet = new Wallet({
-  mnemonic: "your mnemonic here",
-  networkType: "regtest",  // 'mainnet' | 'regtest' | 'oylnet'
-  feeRate: 2
-})
+  mnemonic: 'your mnemonic here',
+  networkType: 'regtest', // 'mainnet' | 'regtest' | 'oylnet' | 'alkanes'
+  feeRate: 2,
+});
 ```
 
 ## Environment Variables
@@ -134,6 +152,7 @@ Options:
 ```
 
 This command:
+
 - Generates 260 initial blocks
 - Funds a faucet address with 60 block rewards
 - Sends 5 block rewards to your specified address
@@ -154,6 +173,7 @@ Options:
 ### Example Workflow
 
 1. Initialize regtest environment:
+
 ```bash
 oyl regtest init -m "your mnemonic"
 ```
@@ -161,6 +181,7 @@ oyl regtest init -m "your mnemonic"
 2. Make transactions using other CLI commands
 
 3. Generate blocks to confirm transactions:
+
 ```bash
 oyl regtest genBlocks -c 2
 ```
