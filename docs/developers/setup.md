@@ -25,7 +25,7 @@ There are several requisites you will need:
 - Node 20+
 - Yarn
 
-## Alkanes 
+## Alkanes
 
 The [alkanes testing and development repository](https://github.com/kungfuflex/alkanes) contains everything you need to deploy and test a local version of your Alkanes contract. This section will guide you through the steps to get alkanes up and running.
 
@@ -42,6 +42,8 @@ yarn install
 yarn build
 docker compose build
 ```
+
+**Note:** This docker compose has only been tested on Linux and MacOS systems. We currently do not guarantee support for Windows.
 
 ### 3. Launch the alkanes services
 
@@ -239,4 +241,3 @@ curl http://localhost:18888/v2/regtest \
     ]
   }'
 ```
-
