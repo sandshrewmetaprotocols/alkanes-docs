@@ -31,7 +31,7 @@ impl Token for SyntheticBitcoin {
 }
 ```
 
-Source: https://github.com/subfrost/frBTC/tree/main/alkanes/fr-btc/src/lib.rs
+Source: [subfrost-alkanes](https://github.com/subfrost/subfrost-alkanes/blob/master/alkanes/fr-btc/src/lib.rs)
 
 This could get good.
 
