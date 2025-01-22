@@ -30,6 +30,15 @@ const config: Config = {
     defaultLocale: 'en',
     locales: ['en'],
   },
+  plugins: [
+    [
+      'vercel-analytics',
+      {
+        debug: false,
+        mode: 'auto',
+      },
+    ],
+  ],
 
   // Add head meta tags for favicons
   headTags: [
