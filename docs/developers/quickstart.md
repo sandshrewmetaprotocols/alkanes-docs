@@ -246,7 +246,7 @@ pub extern "C" fn __execute() -> i32 {
 }
 ```
 
-You should now have a complete contract. The full contract code can be found [here](https://github.com/kungfuflex/alkane-factory/blob/master/alkanes/owned-token/src/lib.rss).
+You should now have a complete contract. The full contract code can be found [here](https://github.com/kungfuflex/alkane-factory/blob/master/alkanes/owned-token/src/lib.rs).
 
 ### 7. Compile the contract
 
