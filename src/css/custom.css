@@ -2073,3 +2073,53 @@ main {
     margin: 0 !important;
   }
 }
+
+/* Mobile navbar adjustments for very small screens*/
+@media screen and (max-width: 420px) {
+  /* Adjust spacing for navbar items */
+  .navbar__items--left {
+    gap: 0.5rem !important;
+    margin-left: 0.5rem !important;
+  }
+
+  /* Make menu items more compact */
+  .navbar__item {
+    padding-left: 0.3rem !important;
+    padding-right: 0.3rem !important;
+    font-size: 1rem !important;
+  }
+
+  /* Ensure right items don't overlap and reduce right margin */
+  .navbar__items--right {
+    position: absolute !important;
+    right: 0 !important; /* Reduced from 0.5rem */
+    display: flex !important;
+    gap: 0 !important;
+    margin-right: 0 !important; /* Ensure no right margin */
+    padding-right: 0 !important; /* Ensure no right padding */
+  }
+
+  /* Adjust logo spacing */
+  .navbar__brand {
+    margin-left: 0 !important;
+    padding-left: 0.5rem !important;
+  }
+
+  /* Ensure search and social icons don't get squeezed */
+  .header-github-link,
+  .header-discord-link,
+  .header-twitter-link,
+  .DocSearch-Button,
+  .theme-toggle {
+    padding: 6px !important;
+    width: 28px !important;
+    height: 28px !important;
+    margin-right: 0 !important; /* Ensure no right margin on icons */
+  }
+
+  /* Adjust container padding */
+  .navbar {
+    padding: 0.5rem !important;
+    padding-right: 0 !important; /* Ensure no right padding on navbar */
+  }
+}
