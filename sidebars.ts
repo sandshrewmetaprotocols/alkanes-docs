@@ -75,6 +75,7 @@ const sidebars: SidebarsConfig = {
         'developers/intro',
         'developers/setup',
         'developers/quickstart',
+        'developers/test-env',
       ],
     },
     {
