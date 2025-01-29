@@ -57,3 +57,5 @@ Here's your connection info for Signet:
 :::info
 This Signet RPC access is Oyl's gift to Alkanes devs - use it for Alkanes testing and we're good. Keep it clean, and it stays free. Abuse it, and well... things might change.
 :::
+
+All of this RPC indexer stuff is yet another part of the Oyl network called [Sandshrew](https://sandshrew.io) and it is worth checking out. To learn more about how to access the Signet RPC methods, check out the [Sandshrew docs](https://docs.sandshrew.io/sandshrew-namespaces/btc-standard-bitcoin-rpc).
