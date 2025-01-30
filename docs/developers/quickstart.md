@@ -34,14 +34,14 @@ If you have not already done so, [set up and run your local Alkanes development 
 
 Next you will deploy an example Alkanes "Free Mint" contract to the regtest instance. The Free Mint contract is a simple [factory contract](/docs/learn/alkanes#alkanes-factory-contracts) that allows anyone to deploy and mint Alkanes tokens. We are deploying a factory contract because we only want to deploy the factory contract once, and then clone the factory contract to deploy new alkanes mintable tokens.
 
-A version of the Free Mint contract is included in the [SDK](https://github.com/Oyl-Wallet/oyl-sdk/blob/main/src/alkanes/free_mint.wasm).
+A version of the Free Mint contract is included in the [SDK](https://github.com/Oyl-Wallet/oyl-sdk/blob/main/src/cli/contracts/free_mint.wasm).
 
 ### 1. Deploy the Free Mint wasm
 
 To deploy the precompiledFree Mint contract wasm file to the regtest instance, run the following command from the root of the SDK:
 
 ```bash
-oyl alkane new-contract -c ./src/alkanes/free_mint.wasm -r 7
+oyl alkane new-contract -c ./src/cli/contracts/free_mint.wasm -resNumber 7
 ```
 
 This [CLI command](https://github.com/Oyl-Wallet/oyl-sdk/blob/main/src/cli/alkane.ts) uses default settings (mnemonic, fee rate, network) and reserve number 7 to deploy the contract using the SDK's `new-contract` command. It uses the [commit-reveal pattern](https://docs.ordinals.com/guides/wallet.html?highlight=reveal#creating-inscriptions), familiar to Ordinals developers, to deploy the contract.
@@ -66,13 +66,23 @@ The deployment process:
 4. **Verification**
    - Verifies deployment and outputs contract trace
 
-### 2. Deploy an Alkanes token
+### 2. Generate a block
+
+Blocks are not automatically mined when running on regtest, so you will need to mine a block after every transaction.
+
+```bash
+oyl regtest genBlocks
+```
+
+### 3. Deploy an Alkanes token
 
 Now that you have deployed the Factory contract, you can deploy Alkanes tokens by pointing to the reserve number of the factory contract. To deploy an Alkanes token, run the following command from the root of the SDK:
 
 ```bash
-oyl alkane new-token -resNumber 7 -amount 1000 -name "MYTOKEN" -symbol "MTK" -cap 100000 -pre 5000
+oyl alkane new-token -pre 5000 -amount 1000 -c 100000 -name "MYTOKEN" -symbol "MTK" -resNumber 7
 ```
+
+_Don't forget to generate a block!_
 
 This command will deploy a new token with the following parameters:
 
@@ -83,23 +93,49 @@ This command will deploy a new token with the following parameters:
 - **cap**: The supply cap of the token
 - **pre**: Amount of tokens to premine to the deployer's address
 
-### 3. Mint a token
-
-Once the token is deployed, you can mint tokens by calling the an `execute` with the mint opcode and [AlkaneId](#alkane-ids) on the token contract. For example, to mint MYTOKEN (MTK) which has an AlkaneId of `[800000, 25]` and a mint opcode of `77`, run the following command on CLI:
+You can optionally attach an image to the token using the `-i` flag:
 
 ```bash
-oyl alkane execute -data '800000, 25, 77'
+oyl alkane new-token -pre 5000 -amount 1000 -c 100000 -name "MYTOKET" -symbol "MTT" -resNumber 7 -i ./src/cli/contracts/image.png
 ```
+
+Attaching an image requires a commit and reveal phase where the image content is included in a witness script and the token call data is added to a op_return protostone outpoint.
+
+We can now check the alkane tokens that have been deployed to your regtest instance. There is always an initial `DIESEL` token deployed to the regtest instance, so you should see it and the token you just deployed. Run the following command to see the list of deployed tokens:
+
+```bash
+oyl provider alkanes -method getAlkanes -params '{"limit": 20}'
+```
+
+Notice that your token was deployed with an AlkaneId of `[2, 1]` (block: 2, tx: 1). When tokens are deployed they are assigned the next available `[2, n]` Alkane Id.
+
+When you deployed the token, it premined 5000 MYTOKEN to your address. You can check the balance of your address by running the following command:
+
+```bash
+oyl provider alkanes -method getAlkanesByAddress -params '{"address":"bcrt1p5cyxnuxmeuwuvkwfem96lqzszd02n6xdcjrs20cac6yqjjwudpxqvg32hk"}'
+```
+
+### 4. Mint a token
+
+Once the token is deployed, you can mint tokens by calling the an `execute` with the mint opcode and [AlkaneId](#alkane-ids) on the token contract. For example, to mint MYTOKEN (MTK) which has an AlkaneId of `[2, 1]` and a mint opcode of `77`, run the following command on CLI:
+
+```bash
+oyl alkane execute -data '2, 1, 77'
+```
+
+_...and genBlocks_
 
 This command will mint 1000 (amount set in the new-token command) tokens to the caller's address.
 
-### 4. Send a token
+### 5. Send a token
 
 To transfer tokens, you can use the `send` command on the CLI. For example, to send 100 MTK tokens with an AlkaneId of `[800000, 25]` to the address `bc1receiveraddress`, run the following command:
 
 ```bash
 oyl alkane send -tx 25 -blk 800000 -amt 100 -to bc1receiveraddress
 ```
+
+If you check your balance again, you will see that you now have a 1000 balance for the mint in addition to the 5000 premined tokens.
 
 ## Deploy a custom contract
 

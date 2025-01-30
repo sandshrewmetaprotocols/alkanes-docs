@@ -37,9 +37,9 @@ git clone https://github.com/kungfuflex/alkanes --recurse-submodules
 
 ### 2. Build alkanes and run the docker container
 
+Confirm that Docker is installed and running, then build the docker container:
+
 ```
-yarn install
-yarn build
 docker compose build
 ```
 
@@ -78,8 +78,8 @@ returns a block count:
 
 ```
 {
-  "jsonrpc": "2.0",
   "result": 0,
+  "error": null
   "id": 1
 }
 ```
