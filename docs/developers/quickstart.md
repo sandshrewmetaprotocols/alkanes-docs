@@ -20,33 +20,36 @@ Alkanes is a token-based smart contract metaprotocol built on the protorunes fra
 
 In this tutorial, you will:
 
-1. Set up and run a local Bitcoin Regtest instance
-2. Install and use utilities from Oyl SDK to interact with the regtest instance
-3. Deploy an example Alkanes contract to the regtest instance
-4. Learn how to modify an existing Alkanes contract
-5. Deploy your modified contract to Signet and interact with it using the Oyl SDK CLI
+1. Use the shared [Oylnet regtest environment](/docs/developers/test-env#oylnet) as your test environment
+2. Install [the Oyl SDK](/docs/developers/sdk/alkanes) which provides a set of utilities for interacting with Bitcoin metaprotocols
+3. Deploy an example [Alkanes contract](/docs/learn/alkanes)
+4. Interact with your contract using the [Oyl SDK CLI](/docs/developers/sdk/cli)
 
-## Set up and run Alkanes regtest
+## Install the Oyl SDK
 
-If you have not already done so, [set up and run your local Alkanes development environment](setup).
+If you have not already done so, get familiar with the [Oylnet test environment](/docs/developers/test-env#oylnet) and follow the instructions in the [Oyl SDK](/docs/developers/sdk/index) guide to install the Oyl SDK. We will be using the Oyl CLI to deploy and interact with an example Alkanes contract.
 
-## Deploy a pre-compiled contract
+## Deploy a pre-compiled contract to Oylnet
 
-Next you will deploy an example Alkanes "Free Mint" contract to the regtest instance. The Free Mint contract is a simple [factory contract](/docs/learn/alkanes#alkanes-factory-contracts) that allows anyone to deploy and mint Alkanes tokens. We are deploying a factory contract because we only want to deploy the factory contract once, and then clone the factory contract to deploy new alkanes mintable tokens.
+You will be deploying an example Alkanes "Free Mint" contract to the shared Oylenet instance. The Free Mint contract is a simple [factory contract](/docs/learn/alkanes#alkanes-factory-contracts) that allows anyone to deploy and mint Alkanes tokens. We are deploying a factory contract because we only want to deploy the factory contract once, and then clone the factory contract to deploy new alkanes mintable tokens.
 
 A version of the Free Mint contract is included in the [SDK](https://github.com/Oyl-Wallet/oyl-sdk/blob/main/src/cli/contracts/free_mint.wasm).
 
 ### 1. Deploy the Free Mint wasm
 
-To deploy the precompiledFree Mint contract wasm file to the regtest instance, run the following command from the root of the SDK:
+Factory contracts are deployed with a specific [reserve number](/docs/developers/contracts-interaction#reserved-call-data-ids). The reserve number is a unique identifier for the factory contract.
+
+The first step is to pick an integer reserver number for your contract. You'll need to remember and use this number when you clone the factory contract to deploy new alkanes mintable tokens. In the example below we have picked `33` as our reserve number.
+
+To deploy the precompiled Free Mint contract wasm file to the Oylnet instance, run the following command from the root of the SDK:
 
 ```bash
-oyl alkane new-contract -c ./src/cli/contracts/free_mint.wasm -resNumber 7
+oyl alkane new-contract -c ./src/cli/contracts/free_mint.wasm -resNumber 7 -p oylnet
 ```
 
-This [CLI command](https://github.com/Oyl-Wallet/oyl-sdk/blob/main/src/cli/alkane.ts) uses default settings (mnemonic, fee rate, network) and reserve number 7 to deploy the contract using the SDK's `new-contract` command. It uses the [commit-reveal pattern](https://docs.ordinals.com/guides/wallet.html?highlight=reveal#creating-inscriptions), familiar to Ordinals developers, to deploy the contract.
+This [CLI command](https://github.com/Oyl-Wallet/oyl-sdk/blob/main/src/cli/alkane.ts) uses default settings (mnemonic, fee rate, network) and reserve number `7` to deploy the contract using the SDK's `new-contract` command. It uses the [commit-reveal pattern](https://docs.ordinals.com/guides/wallet.html?highlight=reveal#creating-inscriptions), familiar to Ordinals developers, to deploy the contract.
 
-The deployment process:
+The wasm deployment steps in the SDK are:
 
 1. **Setup**
 
@@ -68,21 +71,23 @@ The deployment process:
 
 ### 2. Generate a block
 
-Blocks are not automatically mined when running on regtest, so you will need to mine a block after every transaction.
+Blocks are not automatically mined when running on regtest, so you will need to mine some blocks after every transaction. The following command will generate 2 blocks:
 
 ```bash
-oyl regtest genBlocks
+oyl regtest genBlocks -c 2 -p oylnet
 ```
 
 ### 3. Deploy an Alkanes token
 
-Now that you have deployed the Factory contract, you can deploy Alkanes tokens by pointing to the reserve number of the factory contract. To deploy an Alkanes token, run the following command from the root of the SDK:
+Now that you have deployed the Factory contract, you can deploy Alkanes tokens by pointing to the reserve number of the factory contract. To deploy an Alkanes token, choose a name and symbol for your tokena and run the following command from the root of the SDK. For the test mint example contract, limit your token name to fewer than 8 characters and your symbol to fewer than 3 characters.
+
+Remember to use the same reserve number as you did when you deployed the factory contract!
 
 ```bash
-oyl alkane new-token -pre 5000 -amount 1000 -c 100000 -name "MYTOKEN" -symbol "MTK" -resNumber 7
+oyl alkane new-token -pre 5000 -amount 1000 -c 100000 -name "MYTOKEN" -symbol "MTK" -resNumber 7 -p oylnet
 ```
 
-_Don't forget to generate a block!_
+_(Don't forget to generate a block!)_
 
 This command will deploy a new token with the following parameters:
 
@@ -96,223 +101,51 @@ This command will deploy a new token with the following parameters:
 You can optionally attach an image to the token using the `-i` flag:
 
 ```bash
-oyl alkane new-token -pre 5000 -amount 1000 -c 100000 -name "MYTOKET" -symbol "MTT" -resNumber 7 -i ./src/cli/contracts/image.png
+oyl alkane new-token -pre 5000 -amount 1000 -c 100000 -name "MYTOKEN" -symbol "MT" -resNumber 7 -i ./src/cli/contracts/image.png -p oylnet
 ```
 
 Attaching an image requires a commit and reveal phase where the image content is included in a witness script and the token call data is added to a op_return protostone outpoint.
 
-We can now check the alkane tokens that have been deployed to your regtest instance. There is always an initial `DIESEL` token deployed to the regtest instance, so you should see it and the token you just deployed. Run the following command to see the list of deployed tokens:
+We can now check the alkane tokens that have been deployed on Olynet. There is always an initial `DIESEL` token deployed to the regtest instance, so you should see it and the token you just deployed. Run the following command to see the list of deployed tokens:
 
 ```bash
-oyl provider alkanes -method getAlkanes -params '{"limit": 20}'
+oyl provider alkanes -method getAlkanes -params '{"limit": 20}' -p oylnet
 ```
 
-Notice that your token was deployed with an AlkaneId of `[2, 1]` (block: 2, tx: 1). When tokens are deployed they are assigned the next available `[2, n]` Alkane Id.
+Take note of the AlkaneId of your token as you will need it when you mint tokens. When tokens are deployed they are assigned the next available `[2, n]` Alkane Id.
 
-When you deployed the token, it premined 5000 MYTOKEN to your address. You can check the balance of your address by running the following command:
+Also, when you deployed the token, it premined 5000 MYTOKEN to your address. You can check the balance of your address by running the following command:
 
 ```bash
-oyl provider alkanes -method getAlkanesByAddress -params '{"address":"bcrt1p5cyxnuxmeuwuvkwfem96lqzszd02n6xdcjrs20cac6yqjjwudpxqvg32hk"}'
+oyl provider alkanes -method getAlkanesByAddress -params '{"address":"bcrt1p5cyxnuxmeuwuvkwfem96lqzszd02n6xdcjrs20cac6yqjjwudpxqvg32hk"}' -p oylnet
 ```
 
 ### 4. Mint a token
 
-Once the token is deployed, you can mint tokens by calling the an `execute` with the mint opcode and [AlkaneId](#alkane-ids) on the token contract. For example, to mint MYTOKEN (MTK) which has an AlkaneId of `[2, 1]` and a mint opcode of `77`, run the following command on CLI:
+Once the token is deployed, you can mint tokens by calling the an `execute` with the mint opcode and [AlkaneId](#alkane-ids) on the token contract. For example, to mint MYTOKEN (MTK) which has an AlkaneId of `[2, 14]` and a mint opcode of `77`, run the following command on CLI:
 
 ```bash
-oyl alkane execute -data '2, 1, 77'
+oyl alkane execute -data '2, 14, 77' -p oylnet
 ```
 
-_...and genBlocks_
+_(...and genBlocks)_
 
 This command will mint 1000 (amount set in the new-token command) tokens to the caller's address.
 
 ### 5. Send a token
 
-To transfer tokens, you can use the `send` command on the CLI. For example, to send 100 MTK tokens with an AlkaneId of `[800000, 25]` to the address `bc1receiveraddress`, run the following command:
+To transfer tokens, you can use the `send` command on the CLI. For example, to send 100 MTK tokens with an AlkaneId of `[2, 14]`, run the following command:
 
 ```bash
-oyl alkane send -tx 25 -blk 800000 -amt 100 -to bc1receiveraddress
+oyl alkane send -tx 2 -blk 14 -amt 100 -to receiver-taproot-address -p oylnet
 ```
 
 If you check your balance again, you will see that you now have a 1000 balance for the mint in addition to the 5000 premined tokens.
 
-## Deploy a custom contract
+## Next steps
 
-Next we will deploy a custom "user owned" token contract. This contract will allow users to mint tokens where the entire supply is sent to the user.
+Congratulations! You've deployed your first Alkanes token and minted it to your address.
 
-If you have not already done so, familiarize yourself with [alkane contract development](./contracts-building).
+Now that you've seen how to deploy and interact with an Alkanes token, you can learn more about the [Alkanes protocol](/docs/learn/alkanes) and start building your own [Alkanes smart contracts](/docs/developers/contracts-building).
 
-### 1. Clone the Alkanes example repo
-
-The first step is to clone the `alkane-factory` example repository.
-
-```bash
-git clone https://github.com/kungfuflex/alkane-factory
-```
-
-### 2. Create the files and directories
-
-Open `alkane-factory` in your code editor and create several new directories and files:
-
-```
-alkanes/my-token-contract/
-alkanes/my-token-contract/Cargo.toml
-alkanes/my-token-contract/src/
-alkanes/my-token-contract/src/lib.rs
-```
-
-### 3. Add the rust libraries
-
-In your Cargo.toml file, add the following dependencies. For more information see the [alkanes libraries](./alkanes-libraries) developer guide.
-
-```rust
-[package]
-name = "my-token-contract"
-version = "0.1.0"
-edition = "2021"
-
-[lib]
-crate-type = ["cdylib", "rlib"]
-
-[features]
-test = []
-
-[dependencies]
-alkanes-support = { git = "https:/github.com/kungfuflex/alkanes-rs" }
-alkanes-runtime = { git = "https://github.com/kungfuflex/alkanes-rs" }
-metashrew-support = { git = "https://github.com/kungfuflex/alkanes-rs" }
-protorune-support = { git = "https://github.com/kungfuflex/alkanes-rs" }
-alkane-factory-support = { path = "../../crates/alkane-factory-support" }
-ordinals = { git = "https://github.com/kungfuflex/alkanes-rs" }
-anyhow = "1.0.94"
-bitcoin = { version = "0.32.4", features = ["rand"] }
-```
-
-### 4. Import the libraries
-
-In your `src/lib.rs` file, import the libraries:
-
-```rust
-use alkanes_runtime::auth::AuthenticatedResponder;
-use alkanes_runtime::runtime::AlkaneResponder;
-#[allow(unused_imports)]
-use alkanes_runtime::{
-    println,
-    stdio::{stdout, Write},
-};
-use alkanes_support::utils::shift_or_err;
-use alkanes_support::{parcel::AlkaneTransfer, response::CallResponse};
-use anyhow::{anyhow, Result};
-use metashrew_support::compat::{to_arraybuffer_layout, to_ptr};
-use alkane_factory_support::factory::MintableToken;
-```
-
-### 5. Add the contract code
-
-```rust
-#[derive(Default)]
-pub struct MyTokenContract(());
-
-impl MintableToken for MyTokenContract {}
-
-impl AuthenticatedResponder for MyTokenContract {}
-
-impl AlkaneResponder for MyTokenContract {
-    fn execute(&self) -> Result<CallResponse> {
-        let context = self.context()?;
-        let mut inputs = context.inputs.clone();
-        let mut response: CallResponse = CallResponse::forward(&context.incoming_alkanes.clone());
-        match shift_or_err(&mut inputs)? {
-            0 => {
-                self.observe_initialization()?;
-                println!("owned token initializing");
-                let _ = self.set_data();
-                let auth_token_units = shift_or_err(&mut inputs)?;
-                let token_units = shift_or_err(&mut inputs)?;
-                self.set_name_and_symbol(shift_or_err(&mut inputs)?, shift_or_err(&mut inputs)?);
-                response
-                    .alkanes
-                    .0
-                    .push(self.deploy_auth_token(auth_token_units)?);
-                response.alkanes.0.push(AlkaneTransfer {
-                    id: context.myself.clone(),
-                    value: token_units,
-                });
-                Ok(response)
-            }
-            77 => {
-                self.only_owner()?;
-                let token_units = shift_or_err(&mut inputs)?;
-                let transfer = self.mint(&context, token_units)?;
-                response.alkanes.0.push(transfer);
-                Ok(response)
-            }
-            99 => {
-                response.data = self.name().into_bytes().to_vec();
-                Ok(response)
-            }
-            100 => {
-                response.data = self.symbol().into_bytes().to_vec();
-                Ok(response)
-            }
-            101 => {
-                response.data = self.total_supply().to_le_bytes().to_vec();
-                Ok(response)
-            }
-            1000 => {
-                response.data = self.data();
-                Ok(response)
-            }
-            _ => Err(anyhow!("unrecognized opcode")),
-        }
-    }
-}
-```
-
-### 6. Add the \_execute function
-
-Now add the `_execute` function to your contract. This function will be called when the contract is executed.
-
-```rust
-#[no_mangle]
-pub extern "C" fn __execute() -> i32 {
-    let mut response = to_arraybuffer_layout(&MyTokenContract::default().run());
-    to_ptr(&mut response) + 4
-}
-```
-
-You should now have a complete contract. The full contract code can be found [here](https://github.com/kungfuflex/alkane-factory/blob/master/alkanes/owned-token/src/lib.rs).
-
-### 7. Compile the contract
-
-You are now ready to compile your contract.
-
-:::info
-There are several additional steps enable compiling on macOS. See [this issue](https://github.com/kungfuflex/alkanes-rs/issues/32) for more details.
-:::
-
-From the root of the `alkane-factory` repo, run the following command:
-
-```sh
-cargo build --target wasm32-unknown-unknown
-```
-
-Your wasm will be built to `target/alkanes/wasm32-unknown-unknown/release/my_token_contract.wasm`.
-
-### 8. Deploy to regtest
-
-Copy the was file to the SDK:
-
-```sh
-cp target/alkanes/wasm32-unknown-unknown/release/my_token_contract.wasm ../oyl-sdk/src/alkanes/
-```
-
-Similar to the free_mint example above, use the SDK CLI to deploy the contract to the regtest instance.
-
-```sh
-cd ../oyl-sdk
-oyl alkane factory-deploy -c ./src/alkanes/my_token_contract.wasm -r "0x8"
-```
-
-This command does a gzip compression level 9 to compress the wasm to a `*.wasm.gz` and then deploys to your Bitcoin regtest.
+You will also want to check out how to set up your own [local regtest environment](/docs/developers/setup) so you can quickly iterate on and test your Alkanes smart contracts.

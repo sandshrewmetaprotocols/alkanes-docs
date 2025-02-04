@@ -73,9 +73,9 @@ const sidebars: SidebarsConfig = {
           label: 'Welcome Dreamers & Builders',
         },
         'developers/intro',
-        'developers/setup',
-        'developers/quickstart',
         'developers/test-env',
+        'developers/quickstart',
+        'developers/setup',
       ],
     },
     {
@@ -99,6 +99,7 @@ const sidebars: SidebarsConfig = {
       collapsed: false,
       link: undefined,
       items: [
+        'developers/sdk/index',
         'developers/sdk/cli',
         'developers/sdk/provider',
         'developers/sdk/account',
