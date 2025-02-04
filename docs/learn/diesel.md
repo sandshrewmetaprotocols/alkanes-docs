@@ -69,7 +69,7 @@ By creating an asset like DIESEL, developers showcase how ALKANES can support an
 
 ## DIESEL Distribution Overview
 
-**Total Supply:** 1,562,500,000 DIESEL
+**Total Supply:** 1,562,500 DIESEL
 
 ### Block 880,000: Official Launch
 
@@ -77,11 +77,11 @@ DIESEL goes live when block 880,000 is mined. At this point, the ALKANES indexer
 
 ### Jump Start (Blocks 800,000 → 880,000)
 
-Instead of letting those blocks be minted retroactively, we do a one-time allocation of roughly 28% of the total DIESEL supply (i.e., ~420M tokens) at block 880,000.
+Instead of letting those blocks be minted retroactively, we do a one-time allocation of roughly 25% of the total DIESEL supply (i.e., 375,000 tokens) at block 880,000.
 
 This allocation is earmarked for the OYL protocol team and select community airdrops (specific details & eligibility TBA).
 
-### Remaining ~72%
+### Remaining ~75%
 
 - Claimed block-by-block in real time as Bitcoin blocks are mined.
 - Anyone can submit a mint transaction—no pre-sale, no VC allocations.
