@@ -41,10 +41,10 @@ A version of the Free Mint contract is included in the [SDK](https://github.com/
 To deploy the precompiledFree Mint contract wasm file to the regtest instance, run the following command from the root of the SDK:
 
 ```bash
-oyl alkane new-contract -c ./src/cli/contracts/free_mint.wasm -resNumber 7
+oyl alkane new-contract -c ./src/cli/contracts/free_mint.wasm -data 3,7,100
 ```
 
-This [CLI command](https://github.com/Oyl-Wallet/oyl-sdk/blob/main/src/cli/alkane.ts) uses default settings (mnemonic, fee rate, network) and reserve number 7 to deploy the contract using the SDK's `new-contract` command. It uses the [commit-reveal pattern](https://docs.ordinals.com/guides/wallet.html?highlight=reveal#creating-inscriptions), familiar to Ordinals developers, to deploy the contract.
+This [CLI command](https://github.com/Oyl-Wallet/oyl-sdk/blob/main/src/cli/alkane.ts) uses default settings (mnemonic, fee rate, network) and calldata (alkaneId and opcode(s)) to deploy the contract using the SDK's `new-contract` command. It uses the [commit-reveal pattern](https://docs.ordinals.com/guides/wallet.html?highlight=reveal#creating-inscriptions), familiar to Ordinals developers, to deploy the contract.
 
 The deployment process:
 
@@ -60,7 +60,15 @@ The deployment process:
 
 3. **Reveal Phase**
 
-   - Broadcasts reveal transaction with factory reserve number
+   - Broadcasts reveal transaction with factory calldata
+     HINT: The calldata in the above example command consists of the alkaneId and the opcode. Where:
+     ```
+     AlkaneId: [
+       3, - the block number
+       7, - the tx index (or reserve number)
+     ],
+     Opcode: 100
+     ```
    - Generates block and waits for confirmation
 
 4. **Verification**
