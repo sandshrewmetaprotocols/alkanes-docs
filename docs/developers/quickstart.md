@@ -148,7 +148,15 @@ The wasm deployment steps in the SDK are:
 
 3. **Reveal Phase**
 
-   - Broadcasts reveal transaction with factory reserve number
+   - Broadcasts reveal transaction with factory calldata
+     HINT: The calldata in the above example command consists of the alkaneId and the opcode. Where:
+     ```
+     AlkaneId: [
+       3, - the block number
+       7, - the tx index (or reserve number)
+     ],
+     Opcode: 100
+     ```
    - Generates block and waits for confirmation
 
 4. **Verification**
