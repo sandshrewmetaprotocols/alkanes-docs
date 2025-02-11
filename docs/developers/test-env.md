@@ -1,11 +1,25 @@
 ---
 sidebar_position: 3
-title: Test Environment
+title: Test Environments
 ---
 
 # Working with the Alkanes Test Environments
 
-Once you have set up your development environment, you may want to see how your contract works with different dApps or tools.
+Oyl supports several test environments:
+
+- Regtest: A local environment for development and testing
+- Oylnet: A shared regtest environment maintained by Oyl
+- Signet: A full testnet environment
+
+When developing Alkanes contracts, you will want to get familiar with the local **regtest** development environment. Regtest is the best way to build and test your contracts in a clean environment, which is useful for test automation and for rapidly iterating on your contract logic.
+
+If you are developing a dApp that will be used by other developers, you may want to leverage **Oylnet** as a shared development environment. There you can used already deployed test contracts and tokens to test your dApp.
+
+Once you have your contract working in regtest and Oylnet, you can then deploy on **Signet** to allow for public testing and interaction with other applications that support Signet.
+
+## Regtest
+
+Regtest is a local environment for development and testing. Oyl provides a docker compose file to quickly spin up a local regtest instance. Refer to the [dev environment setup guide](/docs/developers/setup) for instructions on how to set up your development environment and spin up a local regtest instance.
 
 ## Oylnet
 
