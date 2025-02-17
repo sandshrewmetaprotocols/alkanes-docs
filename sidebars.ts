@@ -88,6 +88,7 @@ const sidebars: SidebarsConfig = {
         'developers/contracts-building',
         'developers/contracts-interaction',
         'developers/protorunes',
+        'developers/token',
         'developers/rpc',
         'developers/dapp-integration',
       ],
