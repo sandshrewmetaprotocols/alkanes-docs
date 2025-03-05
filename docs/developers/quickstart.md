@@ -51,6 +51,12 @@ Add your mnemonic to your .env file. For example:
 MNEMONIC="YOUR_MNEMONIC"
 ```
 
+Add the Sandshrew development API key to your .env file:
+
+```bash
+SANDSHREW_PROJECT_ID=lasereyes
+```
+
 Next, you can view the index 0 addresses for your account by running the following command:
 
 ```bash
