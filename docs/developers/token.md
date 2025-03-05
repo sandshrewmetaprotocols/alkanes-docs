@@ -16,13 +16,13 @@ Every Alkanes token contract must implement these core opcodes:
 ```rust
 // Basic token information
 0: initialize()                         // Initializes the token parameters during deployment
-77: mint()                              // Mints or transfers tokens
 99: name() -> String                    // Returns the token's name
 100: symbol() -> String                 // Returns the token's symbol
 101: total_supply() -> u128             // Returns the total token supply
+999: data()                             // Returns all data for an alkane
 
-// Optional metadata
-1000: data() -> Vec<u8>                 // Returns token metadata (e.g. image)
+// Optional data
+1000: metadata() -> Vec<u8>              // Returns token metadata (e.g. image)
 ```
 
 ## Optional Opcodes
@@ -31,6 +31,7 @@ These opcodes provide additional functionality but are not required:
 
 ```rust
 // Minting (if supported)
+77: mint()                             // Mints or transfers tokens
 102: cap() -> u128                     // Returns maximum maxiumum number of mints allowed
 103: minted() -> u128                  // Returns total mints
 104: value_per_mint() -> u128          // Returns the value per mint
