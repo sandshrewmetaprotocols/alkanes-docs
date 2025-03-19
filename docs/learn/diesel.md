@@ -69,7 +69,7 @@ By creating an asset like DIESEL, developers showcase how ALKANES can support an
 
 ## DIESEL Distribution Overview
 
-**Total Supply:** 1,562,500 DIESEL
+**Total Supply:** 156,250,000,000,000 DIESEL
 
 ### Block 880,000: Official Launch
 
