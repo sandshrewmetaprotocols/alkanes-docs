@@ -186,7 +186,7 @@ This command will deploy a new token with the following parameters:
 - **amount**: The amount of tokens mintable in one call
 - **name**: The name of the token
 - **symbol**: The symbol of the token
-- **cap**: The supply cap of the token
+- **cap**: The maximum number of mints
 - **pre**: Amount of tokens to premine to the deployer's address
 
 You can optionally attach an image to the token using the `-i` flag:
