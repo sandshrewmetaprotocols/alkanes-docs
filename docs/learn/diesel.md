@@ -77,11 +77,11 @@ DIESEL goes live when block 880,000 is mined. At this point, the ALKANES indexer
 
 ### Jump Start (Blocks 800,000 → 880,000)
 
-Instead of letting those blocks be minted retroactively, we do a one-time allocation of roughly 25% of the total DIESEL supply (i.e., 375,000 tokens) at block 880,000.
+Instead of letting those blocks be minted retroactively, we do a one-time allocation of roughly 28% of the total DIESEL supply (i.e., 440,000 tokens) at block 880,000.
 
 This allocation is earmarked for the OYL protocol team and select community airdrops (specific details & eligibility TBA).
 
-### Remaining ~75%
+### Remaining ~72%
 
 - Claimed block-by-block in real time as Bitcoin blocks are mined.
 - Anyone can submit a mint transaction—no pre-sale, no VC allocations.
