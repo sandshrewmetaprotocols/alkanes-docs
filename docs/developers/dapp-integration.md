@@ -20,12 +20,12 @@ To integrate Laser Eyes into your React application:
 
 1. Install the package:
    ```bash
-   npm install @laser-eyes/react
+   npm install @omnisat/lasereyes
    ```
 
 2. Wrap your app with the provider and use the hook in your components:
    ```typescript
-   import { LaserEyesProvider, useLaserEyes } from '@laser-eyes/react';
+   import { LaserEyesProvider, useLaserEyes } from '@omnisat/lasereyes';
 
    // Wrap your app with the provider
    function App() {
