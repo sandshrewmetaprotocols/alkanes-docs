@@ -38,6 +38,73 @@ const config: Config = {
         mode: 'auto',
       },
     ],
+    function dynamicMetaTags() {
+      return {
+        name: 'dynamic-meta-tags',
+        injectHtmlTags() {
+          return {
+            headTags: [
+              {
+                tagName: 'meta',
+                attributes: {
+                  property: 'og:type',
+                  content: 'website',
+                },
+              },
+              {
+                tagName: 'meta',
+                attributes: {
+                  property: 'og:title',
+                  content: 'Alkanes',
+                },
+              },
+              {
+                tagName: 'meta',
+                attributes: {
+                  property: 'og:description',
+                  content: 'Bitcoin-native Smart Contracts',
+                },
+              },
+              {
+                tagName: 'meta',
+                attributes: {
+                  property: 'og:image',
+                  content: 'https://alkanes-docs.vercel.app/img/opengraphalkane.jpeg',
+                },
+              },
+              {
+                tagName: 'meta',
+                attributes: {
+                  name: 'twitter:card',
+                  content: 'summary_large_image',
+                },
+              },
+              {
+                tagName: 'meta',
+                attributes: {
+                  name: 'twitter:title',
+                  content: 'Alkanes',
+                },
+              },
+              {
+                tagName: 'meta',
+                attributes: {
+                  name: 'twitter:description',
+                  content: 'Bitcoin-native Smart Contracts',
+                },
+              },
+              {
+                tagName: 'meta',
+                attributes: {
+                  name: 'twitter:image',
+                  content: 'https://alkanes-docs.vercel.app/img/opengraphalkane.jpeg',
+                },
+              },
+            ],
+          };
+        },
+      };
+    },
   ],
 
   // Add head meta tags for favicons
@@ -95,13 +162,6 @@ const config: Config = {
     {
       tagName: 'meta',
       attributes: {
-        name: 'twitter:card',
-        content: 'summary',
-      },
-    },
-    {
-      tagName: 'meta',
-      attributes: {
         name: 'twitter:site',
         content: '@oylwallet',
       },
@@ -110,14 +170,7 @@ const config: Config = {
       tagName: 'meta',
       attributes: {
         name: 'twitter:title',
-        content: 'Alkanes | Alkanes',
-      },
-    },
-    {
-      tagName: 'meta',
-      attributes: {
-        name: 'twitter:image',
-        content: 'https://asset.oyl.gg/opengraphalkane.jpeg',
+        content: 'Alkanes | Bitcoin-native Smart Contracts',
       },
     },
     {
@@ -136,9 +189,9 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
           editUrl: 'https://github.com/sandshrewmetaprotocols/alkanes-wiki/tree/main',
+          showLastUpdateTime: true,
+          showLastUpdateAuthor: true,
         },
         theme: {
           customCss: './src/css/custom.css',
