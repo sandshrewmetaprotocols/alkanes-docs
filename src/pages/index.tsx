@@ -17,6 +17,19 @@ export default function Home(): ReactNode {
         <HomepageVideo />
         <HomepageFeatures />
       </main>
+      <head>
+        <meta property="og:image" content="https://asset.oyl.gg/opengraphalkane.jpeg" />
+        <meta
+          property="og:description"
+          content="Discover the Alkanes metaprotocol core docs for learning about smart contracts on Bitcoin, developer guides, and access to the indexer"
+        />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:image" content="https://asset.oyl.gg/opengraphalkane.jpeg" />
+        <meta
+          name="twitter:description"
+          content="Discover the Alkanes metaprotocol core docs for learning about smart contracts on Bitcoin, developer guides, and access to the indexer"
+        />
+      </head>
     </Layout>
   );
 }
