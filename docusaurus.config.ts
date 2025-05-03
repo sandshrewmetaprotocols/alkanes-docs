@@ -38,6 +38,7 @@ const config: Config = {
         mode: 'auto',
       },
     ],
+    './src/plugins/dynamicMetaTags',
   ],
 
   // Add head meta tags for favicons
@@ -96,7 +97,7 @@ const config: Config = {
       tagName: 'meta',
       attributes: {
         name: 'twitter:card',
-        content: 'summary',
+        content: 'summary_large_image',
       },
     },
     {
@@ -110,14 +111,14 @@ const config: Config = {
       tagName: 'meta',
       attributes: {
         name: 'twitter:title',
-        content: 'Alkanes | Alkanes',
+        content: 'Alkanes | Bitcoin-native Smart Contracts',
       },
     },
     {
       tagName: 'meta',
       attributes: {
         name: 'twitter:image',
-        content: 'https://asset.oyl.gg/opengraphalkane.jpeg',
+        content: 'https://alkanes-docs.vercel.app/img/opengraphalkane.jpeg',
       },
     },
     {
