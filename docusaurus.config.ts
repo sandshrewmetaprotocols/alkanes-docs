@@ -69,7 +69,7 @@ const config: Config = {
                 tagName: 'meta',
                 attributes: {
                   property: 'og:image',
-                  content: 'https://alkanes-docs.vercel.app/img/opengraphalkane.jpeg',
+                  content: 'https://asset.oyl.gg/opengraphalkane.jpeg',
                 },
               },
               {
@@ -118,7 +118,7 @@ const config: Config = {
                 tagName: 'meta',
                 attributes: {
                   name: 'twitter:image',
-                  content: 'https://alkanes-docs.vercel.app/img/opengraphalkane.jpeg',
+                  content: 'https://asset.oyl.gg/opengraphalkane.jpeg',
                 },
               },
               {

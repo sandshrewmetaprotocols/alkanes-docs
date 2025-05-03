@@ -215,7 +215,7 @@ oyl provider alkanes -method getAlkanesByAddress -params '{"address":"YOUR_TAPRO
 
 ### 5. Mint a token
 
-Once the token is deployed, you can mint tokens by calling the an `execute` with the mint opcode and [AlkaneId](#alkane-ids) on the token contract. For example, to mint MYTOKEN (MTK) which has an AlkaneId of `[2, 14]` and a mint opcode of `77`, run the following command on CLI:
+Once the token is deployed, you can mint tokens by calling the an `execute` with the mint opcode and AlkaneId on the token contract. For example, to mint MYTOKEN (MTK) which has an AlkaneId of `[2, 14]` and a mint opcode of `77`, run the following command on CLI:
 
 ```bash
 oyl alkane execute -data '2, 14, 77' -p oylnet
