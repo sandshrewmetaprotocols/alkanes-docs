@@ -38,22 +38,6 @@ const config: Config = {
         mode: 'auto',
       },
     ],
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'default',
-        path: 'docs',
-        routeBasePath: 'docs',
-        sidebarPath: './sidebars.ts',
-        editUrl: 'https://github.com/sandshrewmetaprotocols/alkanes-wiki/tree/main',
-        showLastUpdateTime: true,
-        showLastUpdateAuthor: true,
-        remarkPlugins: [[require('@docusaurus/remark-plugin-npm2yarn'), { sync: true }]],
-        beforeDefaultRemarkPlugins: [
-          [require('@docusaurus/plugin-content-docs/lib/markdown/index.js').default, {}],
-        ],
-      },
-    ],
     function dynamicMetaTags() {
       return {
         name: 'dynamic-meta-tags',
@@ -205,9 +189,9 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
           editUrl: 'https://github.com/sandshrewmetaprotocols/alkanes-wiki/tree/main',
+          showLastUpdateTime: true,
+          showLastUpdateAuthor: true,
         },
         theme: {
           customCss: './src/css/custom.css',
