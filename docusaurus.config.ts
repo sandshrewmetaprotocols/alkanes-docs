@@ -10,7 +10,7 @@ const config: Config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://alkanes-docs.vercel.app',
+  url: 'https://alkanes.build',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -91,6 +91,20 @@ const config: Config = {
                 attributes: {
                   property: 'og:image:type',
                   content: 'image/jpeg',
+                },
+              },
+              {
+                tagName: 'meta',
+                attributes: {
+                  property: 'og:url',
+                  content: 'https://alkanes.build',
+                },
+              },
+              {
+                tagName: 'meta',
+                attributes: {
+                  property: 'og:site_name',
+                  content: 'Alkanes',
                 },
               },
               {
@@ -230,11 +244,11 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
-    image: 'https://alkanes-docs.vercel.app/img/opengraphalkane.jpeg',
+    image: 'https://asset.oyl.gg/opengraphalkane.jpeg',
     metadata: [
       {
         name: 'og:image',
-        content: 'https://alkanes-docs.vercel.app/img/opengraphalkane.jpeg',
+        content: 'https://asset.oyl.gg/opengraphalkane.jpeg',
       },
       {
         name: 'og:image:width',
