@@ -149,11 +149,11 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
-    image: 'img/opengraphalkane.jpeg',
+    image: 'https://alkanes-docs.vercel.app/img/opengraphalkane.jpeg',
     metadata: [
       {
         name: 'og:image',
-        content: 'img/opengraphalkane.jpeg',
+        content: 'https://alkanes-docs.vercel.app/img/opengraphalkane.jpeg',
       },
       {
         name: 'og:image:width',
