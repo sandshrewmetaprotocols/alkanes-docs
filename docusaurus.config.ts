@@ -75,6 +75,27 @@ const config: Config = {
               {
                 tagName: 'meta',
                 attributes: {
+                  property: 'og:image:width',
+                  content: '1200',
+                },
+              },
+              {
+                tagName: 'meta',
+                attributes: {
+                  property: 'og:image:height',
+                  content: '630',
+                },
+              },
+              {
+                tagName: 'meta',
+                attributes: {
+                  property: 'og:image:type',
+                  content: 'image/jpeg',
+                },
+              },
+              {
+                tagName: 'meta',
+                attributes: {
                   name: 'twitter:card',
                   content: 'summary_large_image',
                 },
@@ -98,6 +119,13 @@ const config: Config = {
                 attributes: {
                   name: 'twitter:image',
                   content: 'https://alkanes-docs.vercel.app/img/opengraphalkane.jpeg',
+                },
+              },
+              {
+                tagName: 'meta',
+                attributes: {
+                  name: 'twitter:image:alt',
+                  content: 'Alkanes Logo',
                 },
               },
             ],
