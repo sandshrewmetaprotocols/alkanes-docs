@@ -117,7 +117,7 @@ const config: Config = {
       tagName: 'meta',
       attributes: {
         name: 'twitter:image',
-        content: 'https://asset.oyl.gg/opengraphalkane.jpeg',
+        content: 'https://alkanes-docs.vercel.app/img/opengraphalkane.jpeg',
       },
     },
     {
@@ -149,7 +149,6 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
-    image: 'https://alkanes-docs.vercel.app/img/opengraphalkane.jpeg',
     metadata: [
       {
         name: 'og:image',
