@@ -175,7 +175,7 @@ Now that you have deployed the Factory contract, you can deploy Alkanes tokens b
 Remember to use the same reserve number as you did when you deployed the factory contract!
 
 ```bash
-oyl alkane new-token -pre 5000 -amount 1000 -c 100000 -name "MYTOKEN" -symbol "MTK" -resNumber 33 -p oylnet
+oyl alkane new-token -pre 500000000000 -amount 100000000000 -c 100000 -name "MYTOKEN" -symbol "MTK" -resNumber 33 -p oylnet
 ```
 
 _(Don't forget to generate a block!)_
@@ -183,16 +183,22 @@ _(Don't forget to generate a block!)_
 This command will deploy a new token with the following parameters:
 
 - **resNumber**: The reserve number of the factory contract
-- **amount**: The amount of tokens mintable in one call
+- **amount**: The amount of alkanestokens mintable in one call
 - **name**: The name of the token
 - **symbol**: The symbol of the token
 - **cap**: The maximum number of mints
-- **pre**: Amount of tokens to premine to the deployer's address
+- **pre**: Amount of alkanes tokens to premine to the deployer's address
+
+:::info
+Alkanes, like bitcoin, has 8 decimal places. So, the on chain numbers are represented as "alks" which are 0.00000001 of an alkane.
+
+So, in order to premine 5555 `MYTOKEN` tokens when creating a token, you would use `-pre 555500000000`
+:::
 
 You can optionally attach an image to the token using the `-i` flag:
 
 ```bash
-oyl alkane new-token -pre 5000 -amount 1000 -c 100000 -name "MYTOKEN" -symbol "MT" -resNumber 33 -i ./src/cli/contracts/image.png -p oylnet
+oyl alkane new-token -pre 500000000000 -amount 100000000000 -c 100000 -name "MYTOKEN" -symbol "MT" -resNumber 33 -i ./src/cli/contracts/image.png -p oylnet
 ```
 
 _(...generate a block)_
