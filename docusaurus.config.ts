@@ -214,7 +214,7 @@ const config: Config = {
           'aria-label': 'Discord',
         },
         {
-          href: 'https://github.com/sandshrewmetaprotocols',
+          href: 'https://github.com/kungfuflex/alkanes-rs',
           position: 'right',
           className: 'header-github-link',
           'aria-label': 'GitHub',
