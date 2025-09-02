@@ -55,43 +55,79 @@ By creating an asset like DIESEL, developers showcase how ALKANES can support an
 
 ## How to Get DIESEL
 
-### Submit the First tx in a Block to Mint Transaction
+### Acquiring from Existing Holders
 
-- Anyone can broadcast a transaction that calls the DIESEL contract in a given block.
-- If your transaction is included before anyone else's, you claim that block's DIESEL reward.
-- Initially, this may be more open—over time, miners or other participants might pay closer attention.
+Once DIESEL starts circulating, you can obtain it via peer-to-peer trades, AMMs on ALKANES (e.g., Oyl Swap), or other secondary markets.
 
-### Acquire from Existing Holders
+### Minting DIESEL
 
-- Once DIESEL starts circulating, you can obtain it via peer-to-peer trades, AMMs on ALKANES (e.g., Oyl Swap), or other secondary markets.
-- All standard Bitcoin transaction fees still apply—no extra DIESEL fees.
-- Because ALKANES runs purely on Bitcoin, the mint process and transfers all occur on-chain, secured by Bitcoin's consensus.
+DIESEL is minted on a block-by-block basis. See the upgrade details below for how the minting rewards are calculated.
 
-## DIESEL Distribution Overview
+## 🛠️ DIESEL Upgrade
 
-**Total Supply:** 1,562,500 DIESEL
+The DIESEL contract was upgraded at block 909,861. This upgrade introduced a new mint distribution formula while keeping the minting call itself the same.
 
-### Block 880,000: Official Launch
+[View Upgrade Transaction on Ordiscan](https://ordiscan.com/tx/11da430c851a6a7627495dce130d37f0ad3d1bd730b29896ae947540215dbcc5)
 
-DIESEL goes live when block 880,000 is mined. At this point, the ALKANES indexer will start looking for protocol messages—including transactions calling the DIESEL contract.
+### Why Was DIESEL Upgraded?
 
-### Jump Start (Blocks 800,000 → 880,000)
+The original DIESEL minting mechanism awarded the entire block's reward to the _first_ valid transaction in each block. While simple, this created an environment where a single party could monopolize the minting process by using sophisticated botting techniques.
 
-Instead of letting those blocks be minted retroactively, we do a one-time allocation of roughly 28% of the total DIESEL supply (i.e., 440,000 tokens) at block 880,000.
+In response to community feedback expressing discontent with this monopoly, the contract was upgraded to a more equitable distribution model. The new formula ensures that all participants who successfully mint in a block receive a fair share of the rewards, fostering broader participation and decentralizing the distribution.
 
-This allocation is earmarked for the OYL protocol team and select community airdrops (specific details & eligibility TBA).
+### Minting Call (Unchanged)
 
-### Remaining ~72%
+Minting continues to use the same contract call. There are no changes to the calldata or execution logic for initiating a mint.
 
-- Claimed block-by-block in real time as Bitcoin blocks are mined.
-- Anyone can submit a mint transaction—no pre-sale, no VC allocations.
+```bash
+oyl alkanes execute --calldata "2,0,77"
+```
 
-### Why the Jump Start?
+### New Mint Distribution Formula
 
-The jump start covers blocks 800,000 to 880,000, mirroring what Bitcoin's subsidy would have produced in that window. Instead of distributing it block-by-block, we allocate that chunk at once. This grants:
+With the upgrade live, the amount of DIESEL each minter receives follows a new formula:
 
-- Driving adoption and Utility for ALKANES development
-- Community Engagement through airdrops to early adopters across Bitcoin-based ecosystems.
+**Your Mint Amount** = **Total DIESEL Allocated to Minters** / **Number of Mints in Block**
+
+Where:
+
+- **Total DIESEL Allocated to Minters** = `BTC Block Reward` - `DIESEL Protocol Allocation`
+- **DIESEL Protocol Allocation** = `min(Block Total TX Fees, 0.5 * BTC Block Reward)`
+
+### Minting Constraints
+
+A key rule of the new system is that only **one mint is allowed per transaction**. Attempting to mint multiple times using multiple protostones in a single transaction will be rejected.
+
+### Purpose of the DIESEL Protocol Allocation
+
+The DIESEL Protocol Allocation serves two primary functions:
+
+1.  **Enhance Liquidity:** Redirect value into DIESEL AMM pools.
+2.  **Support Sustainability:** Support the long-term health of the ecosystem and prevent minting rewards from being overly diluted.
+
+This allocation is capped at 50% of the BTC block reward, ensuring minters always receive a share of DIESEL for valid mint calls.
+
+### Example Distribution Calculation
+
+Let's walk through an example:
+
+- **BTC Block Reward:** 3.125 BTC
+- **Block TX Fees:** 0.125 BTC
+- **Number of Mints:** 30
+
+**Step 1: Calculate DIESEL Protocol Allocation**
+The protocol allocation is the smaller of the total transaction fees or half the block reward.
+`min(0.125, 0.5 * 3.125)` = `min(0.125, 1.5625)` = **0.125**
+
+**Step 2: Calculate Total DIESEL Allocated to Minters**
+This is the block reward minus the protocol's allocation.
+`3.125 - 0.125` = **3.000 DIESEL**
+
+**Step 3: Calculate Mint Amount per User**
+The total allocated DIESEL is divided equally among all minters in the block.
+`3.000 / 30` = **0.1 DIESEL per mint**
+
+For details on the original distribution mechanism, see the [Legacy DIESEL Distribution](./legacy-diesel.md) page.
 
 ## Wrapping Up
 
