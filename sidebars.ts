@@ -18,6 +18,11 @@ const sidebars: SidebarsConfig = {
           id: 'learn/diesel',
           label: 'What is Diesel?',
         },
+        {
+          type: 'doc',
+          id: 'learn/legacy-diesel',
+          label: 'Legacy DIESEL Distribution',
+        },
         'learn/faq',
         {
           type: 'category',
