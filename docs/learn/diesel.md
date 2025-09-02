@@ -39,11 +39,7 @@ DIESEL is the first example of a Bitcoin Layer-1 (L1) smart contract asset built
 
 ### Mirrors Bitcoin Block Rewards
 
-For each new Bitcoin block, a matching DIESEL reward can be claimed by the first valid transaction that calls the DIESEL contract and makes it into that block.
-
-### No Separate Token Fees
-
-ALKANES strictly uses BTC for transaction fees; DIESEL is not required to interact with the protocol.
+For each new Bitcoin block, a matching DIESEL reward is distributed among all transactions that calls the DIESEL contract and makes it into that block.
 
 ### 2140 Endpoint
 
