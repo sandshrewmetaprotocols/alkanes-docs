@@ -1,0 +1,321 @@
+{
+  "common": {
+    "connectWallet": "Sambung Dompet",
+    "disconnect": "Putuskan Sambungan",
+    "loading": "Memuatkan...",
+    "error": "Ralat",
+    "success": "Berjaya",
+    "cancel": "Batal",
+    "submit": "Hantar",
+    "save": "Simpan",
+    "delete": "Padam",
+    "edit": "Sunting",
+    "viewAll": "Lihat Semua",
+    "learnMore": "Ketahui Lebih Lanjut",
+    "backTo": "Kembali ke {page}",
+    "required": "*"
+  },
+  "navigation": {
+    "dashboard": "Papan Pemuka",
+    "governance": "Governance",
+      "fuel": "FUEL",
+    "fuel": "FUEL",
+    "forum": "Forum",
+    "docs": "Dokumentasi",
+    "github": "GitHub"
+  },
+  "home": {
+    "hero": {
+      "title": "ALKANES",
+      "subtitle": "Tadbir urus, bilik kebal hasil, dan dokumentasi untuk metaprotokol Alkanes di Bitcoin. Taruh, undi, dan bentuk masa depan DeFi Bitcoin.",
+      "viewProposals": "Lihat Cadangan",
+      "readDocs": "Baca Dokumentasi",
+      "getApiKey": "Dapatkan Kunci API"
+    },
+    "explore": {
+      "title": "Terokai DIESEL",
+      "governance": {
+        "title": "Tadbir Urus",
+        "description": "Undi cadangan dan bentuk hala tuju protokol"
+      },
+      "forum": {
+        "title": "Forum",
+        "description": "Bincang cadangan dan idea bersama komuniti"
+      },
+      "docs": {
+        "title": "Dokumentasi",
+        "description": "Pelajari cara membina dengan Alkanes"
+      },
+      "quickstart": {
+        "title": "Mula Pantas",
+        "description": "Deploy kontrak pintar pertama anda"
+      }
+    },
+    "features": {
+      "title": "Mengapa DIESEL?",
+      "security": {
+        "title": "Keselamatan Bitcoin",
+        "description": "Semua keadaan berlabuh pada Bitcoin. Tiada sidechain, tiada jambatan — hanya Bitcoin tulen."
+      },
+      "wasm": {
+        "title": "Runtime WASM",
+        "description": "Tulis kontrak pintar dalam Rust, kompil ke WebAssembly, deploy ke Bitcoin."
+      },
+      "governance": {
+        "title": "Tadbir Urus Komuniti",
+        "description": "Pemegang DIESEL mengundi peningkatan protokol, peruntukan perbendaharaan, dan banyak lagi."
+      }
+    },
+    "cta": {
+      "title": "Bersedia untuk menyertai?",
+      "description": "Sambung dompet anda untuk mengundi cadangan dan taruh token DIESEL anda.",
+      "viewProposals": "Lihat Cadangan Aktif",
+      "github": "Terokai di GitHub"
+    }
+  },
+  "governance": {
+    "title": "Tadbir Urus DIESEL",
+    "subtitle": "Undi cadangan untuk membentuk masa depan Alkanes",
+    "createProposal": "Cipta Cadangan",
+    "filters": {
+      "all": "Semua",
+      "active": "Aktif",
+      "pending": "Menunggu",
+      "closed": "Ditutup"
+    },
+    "proposal": {
+      "by": "oleh",
+      "votes": "undi",
+      "vote": "undi",
+      "starts": "Bermula",
+      "diesel": "{amount} DIESEL",
+      "for": "Sokong",
+      "against": "Tolak"
+    },
+    "states": {
+      "ACTIVE": "Aktif",
+      "PENDING": "Menunggu",
+      "CLOSED": "Ditutup",
+      "EXECUTED": "Dilaksanakan",
+      "CANCELLED": "Dibatalkan"
+    },
+    "noProposals": "Tiada cadangan ditemui",
+    "error": "Gagal memuatkan cadangan"
+  },
+  "forum": {
+    "title": "Perbincangan",
+    "sidebar": {
+      "categories": "Kategori",
+      "all": "Semua",
+      "type": "Jenis"
+    },
+    "newDiscussion": "Perbincangan Baharu",
+    "connectToPost": "Sambung dompet untuk mengirim",
+    "noDiscussions": "Tiada perbincangan ditemui",
+    "startFirst": "Mulakan perbincangan pertama",
+    "sort": {
+      "label": "Susun",
+      "latestActivity": "Aktiviti Terkini",
+      "newest": "Terbaharu",
+      "mostReplies": "Paling Banyak Balasan"
+    },
+    "types": {
+      "discussion": "Perbincangan",
+      "proposal": "Cadangan",
+      "announcement": "Pengumuman",
+      "question": "Soalan"
+    },
+    "stats": {
+      "replies": "balasan",
+      "views": "tontonan"
+    },
+    "pagination": {
+      "previous": "Sebelumnya",
+      "next": "Seterusnya",
+      "page": "Halaman {current} daripada {total}"
+    },
+    "new": {
+      "title": "Perbincangan Baharu",
+      "backToForum": "Kembali ke Forum",
+      "form": {
+        "title": "Tajuk",
+        "titlePlaceholder": "Apakah topik perbincangan anda?",
+        "category": "Kategori",
+        "type": "Jenis",
+        "content": "Kandungan",
+        "contentPlaceholder": "Tulis kandungan perbincangan anda... (Markdown disokong)",
+        "preview": "Pratonton",
+        "markdownHint": "Menyokong format Markdown. Sebut pengguna dengan @alamat",
+        "creating": "Sedang mencipta...",
+        "submit": "Cipta Perbincangan"
+      },
+      "walletRequired": {
+        "title": "Dompet Diperlukan",
+        "description": "Sila sambung dompet anda untuk mencipta perbincangan"
+      },
+      "alerts": {
+        "connectWallet": "Sila sambung dompet anda terlebih dahulu",
+        "fillFields": "Sila isi semua medan yang diperlukan",
+        "failed": "Gagal mencipta perbincangan"
+      }
+    },
+    "discussion": {
+      "pinned": "Disemat",
+      "locked": "Dikunci",
+      "by": "oleh",
+      "posts": "{count} kiriman",
+      "views": "{count} tontonan",
+      "linkedProposal": "Cadangan Berkaitan",
+      "viewProposal": "Lihat Cadangan",
+      "edited": "disunting",
+      "reply": "Balas",
+      "replyingTo": "Membalas #{postNumber} oleh {author}",
+      "replyingToPost": "Membalas #{postNumber}",
+      "replyingToUser": "Membalas {author}",
+      "addReply": "Tambah Balasan",
+      "replyPlaceholder": "Tulis balasan anda... (Markdown disokong)",
+      "mentionHint": "Sebut pengguna dengan @alamat",
+      "posting": "Mengirim...",
+      "postReply": "Hantar Balasan",
+      "connectToReply": "Sambung dompet anda untuk membalas perbincangan ini",
+      "backToForum": "Kembali ke Forum",
+      "notFound": {
+        "title": "Tidak Ditemui",
+        "description": "Perbincangan ini tidak wujud"
+      },
+      "alerts": {
+        "replyFailed": "Gagal mengirim balasan"
+      }
+    }
+  },
+  "dashboard": {
+    "diesel": {
+      "title": "DIESEL",
+      "subtitle": "Token Tadbir Urus",
+      "chart": "Carta Harga 24j",
+      "high": "Tertinggi 24j",
+      "low": "Terendah 24j",
+      "volume": "Volum 24j",
+      "volumeDisclaimer": "Dianggarkan melalui persampelan on-chain",
+      "volumeLink": "Statistik penuh di oyl.io/swap",
+      "marketCap": "Permodalan Pasaran"
+    },
+    "vaults": {
+      "title": "Bilik Kebal DIESEL",
+      "tvl": "TVL",
+      "apy": "APY",
+      "totalTvl": "Jumlah Nilai Terkunci"
+    },
+    "proposals": {
+      "title": "Cadangan Aktif",
+      "cta": {
+        "title": "Bentuk masa depan DIESEL",
+        "description": "Undi dengan token DIESEL anda",
+        "button": "Sertai"
+      },
+      "ends": "Tamat dalam {time}",
+      "starts": "Bermula dalam {time}",
+      "by": "Oleh {author}"
+    }
+  },
+  "footer": {
+    "tagline": "Metaprotokol Alkanes",
+    "links": {
+      "documentation": "Dokumentasi",
+      "governance": "Governance",
+      "fuel": "FUEL",
+    "fuel": "FUEL",
+      "forum": "Forum",
+      "github": "GitHub",
+      "twitter": "Twitter",
+      "privacy": "Dasar Privasi",
+      "terms": "Terma Perkhidmatan"
+    },
+    "copyright": "© 2025 Yayasan Alkanes. Dibina di atas Bitcoin. Lesen MIT."
+  },
+  "docs": {
+    "nav": {
+      "menu": "Menu",
+      "title": "Dokumentasi",
+      "gettingStarted": {
+        "title": "Bermula",
+        "introduction": "Pengenalan",
+        "quickStart": "Mula Pantas",
+        "installation": "Pemasangan"
+      },
+      "coreConcepts": {
+        "title": "Konsep Teras",
+        "alkanes": "Cara Alkanes Berfungsi",
+        "protorunes": "Protorunes",
+        "diesel": "Token DIESEL",
+        "metashrew": "Pengindeks Metashrew"
+      },
+      "cli": {
+        "title": "Rujukan CLI",
+        "overview": "Gambaran Keseluruhan",
+        "installation": "Pemasangan",
+        "wallet": "Arahan Dompet",
+        "alkanes": "Arahan Alkanes",
+        "ord": "Arahan Ordinals",
+        "esplora": "Arahan Esplora",
+        "espo": "Arahan Espo",
+        "brc20prog": "Arahan BRC20-Prog",
+        "dataapi": "Arahan DataAPI",
+        "deploy": "Arahan Deploy",
+        "execute": "Arahan Execute"
+      },
+      "jsonrpc": {
+        "title": "API JSON-RPC",
+        "overview": "Gambaran Keseluruhan",
+        "alkanes": "Kaedah Alkanes",
+        "bitcoind": "Kaedah Bitcoin Core",
+        "esplora": "Kaedah Esplora",
+        "espo": "Kaedah Espo"
+      },
+      "api": {
+        "title": "API Subfrost",
+        "overview": "Gambaran Keseluruhan",
+        "rest": "Titik Akhir REST",
+        "jsonrpc": "JSON-RPC",
+        "alkanes": "Pertanyaan Alkanes"
+      },
+      "contracts": {
+        "title": "Membina Kontrak",
+        "setup": "Persediaan Projek",
+        "std": "Pustaka alkanes-std",
+        "storage": "Storan & Keadaan",
+        "testing": "Pengujian",
+        "deployment": "Deployment"
+      },
+      "tutorials": {
+        "title": "Tutorial",
+        "wrapBtc": "Bungkus/Buka BTC",
+        "token": "Bina Token",
+        "amm": "Bina AMM"
+      },
+      "integration": {
+        "title": "Contoh Integrasi",
+        "nextjsSetup": "Persediaan Next.js",
+        "tsSdk": "Panduan TS SDK",
+        "tsSdkApi": "Rujukan API TS SDK",
+        "alkanesWebSys": "Ambil Data Alkane",
+        "luaScripts": "Pengoptimuman Skrip Lua",
+        "marketData": "Cap Pasaran & TVL"
+      }
+    }
+  },
+  "time": {
+    "justNow": "baru sahaja",
+    "minutesAgo": "{count}m lalu",
+    "hoursAgo": "{count}j lalu",
+    "daysAgo": "{count}h lalu",
+    "daysLeft": "{count, plural, =0 {Kurang dari sehari} =1 {1 hari lagi} other {# hari lagi}}",
+    "hoursLeft": "{count, plural, =1 {1 jam lagi} other {# jam lagi}}",
+    "minutesLeft": "{count, plural, =1 {1 minit lagi} other {# minit lagi}}",
+    "ended": "Tamat"
+  },
+  "wallet": {
+    "connected": "Disambungkan",
+    "connectWallet": "Sambung Dompet"
+  }
+}

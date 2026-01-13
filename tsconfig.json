@@ -1,18 +1,69 @@
 {
-  // This file is not used in compilation. It is here just for a nice editor experience.
-  "extends": "@docusaurus/tsconfig",
   "compilerOptions": {
-    "baseUrl": ".",
-    "strict": true,
-    "esModuleInterop": true,
+    "target": "ES2017",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
+    "types": [
+      "node",
+      "react",
+      "react-dom"
+    ],
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
     "paths": {
-      "@site/*": ["./*"],
-      "@components/*": ["src/components/*"],
-      "@theme/*": ["src/theme/*"]
+      "@/*": [
+        "./*"
+      ],
+      "@/components/*": [
+        "./components/*"
+      ],
+      "@/lib/*": [
+        "./lib/*"
+      ],
+      "@/hooks/*": [
+        "./hooks/*"
+      ],
+      "@/ts-sdk": [
+        "./ts-sdk"
+      ],
+      "@/ts-sdk/*": [
+        "./ts-sdk/*"
+      ]
     }
   },
-  "exclude": [".docusaurus", "build"]
+  "include": [
+    "next-env.d.ts",
+    "types/**/*.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.mdx",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    ".external-build",
+    "reference",
+    "ts-sdk",
+    "tests",
+    "alkanes-rs",
+    "fire"
+  ]
 }

@@ -1,0 +1,100 @@
+[
+  {
+    "title": "Getting Started",
+    "items": [
+      {
+        "title": "Introduction",
+        "href": "/docs"
+      },
+      {
+        "title": "Quick Start",
+        "href": "/docs/quickstart"
+      },
+      {
+        "title": "Installation",
+        "href": "/docs/installation"
+      }
+    ]
+  },
+  {
+    "title": "Core Concepts",
+    "items": [
+      {
+        "title": "How Alkanes Work",
+        "href": "/docs/concepts/alkanes"
+      },
+      {
+        "title": "Protorunes",
+        "href": "/docs/concepts/protorunes"
+      },
+      {
+        "title": "DIESEL Token",
+        "href": "/docs/concepts/diesel"
+      }
+    ]
+  },
+  {
+    "title": "CLI Reference",
+    "items": [
+      {
+        "title": "Overview",
+        "href": "/docs/cli"
+      },
+      {
+        "title": "Wallet Commands",
+        "href": "/docs/cli/wallet"
+      },
+      {
+        "title": "Deploy Commands",
+        "href": "/docs/cli/deploy"
+      }
+    ]
+  },
+  {
+    "title": "Subfrost API",
+    "items": [
+      {
+        "title": "Overview",
+        "href": "/docs/api"
+      },
+      {
+        "title": "REST Endpoints",
+        "href": "/docs/api/rest"
+      },
+      {
+        "title": "JSON-RPC",
+        "href": "/docs/api/jsonrpc"
+      }
+    ]
+  },
+  {
+    "title": "Building Contracts",
+    "items": [
+      {
+        "title": "Project Setup",
+        "href": "/docs/contracts/setup"
+      },
+      {
+        "title": "Storage & State",
+        "href": "/docs/contracts/storage"
+      },
+      {
+        "title": "Testing",
+        "href": "/docs/contracts/testing"
+      }
+    ]
+  },
+  {
+    "title": "Tutorials",
+    "items": [
+      {
+        "title": "Wrap/Unwrap BTC",
+        "href": "/docs/tutorials/wrap-btc"
+      },
+      {
+        "title": "Build a Token",
+        "href": "/docs/tutorials/token"
+      }
+    ]
+  }
+]

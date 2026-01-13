@@ -1,0 +1,525 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================
+// GOVERNANCE MODELS
+// ============================================
+
+model Proposal {
+  id          String        @id @default(cuid())
+  title       String
+  body        String        @db.Text
+  choices     String[]      // e.g., ["For", "Against", "Abstain"]
+
+  // Author information
+  author      String        // Bitcoin address
+  authorSig   String        @db.Text // BIP-322 signature of proposal hash
+
+  // Voting parameters
+  snapshot    Int           // Block height for voting power snapshot
+  start       DateTime
+  end         DateTime
+  quorum      BigInt        @default(0) // Minimum total voting power required
+
+  // State
+  state       ProposalState @default(PENDING)
+
+  // Results (updated as votes come in)
+  scores      Json          @default("[]") // Array of vote totals per choice
+  totalVotes  BigInt        @default(0)
+
+  // Relations
+  votes       Vote[]
+  discussion  Discussion?   // Linked discussion thread
+
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  @@index([author])
+  @@index([state])
+  @@index([start, end])
+}
+
+model Vote {
+  id          String   @id @default(cuid())
+
+  // Proposal relation
+  proposal    Proposal @relation(fields: [proposalId], references: [id], onDelete: Cascade)
+  proposalId  String
+
+  // Voter information
+  voter       String   // Bitcoin address
+  voterSig    String   @db.Text // BIP-322 signature of vote payload
+
+  // Vote details
+  choice      Int      // Index into proposal.choices
+  votingPower BigInt   // DIESEL balance at snapshot block
+  reason      String?  @db.Text // Optional reasoning
+
+  // Metadata
+  ipfsHash    String?  // Optional IPFS pin for immutability
+
+  createdAt   DateTime @default(now())
+
+  @@unique([proposalId, voter]) // One vote per address per proposal
+  @@index([voter])
+  @@index([proposalId])
+}
+
+model Delegate {
+  id          String   @id @default(cuid())
+
+  // Delegation
+  delegator   String   @unique // Who is delegating (Bitcoin address)
+  delegate    String   // Who receives voting power (Bitcoin address)
+
+  // Proof
+  signature   String   @db.Text // BIP-322 signature proving delegation
+
+  // Metadata
+  statement   String?  @db.Text // Optional delegation statement
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([delegate])
+}
+
+enum ProposalState {
+  PENDING    // Before voting starts
+  ACTIVE     // Voting in progress
+  CLOSED     // Voting ended
+  EXECUTED   // Proposal executed (if applicable)
+  CANCELLED  // Proposal cancelled
+}
+
+// ============================================
+// FORUM / DISCUSSION MODELS
+// ============================================
+
+model Category {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  slug        String   @unique
+  description String?  @db.Text
+  color       String   @default("#0070c5") // Hex color for UI
+
+  // Hierarchy
+  parentId    String?
+  parent      Category?  @relation("CategoryHierarchy", fields: [parentId], references: [id])
+  children    Category[] @relation("CategoryHierarchy")
+
+  // Settings
+  position    Int      @default(0)
+  isReadOnly  Boolean  @default(false) // Only admins can post
+
+  // Relations
+  discussions Discussion[]
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([slug])
+  @@index([parentId])
+}
+
+model Discussion {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+
+  // Author (Bitcoin address)
+  author      String
+  authorSig   String?  @db.Text // Optional BIP-322 signature
+
+  // Category
+  category    Category @relation(fields: [categoryId], references: [id])
+  categoryId  String
+
+  // Optional link to proposal (governance discussions)
+  proposal    Proposal? @relation(fields: [proposalId], references: [id])
+  proposalId  String?   @unique
+
+  // Discussion type
+  type        DiscussionType @default(GENERAL)
+
+  // Status
+  isPinned    Boolean  @default(false)
+  isLocked    Boolean  @default(false) // No new posts allowed
+  isHidden    Boolean  @default(false)
+
+  // Stats (denormalized for performance)
+  postsCount  Int      @default(0)
+  viewsCount  Int      @default(0)
+  likesCount  Int      @default(0)
+
+  // Timestamps
+  lastPostAt  DateTime?
+  bumpedAt    DateTime @default(now()) // For sorting (updated on new posts)
+
+  // Relations
+  posts       Post[]
+  tags        DiscussionTag[]
+  participants DiscussionParticipant[]
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([author])
+  @@index([categoryId])
+  @@index([proposalId])
+  @@index([bumpedAt])
+  @@index([type])
+}
+
+enum DiscussionType {
+  GENERAL     // General discussion
+  PROPOSAL    // Linked to a governance proposal
+  ANNOUNCEMENT // Official announcements
+  QUESTION    // Q&A format
+}
+
+model Post {
+  id          String   @id @default(cuid())
+
+  // Content
+  raw         String   @db.Text // Markdown content
+  cooked      String   @db.Text // Rendered HTML
+
+  // Author (Bitcoin address)
+  author      String
+  authorSig   String?  @db.Text // Optional BIP-322 signature
+
+  // Discussion relation
+  discussion  Discussion @relation(fields: [discussionId], references: [id], onDelete: Cascade)
+  discussionId String
+
+  // Position in discussion
+  postNumber  Int      // Sequential number within discussion
+
+  // Reply threading
+  replyToId   String?  // ID of post being replied to
+  replyTo     Post?    @relation("PostReplies", fields: [replyToId], references: [id])
+  replies     Post[]   @relation("PostReplies")
+
+  // Post type
+  postType    PostType @default(REGULAR)
+
+  // Status
+  isHidden    Boolean  @default(false)
+  isEdited    Boolean  @default(false)
+  editedAt    DateTime?
+
+  // Stats (denormalized)
+  likesCount  Int      @default(0)
+  repliesCount Int     @default(0)
+
+  // Relations
+  reactions   Reaction[]
+  revisions   PostRevision[]
+  mentions    Mention[]
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([discussionId, postNumber])
+  @@index([author])
+  @@index([discussionId])
+  @@index([replyToId])
+  @@index([createdAt])
+}
+
+enum PostType {
+  REGULAR     // Normal post
+  MODERATOR   // Moderator action
+  SYSTEM      // System message (e.g., "voting started")
+  WHISPER     // Only visible to author and moderators
+}
+
+model PostRevision {
+  id          String   @id @default(cuid())
+
+  post        Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  postId      String
+
+  // Previous content
+  raw         String   @db.Text
+  cooked      String   @db.Text
+
+  // Edit info
+  editedBy    String   // Bitcoin address of editor
+  editReason  String?
+  version     Int      // Revision number
+
+  createdAt   DateTime @default(now())
+
+  @@index([postId])
+}
+
+model Reaction {
+  id          String   @id @default(cuid())
+
+  post        Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  postId      String
+
+  // Reactor (Bitcoin address)
+  user        String
+
+  // Reaction type
+  type        ReactionType
+
+  createdAt   DateTime @default(now())
+
+  @@unique([postId, user, type]) // One reaction per type per user per post
+  @@index([postId])
+  @@index([user])
+}
+
+enum ReactionType {
+  LIKE
+  HEART
+  CELEBRATE
+  THINKING
+  DISAGREE
+}
+
+model Mention {
+  id          String   @id @default(cuid())
+
+  post        Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  postId      String
+
+  // Mentioned address
+  mentioned   String   // Bitcoin address being mentioned
+
+  // Whether notification was sent
+  notified    Boolean  @default(false)
+
+  createdAt   DateTime @default(now())
+
+  @@unique([postId, mentioned])
+  @@index([mentioned])
+}
+
+model Tag {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  slug        String   @unique
+  description String?
+  color       String   @default("#64748b") // Hex color
+
+  // Usage stats
+  usageCount  Int      @default(0)
+
+  discussions DiscussionTag[]
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([slug])
+}
+
+model DiscussionTag {
+  id           String   @id @default(cuid())
+
+  discussion   Discussion @relation(fields: [discussionId], references: [id], onDelete: Cascade)
+  discussionId String
+
+  tag          Tag      @relation(fields: [tagId], references: [id], onDelete: Cascade)
+  tagId        String
+
+  createdAt    DateTime @default(now())
+
+  @@unique([discussionId, tagId])
+  @@index([tagId])
+}
+
+model DiscussionParticipant {
+  id           String   @id @default(cuid())
+
+  discussion   Discussion @relation(fields: [discussionId], references: [id], onDelete: Cascade)
+  discussionId String
+
+  // Participant (Bitcoin address)
+  user         String
+
+  // Reading progress
+  lastReadPostNumber Int @default(0)
+  lastReadAt   DateTime?
+
+  // Notification preferences
+  notificationLevel NotificationLevel @default(TRACKING)
+
+  // Stats
+  postsCount   Int      @default(0)
+
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@unique([discussionId, user])
+  @@index([user])
+}
+
+enum NotificationLevel {
+  MUTED       // No notifications
+  REGULAR     // Default behavior
+  TRACKING    // Notify on replies to own posts
+  WATCHING    // Notify on all new posts
+}
+
+// ============================================
+// USER PROFILES (for forum)
+// ============================================
+
+model UserProfile {
+  id          String   @id @default(cuid())
+
+  // Bitcoin address (primary identifier)
+  address     String   @unique
+
+  // Display info
+  displayName String?
+  bio         String?  @db.Text
+  avatarUrl   String?
+
+  // Verification
+  signature   String?  @db.Text // BIP-322 signature proving ownership
+  verified    Boolean  @default(false)
+
+  // Stats
+  postsCount      Int  @default(0)
+  discussionsCount Int @default(0)
+  likesReceived   Int  @default(0)
+  likesGiven      Int  @default(0)
+  dieselBalance   BigInt @default(0) // Cached DIESEL balance
+
+  // Preferences
+  emailNotifications Boolean @default(false)
+  email           String?
+
+  // Trust level (based on participation)
+  trustLevel      Int  @default(0) // 0-4, similar to Discourse
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  lastSeenAt  DateTime?
+
+  @@index([address])
+  @@index([trustLevel])
+}
+
+// ============================================
+// VOTING POWER SNAPSHOTS
+// ============================================
+
+model VotingPowerSnapshot {
+  id            String   @id @default(cuid())
+
+  // Snapshot parameters
+  blockHeight   Int      @unique
+  blockHash     String
+
+  // Aggregated data
+  totalSupply   BigInt   // Total DIESEL in circulation at this block
+  holderCount   Int      // Number of addresses holding DIESEL
+
+  // Snapshot taken at
+  createdAt     DateTime @default(now())
+
+  // Individual balances stored separately for query efficiency
+  balances      AddressBalance[]
+
+  @@index([blockHeight])
+}
+
+model AddressBalance {
+  id          String              @id @default(cuid())
+
+  // Snapshot relation
+  snapshot    VotingPowerSnapshot @relation(fields: [snapshotId], references: [id], onDelete: Cascade)
+  snapshotId  String
+
+  // Balance data
+  address     String
+  balance     BigInt
+
+  @@unique([snapshotId, address])
+  @@index([address])
+}
+
+// ============================================
+// GOVERNANCE SETTINGS
+// ============================================
+
+model GovernanceSettings {
+  id                    String   @id @default("default")
+
+  // Voting parameters
+  votingDelay           Int      @default(0)      // Blocks after proposal creation before voting starts
+  votingPeriod          Int      @default(17280)  // ~3 days in Bitcoin blocks
+  proposalThreshold     BigInt   @default(1000000000) // Min DIESEL to create proposal (1000 with 6 decimals)
+  quorumNumerator       Int      @default(4)      // 4% quorum
+  quorumDenominator     Int      @default(100)
+
+  // DIESEL token
+  dieselAlkaneBlock     Int      @default(2)
+  dieselAlkaneTx        Int      @default(0)
+
+  // Forum settings
+  minDieselToPost       BigInt   @default(0)      // Min DIESEL to create posts (0 = anyone)
+  minDieselToCreateDiscussion BigInt @default(0) // Min DIESEL to create discussions
+
+  updatedAt             DateTime @updatedAt
+}
+
+// ============================================
+// NOTIFICATIONS
+// ============================================
+
+model Notification {
+  id          String   @id @default(cuid())
+
+  // Recipient (Bitcoin address)
+  user        String
+
+  // Notification type
+  type        NotificationType
+
+  // Related entities
+  discussionId String?
+  postId       String?
+  proposalId   String?
+
+  // Content
+  title       String
+  body        String?  @db.Text
+
+  // Actor (who triggered the notification)
+  actorAddress String?
+
+  // Status
+  isRead      Boolean  @default(false)
+  readAt      DateTime?
+
+  createdAt   DateTime @default(now())
+
+  @@index([user])
+  @@index([user, isRead])
+  @@index([createdAt])
+}
+
+enum NotificationType {
+  REPLY           // Someone replied to your post
+  MENTION         // Someone mentioned you
+  LIKE            // Someone liked your post
+  QUOTE           // Someone quoted your post
+  PROPOSAL_STARTED // Voting started on a proposal
+  PROPOSAL_ENDED  // Voting ended on a proposal
+  NEW_DISCUSSION  // New discussion in watched category
+}

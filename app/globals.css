@@ -1,0 +1,381 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* DIESEL Dark Theme - CSS Variables */
+:root {
+  /* Force dark mode by default */
+  --sf-bg-start: #0a0a0a;
+  --sf-bg-end: #141414;
+  --sf-surface: #1a1a1a;
+  --sf-text: #f5f5f5;
+  --sf-muted: #888888;
+  --sf-primary: #f59e0b;
+  --sf-primary-pressed: #d97706;
+  --sf-outline: #333333;
+
+  /* Glass Effect */
+  --sf-glass-bg: rgba(20, 20, 20, 0.9);
+  --sf-glass-border: rgba(245, 158, 11, 0.2);
+
+  /* Rainbow Gradient (DIESEL 2.0 branding) */
+  --diesel-rainbow: linear-gradient(90deg, #ef4444, #f97316, #eab308, #22c55e, #3b82f6, #8b5cf6, #ec4899);
+
+  /* Brand colors */
+  --alkane-primary: #0070c5;
+  --alkane-secondary: #0c8ee7;
+  --alkane-accent: #36aaf6;
+
+  /* DIESEL token */
+  --diesel-primary: #f59e0b;
+  --diesel-secondary: #d97706;
+
+  /* Info Card Colors */
+  --sf-info-gray-bg: rgba(55, 65, 81, 0.4);
+  --sf-info-blue-bg: rgba(30, 58, 138, 0.4);
+  --sf-info-green-bg: rgba(20, 83, 45, 0.4);
+  --sf-info-orange-bg: rgba(124, 45, 18, 0.4);
+  --sf-info-red-bg: rgba(127, 29, 29, 0.4);
+  --sf-info-yellow-bg: rgba(113, 63, 18, 0.4);
+
+  /* Boost Section */
+  --sf-boost-bg-from: rgba(245, 158, 11, 0.15);
+  --sf-boost-bg-to: rgba(217, 119, 6, 0.1);
+  --sf-boost-label: #fcd34d;
+  --sf-boost-value: #fef3c7;
+  --sf-boost-icon-from: #f59e0b;
+  --sf-boost-icon-to: #d97706;
+}
+
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  background: linear-gradient(180deg, var(--sf-bg-start) 0%, var(--sf-bg-end) 100%);
+  min-height: 100vh;
+  color: var(--sf-text);
+}
+
+/* Rainbow bar accent */
+.diesel-rainbow-bar {
+  height: 3px;
+  background: var(--diesel-rainbow);
+  border-radius: 2px;
+}
+
+.diesel-rainbow-bar-thick {
+  height: 4px;
+  background: var(--diesel-rainbow);
+  border-radius: 2px;
+}
+
+/* Glass effect utility */
+.glass {
+  background: var(--sf-glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 2px solid var(--sf-glass-border);
+}
+
+.glass-card {
+  @apply glass rounded-2xl;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+.glass-card-hover {
+  @apply glass-card transition-all duration-200;
+}
+
+.glass-card-hover:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Card header section */
+.card-header {
+  @apply px-6 py-4 border-b-2;
+  border-color: var(--sf-glass-border);
+  background: rgba(26, 26, 26, 0.4);
+}
+
+/* Primary button (DIESEL orange) */
+.btn-primary {
+  @apply px-6 py-3 font-semibold rounded-lg transition-all duration-200;
+  background: linear-gradient(135deg, var(--sf-primary) 0%, var(--sf-primary-pressed) 100%);
+  color: #000;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+}
+
+.btn-primary:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+}
+
+/* Secondary button */
+.btn-secondary {
+  @apply px-6 py-3 font-semibold rounded-lg transition-all duration-200;
+  background: var(--sf-surface);
+  color: var(--sf-text);
+  border: 2px solid var(--sf-outline);
+}
+
+.btn-secondary:hover {
+  border-color: var(--sf-primary);
+  color: var(--sf-primary);
+}
+
+/* Frost button (Subfrost cyan/ice blue) */
+.btn-frost {
+  @apply px-6 py-3 font-semibold rounded-lg transition-all duration-200 inline-flex items-center gap-2;
+  background: linear-gradient(135deg, #0891b2 0%, #06b6d4 50%, #22d3ee 100%);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
+  border: none;
+}
+
+.btn-frost:hover {
+  filter: brightness(1.15);
+  box-shadow: 0 6px 20px rgba(6, 182, 212, 0.5), 0 0 30px rgba(34, 211, 238, 0.3);
+  transform: translateY(-1px);
+}
+
+/* Focus ring */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
+  --tw-ring-color: var(--sf-primary);
+}
+
+/* Stats grid pattern */
+.stats-grid {
+  @apply grid gap-4 p-4 rounded-xl;
+  background: rgba(26, 26, 26, 0.5);
+  border: 1px solid var(--sf-outline);
+}
+
+.stat-item {
+  @apply flex flex-col gap-1;
+}
+
+.stat-label {
+  @apply text-xs font-bold uppercase tracking-wider;
+  color: var(--sf-muted);
+}
+
+.stat-value {
+  @apply font-bold text-lg;
+  color: var(--sf-text);
+}
+
+.stat-value-lg {
+  @apply font-bold text-2xl;
+  color: var(--sf-primary);
+}
+
+/* Code blocks */
+pre {
+  @apply p-4 rounded-lg overflow-x-auto;
+  background: #0d0d0d;
+  border: 1px solid var(--sf-outline);
+}
+
+code {
+  @apply font-mono text-sm;
+}
+
+:not(pre) > code {
+  @apply px-1.5 py-0.5 rounded;
+  background: var(--sf-surface);
+  color: var(--sf-primary);
+}
+
+/* Animations */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite linear;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(245, 158, 11, 0.5);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Scrollbar styling - dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* MDX Content styles - dark theme */
+.prose {
+  @apply max-w-none;
+  color: var(--sf-text);
+}
+
+.prose h1 {
+  @apply text-3xl font-bold mb-4;
+  color: var(--sf-text);
+}
+
+.prose h2 {
+  @apply text-2xl font-bold mt-8 mb-4;
+  color: var(--sf-text);
+}
+
+.prose h3 {
+  @apply text-xl font-semibold mt-6 mb-3;
+  color: var(--sf-text);
+}
+
+.prose p {
+  @apply mb-4 leading-relaxed;
+  color: var(--sf-muted);
+}
+
+.prose ul {
+  @apply list-disc pl-6 mb-4;
+}
+
+.prose ol {
+  @apply list-decimal pl-6 mb-4;
+}
+
+.prose li {
+  @apply mb-2;
+  color: var(--sf-muted);
+}
+
+.prose a {
+  color: var(--sf-primary);
+  text-decoration: underline;
+}
+
+.prose a:hover {
+  color: var(--sf-boost-label);
+}
+
+.prose blockquote {
+  @apply pl-4 italic my-4;
+  border-left: 4px solid var(--sf-primary);
+  color: var(--sf-muted);
+}
+
+.prose table {
+  @apply w-full border-collapse mb-4;
+}
+
+.prose th {
+  @apply px-4 py-2 text-left font-semibold;
+  background: var(--sf-surface);
+  border: 1px solid var(--sf-outline);
+}
+
+.prose td {
+  @apply px-4 py-2;
+  border: 1px solid var(--sf-outline);
+}
+
+/* Governance specific - dark theme */
+.proposal-card {
+  @apply glass-card p-6 transition-all duration-200;
+}
+
+.proposal-card:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+.vote-button {
+  @apply px-6 py-3 rounded-lg font-semibold transition-all duration-200;
+}
+
+.vote-button-for {
+  @apply bg-green-600 hover:bg-green-500 text-white;
+}
+
+.vote-button-against {
+  @apply bg-red-600 hover:bg-red-500 text-white;
+}
+
+.vote-button-abstain {
+  @apply text-white;
+  background: var(--sf-surface);
+  border: 2px solid var(--sf-outline);
+}
+
+.vote-button-abstain:hover {
+  background: var(--sf-outline);
+}
+
+/* Proposal state badges */
+.badge {
+  @apply px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide;
+}
+
+.badge-active {
+  background: rgba(34, 197, 94, 0.2);
+  color: #22c55e;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.badge-pending {
+  background: rgba(245, 158, 11, 0.2);
+  color: #f59e0b;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.badge-closed {
+  background: rgba(107, 114, 128, 0.2);
+  color: #9ca3af;
+  border: 1px solid rgba(107, 114, 128, 0.3);
+}
+
+.badge-executed {
+  background: rgba(59, 130, 246, 0.2);
+  color: #3b82f6;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+/* Chart placeholder */
+.chart-placeholder {
+  @apply rounded-lg flex items-center justify-center;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(217, 119, 6, 0.05) 100%);
+  border: 1px dashed var(--sf-outline);
+}

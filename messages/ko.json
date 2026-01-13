@@ -1,0 +1,321 @@
+{
+  "common": {
+    "connectWallet": "지갑 연결",
+    "disconnect": "연결 해제",
+    "loading": "로딩 중...",
+    "error": "오류",
+    "success": "성공",
+    "cancel": "취소",
+    "submit": "제출",
+    "save": "저장",
+    "delete": "삭제",
+    "edit": "수정",
+    "viewAll": "전체 보기",
+    "learnMore": "자세히 알아보기",
+    "backTo": "{page}(으)로 돌아가기",
+    "required": "*"
+  },
+  "navigation": {
+    "dashboard": "대시보드",
+    "governance": "Governance",
+      "fuel": "FUEL",
+    "fuel": "FUEL",
+    "forum": "포럼",
+    "docs": "문서",
+    "github": "GitHub"
+  },
+  "home": {
+    "hero": {
+      "title": "ALKANES",
+      "subtitle": "비트코인 위 Alkanes 메타프로토콜의 거버넌스, 볼트, 그리고 문서. 스테이킹, 투표, 비트코인 DeFi의 미래를 함께 만들어갑니다.",
+      "viewProposals": "제안 보기",
+      "readDocs": "문서 읽기",
+      "getApiKey": "API 키 받기"
+    },
+    "explore": {
+      "title": "DIESEL 탐색하기",
+      "governance": {
+        "title": "거버넌스",
+        "description": "제안에 투표하고 프로토콜 방향을 결정하세요"
+      },
+      "forum": {
+        "title": "포럼",
+        "description": "커뮤니티와 제안 및 아이디어를 논의하세요"
+      },
+      "docs": {
+        "title": "문서",
+        "description": "Alkanes로 개발하는 방법을 배우세요"
+      },
+      "quickstart": {
+        "title": "빠른 시작",
+        "description": "첫 스마트 컨트랙트를 배포하세요"
+      }
+    },
+    "features": {
+      "title": "왜 DIESEL인가요?",
+      "security": {
+        "title": "비트코인 보안",
+        "description": "모든 상태가 비트코인에 앵커링됩니다. 사이드체인도, 브릿지도 없이 — 오직 비트코인만."
+      },
+      "wasm": {
+        "title": "WASM 런타임",
+        "description": "Rust로 스마트 컨트랙트를 작성하고, WebAssembly로 컴파일하여 비트코인에 배포합니다."
+      },
+      "governance": {
+        "title": "커뮤니티 거버넌스",
+        "description": "DIESEL 홀더가 프로토콜 업그레이드, 재무 배분 등을 투표로 결정합니다."
+      }
+    },
+    "cta": {
+      "title": "참여할 준비가 되셨나요?",
+      "description": "지갑을 연결하여 제안에 투표하고 DIESEL 토큰을 스테이킹하세요.",
+      "viewProposals": "활성 제안 보기",
+      "github": "GitHub에서 탐색하기"
+    }
+  },
+  "governance": {
+    "title": "DIESEL 거버넌스",
+    "subtitle": "제안에 투표하여 Alkanes의 미래를 결정하세요",
+    "createProposal": "제안 생성",
+    "filters": {
+      "all": "전체",
+      "active": "진행 중",
+      "pending": "대기 중",
+      "closed": "종료됨"
+    },
+    "proposal": {
+      "by": "제안자",
+      "votes": "표",
+      "vote": "표",
+      "starts": "시작",
+      "diesel": "{amount} DIESEL",
+      "for": "찬성",
+      "against": "반대"
+    },
+    "states": {
+      "ACTIVE": "진행 중",
+      "PENDING": "대기 중",
+      "CLOSED": "종료됨",
+      "EXECUTED": "실행됨",
+      "CANCELLED": "취소됨"
+    },
+    "noProposals": "제안을 찾을 수 없습니다",
+    "error": "제안을 불러오지 못했습니다"
+  },
+  "forum": {
+    "title": "토론",
+    "sidebar": {
+      "categories": "카테고리",
+      "all": "전체",
+      "type": "유형"
+    },
+    "newDiscussion": "새 토론",
+    "connectToPost": "게시하려면 지갑을 연결하세요",
+    "noDiscussions": "토론을 찾을 수 없습니다",
+    "startFirst": "첫 토론을 시작하세요",
+    "sort": {
+      "label": "정렬",
+      "latestActivity": "최근 활동순",
+      "newest": "최신순",
+      "mostReplies": "답글 많은 순"
+    },
+    "types": {
+      "discussion": "토론",
+      "proposal": "제안",
+      "announcement": "공지",
+      "question": "질문"
+    },
+    "stats": {
+      "replies": "답글",
+      "views": "조회"
+    },
+    "pagination": {
+      "previous": "이전",
+      "next": "다음",
+      "page": "{current} / {total} 페이지"
+    },
+    "new": {
+      "title": "새 토론",
+      "backToForum": "포럼으로 돌아가기",
+      "form": {
+        "title": "제목",
+        "titlePlaceholder": "토론 주제를 입력하세요",
+        "category": "카테고리",
+        "type": "유형",
+        "content": "내용",
+        "contentPlaceholder": "토론 내용을 작성하세요... (마크다운 지원)",
+        "preview": "미리보기",
+        "markdownHint": "마크다운 형식을 지원합니다. @주소로 사용자를 멘션하세요",
+        "creating": "생성 중...",
+        "submit": "토론 생성"
+      },
+      "walletRequired": {
+        "title": "지갑 필요",
+        "description": "토론을 생성하려면 지갑을 연결해주세요"
+      },
+      "alerts": {
+        "connectWallet": "먼저 지갑을 연결해주세요",
+        "fillFields": "모든 필수 항목을 입력해주세요",
+        "failed": "토론 생성에 실패했습니다"
+      }
+    },
+    "discussion": {
+      "pinned": "고정됨",
+      "locked": "잠김",
+      "by": "작성자",
+      "posts": "{count}개 게시물",
+      "views": "{count}회 조회",
+      "linkedProposal": "연결된 제안",
+      "viewProposal": "제안 보기",
+      "edited": "수정됨",
+      "reply": "답글",
+      "replyingTo": "#{postNumber} {author}에게 답글",
+      "replyingToPost": "#{postNumber}에 답글",
+      "replyingToUser": "{author}에게 답글",
+      "addReply": "답글 작성",
+      "replyPlaceholder": "답글을 작성하세요... (마크다운 지원)",
+      "mentionHint": "@주소로 사용자를 멘션하세요",
+      "posting": "게시 중...",
+      "postReply": "답글 게시",
+      "connectToReply": "이 토론에 답글을 달려면 지갑을 연결하세요",
+      "backToForum": "포럼으로 돌아가기",
+      "notFound": {
+        "title": "찾을 수 없음",
+        "description": "이 토론은 존재하지 않습니다"
+      },
+      "alerts": {
+        "replyFailed": "답글 게시에 실패했습니다"
+      }
+    }
+  },
+  "dashboard": {
+    "diesel": {
+      "title": "DIESEL",
+      "subtitle": "거버넌스 토큰",
+      "chart": "24시간 가격 차트",
+      "high": "24시간 최고가",
+      "low": "24시간 최저가",
+      "volume": "24시간 거래량",
+      "volumeDisclaimer": "온체인 샘플링으로 추정",
+      "volumeLink": "전체 통계는 oyl.io/swap에서",
+      "marketCap": "시가총액"
+    },
+    "vaults": {
+      "title": "DIESEL 볼트",
+      "tvl": "TVL",
+      "apy": "APY",
+      "totalTvl": "총 예치금"
+    },
+    "proposals": {
+      "title": "활성 제안",
+      "cta": {
+        "title": "DIESEL의 미래를 결정하세요",
+        "description": "DIESEL 토큰으로 투표하세요",
+        "button": "참여하기"
+      },
+      "ends": "{time} 후 종료",
+      "starts": "{time} 후 시작",
+      "by": "{author} 제안"
+    }
+  },
+  "footer": {
+    "tagline": "Alkanes 메타프로토콜",
+    "links": {
+      "documentation": "문서",
+      "governance": "Governance",
+      "fuel": "FUEL",
+    "fuel": "FUEL",
+      "forum": "포럼",
+      "github": "GitHub",
+      "twitter": "Twitter",
+      "privacy": "개인정보 처리방침",
+      "terms": "서비스 이용약관"
+    },
+    "copyright": "© 2025 Alkanes Foundation. 비트코인 기반. MIT 라이선스."
+  },
+  "docs": {
+    "nav": {
+      "menu": "메뉴",
+      "title": "문서",
+      "gettingStarted": {
+        "title": "시작하기",
+        "introduction": "소개",
+        "quickStart": "빠른 시작",
+        "installation": "설치"
+      },
+      "coreConcepts": {
+        "title": "핵심 개념",
+        "alkanes": "Alkanes 작동 원리",
+        "protorunes": "Protorunes",
+        "diesel": "DIESEL 토큰",
+        "metashrew": "Metashrew 인덱서"
+      },
+      "cli": {
+        "title": "CLI 레퍼런스",
+        "overview": "개요",
+        "installation": "설치",
+        "wallet": "지갑 명령어",
+        "alkanes": "Alkanes 명령어",
+        "ord": "Ordinals 명령어",
+        "esplora": "Esplora 명령어",
+        "espo": "Espo 명령어",
+        "brc20prog": "BRC20-Prog 명령어",
+        "dataapi": "DataAPI 명령어",
+        "deploy": "배포 명령어",
+        "execute": "실행 명령어"
+      },
+      "jsonrpc": {
+        "title": "JSON-RPC API",
+        "overview": "개요",
+        "alkanes": "Alkanes 메서드",
+        "bitcoind": "Bitcoin Core 메서드",
+        "esplora": "Esplora 메서드",
+        "espo": "Espo 메서드"
+      },
+      "api": {
+        "title": "Subfrost API",
+        "overview": "개요",
+        "rest": "REST 엔드포인트",
+        "jsonrpc": "JSON-RPC",
+        "alkanes": "Alkanes 쿼리"
+      },
+      "contracts": {
+        "title": "컨트랙트 개발",
+        "setup": "프로젝트 설정",
+        "std": "alkanes-std 라이브러리",
+        "storage": "스토리지 & 상태",
+        "testing": "테스팅",
+        "deployment": "배포"
+      },
+      "tutorials": {
+        "title": "튜토리얼",
+        "wrapBtc": "BTC 래핑/언래핑",
+        "token": "토큰 만들기",
+        "amm": "AMM 만들기"
+      },
+      "integration": {
+        "title": "통합 예제",
+        "nextjsSetup": "Next.js 설정",
+        "tsSdk": "TS SDK 가이드",
+        "tsSdkApi": "TS SDK API 레퍼런스",
+        "alkanesWebSys": "Alkane 데이터 조회",
+        "luaScripts": "Lua 스크립트 최적화",
+        "marketData": "시가총액 & TVL"
+      }
+    }
+  },
+  "time": {
+    "justNow": "방금 전",
+    "minutesAgo": "{count}분 전",
+    "hoursAgo": "{count}시간 전",
+    "daysAgo": "{count}일 전",
+    "daysLeft": "{count, plural, =0 {하루 미만} =1 {1일 남음} other {#일 남음}}",
+    "hoursLeft": "{count, plural, =1 {1시간 남음} other {#시간 남음}}",
+    "minutesLeft": "{count, plural, =1 {1분 남음} other {#분 남음}}",
+    "ended": "종료됨"
+  },
+  "wallet": {
+    "connected": "연결됨",
+    "connectWallet": "지갑 연결"
+  }
+}

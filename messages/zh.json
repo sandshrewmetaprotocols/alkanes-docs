@@ -1,0 +1,321 @@
+{
+  "common": {
+    "connectWallet": "连接钱包",
+    "disconnect": "断开连接",
+    "loading": "加载中...",
+    "error": "错误",
+    "success": "成功",
+    "cancel": "取消",
+    "submit": "提交",
+    "save": "保存",
+    "delete": "删除",
+    "edit": "编辑",
+    "viewAll": "查看全部",
+    "learnMore": "了解更多",
+    "backTo": "返回{page}",
+    "required": "*"
+  },
+  "navigation": {
+    "dashboard": "控制台",
+    "governance": "Governance",
+      "fuel": "FUEL",
+    "fuel": "FUEL",
+    "forum": "论坛",
+    "docs": "文档",
+    "github": "GitHub"
+  },
+  "home": {
+    "hero": {
+      "title": "ALKANES",
+      "subtitle": "Alkanes 元协议的治理中心、收益金库与技术文档。质押、投票，共同塑造比特币 DeFi 的未来。",
+      "viewProposals": "查看提案",
+      "readDocs": "阅读文档",
+      "getApiKey": "获取 API 密钥"
+    },
+    "explore": {
+      "title": "探索 DIESEL",
+      "governance": {
+        "title": "治理",
+        "description": "参与提案投票，共同塑造协议未来"
+      },
+      "forum": {
+        "title": "论坛",
+        "description": "与社区成员讨论提案与创意"
+      },
+      "docs": {
+        "title": "开发文档",
+        "description": "学习如何基于 Alkanes 构建应用"
+      },
+      "quickstart": {
+        "title": "快速开始",
+        "description": "部署您的第一个智能合约"
+      }
+    },
+    "features": {
+      "title": "为什么选择 DIESEL？",
+      "security": {
+        "title": "比特币级安全",
+        "description": "所有状态均锚定于比特币主网。无需侧链，无需跨链桥——纯粹的比特币原生。"
+      },
+      "wasm": {
+        "title": "WASM 运行时",
+        "description": "使用 Rust 编写智能合约，编译为 WebAssembly，部署至比特币网络。"
+      },
+      "governance": {
+        "title": "社区自治",
+        "description": "DIESEL 持有者投票决定协议升级、资金分配等重大事项。"
+      }
+    },
+    "cta": {
+      "title": "准备好参与了吗？",
+      "description": "连接钱包即可参与提案投票并质押您的 DIESEL 代币。",
+      "viewProposals": "查看进行中的提案",
+      "github": "在 GitHub 上探索"
+    }
+  },
+  "governance": {
+    "title": "DIESEL 治理",
+    "subtitle": "参与提案投票，共同塑造 Alkanes 的未来",
+    "createProposal": "创建提案",
+    "filters": {
+      "all": "全部",
+      "active": "进行中",
+      "pending": "待开始",
+      "closed": "已结束"
+    },
+    "proposal": {
+      "by": "发起人",
+      "votes": "票",
+      "vote": "票",
+      "starts": "开始于",
+      "diesel": "{amount} DIESEL",
+      "for": "支持",
+      "against": "反对"
+    },
+    "states": {
+      "ACTIVE": "进行中",
+      "PENDING": "待开始",
+      "CLOSED": "已结束",
+      "EXECUTED": "已执行",
+      "CANCELLED": "已取消"
+    },
+    "noProposals": "暂无提案",
+    "error": "加载提案失败"
+  },
+  "forum": {
+    "title": "社区讨论",
+    "sidebar": {
+      "categories": "分类",
+      "all": "全部",
+      "type": "类型"
+    },
+    "newDiscussion": "发起讨论",
+    "connectToPost": "连接钱包后发帖",
+    "noDiscussions": "暂无讨论",
+    "startFirst": "发起第一个讨论",
+    "sort": {
+      "label": "排序",
+      "latestActivity": "最新活跃",
+      "newest": "最新发布",
+      "mostReplies": "最多回复"
+    },
+    "types": {
+      "discussion": "讨论",
+      "proposal": "提案",
+      "announcement": "公告",
+      "question": "问答"
+    },
+    "stats": {
+      "replies": "条回复",
+      "views": "次浏览"
+    },
+    "pagination": {
+      "previous": "上一页",
+      "next": "下一页",
+      "page": "第 {current} 页，共 {total} 页"
+    },
+    "new": {
+      "title": "发起新讨论",
+      "backToForum": "返回论坛",
+      "form": {
+        "title": "标题",
+        "titlePlaceholder": "请输入讨论主题...",
+        "category": "分类",
+        "type": "类型",
+        "content": "内容",
+        "contentPlaceholder": "请输入讨论内容...（支持 Markdown 格式）",
+        "preview": "预览",
+        "markdownHint": "支持 Markdown 格式。使用 @地址 提及其他用户",
+        "creating": "创建中...",
+        "submit": "创建讨论"
+      },
+      "walletRequired": {
+        "title": "需要连接钱包",
+        "description": "请先连接钱包后再创建讨论"
+      },
+      "alerts": {
+        "connectWallet": "请先连接钱包",
+        "fillFields": "请填写所有必填项",
+        "failed": "创建讨论失败"
+      }
+    },
+    "discussion": {
+      "pinned": "置顶",
+      "locked": "已锁定",
+      "by": "发起人",
+      "posts": "{count} 条回复",
+      "views": "{count} 次浏览",
+      "linkedProposal": "关联提案",
+      "viewProposal": "查看提案",
+      "edited": "已编辑",
+      "reply": "回复",
+      "replyingTo": "回复 #{postNumber} 楼 {author}",
+      "replyingToPost": "回复 #{postNumber} 楼",
+      "replyingToUser": "回复 {author}",
+      "addReply": "添加回复",
+      "replyPlaceholder": "请输入回复内容...（支持 Markdown 格式）",
+      "mentionHint": "使用 @地址 提及其他用户",
+      "posting": "发布中...",
+      "postReply": "发布回复",
+      "connectToReply": "连接钱包后即可回复此讨论",
+      "backToForum": "返回论坛",
+      "notFound": {
+        "title": "页面不存在",
+        "description": "该讨论不存在或已被删除"
+      },
+      "alerts": {
+        "replyFailed": "发布回复失败"
+      }
+    }
+  },
+  "dashboard": {
+    "diesel": {
+      "title": "DIESEL",
+      "subtitle": "治理代币",
+      "chart": "24小时价格走势",
+      "high": "24小时最高",
+      "low": "24小时最低",
+      "volume": "24小时成交量",
+      "volumeDisclaimer": "基于链上采样估算",
+      "volumeLink": "完整数据请访问 oyl.io/swap",
+      "marketCap": "总市值"
+    },
+    "vaults": {
+      "title": "DIESEL 收益金库",
+      "tvl": "锁仓量",
+      "apy": "年化收益率",
+      "totalTvl": "总锁仓价值"
+    },
+    "proposals": {
+      "title": "进行中的提案",
+      "cta": {
+        "title": "共同塑造 DIESEL 的未来",
+        "description": "使用 DIESEL 代币参与投票",
+        "button": "立即参与"
+      },
+      "ends": "剩余 {time}",
+      "starts": "{time} 后开始",
+      "by": "发起人：{author}"
+    }
+  },
+  "footer": {
+    "tagline": "Alkanes 元协议",
+    "links": {
+      "documentation": "开发文档",
+      "governance": "Governance",
+      "fuel": "FUEL",
+    "fuel": "FUEL",
+      "forum": "论坛",
+      "github": "GitHub",
+      "twitter": "Twitter",
+      "privacy": "隐私政策",
+      "terms": "服务条款"
+    },
+    "copyright": "© 2025 Alkanes 基金会。基于比特币构建。MIT 许可证。"
+  },
+  "docs": {
+    "nav": {
+      "menu": "菜单",
+      "title": "开发文档",
+      "gettingStarted": {
+        "title": "快速入门",
+        "introduction": "简介",
+        "quickStart": "快速开始",
+        "installation": "安装配置"
+      },
+      "coreConcepts": {
+        "title": "核心概念",
+        "alkanes": "Alkanes 工作原理",
+        "protorunes": "Protorunes 协议",
+        "diesel": "DIESEL 代币",
+        "metashrew": "Metashrew 索引器"
+      },
+      "cli": {
+        "title": "CLI 命令参考",
+        "overview": "概述",
+        "installation": "安装配置",
+        "wallet": "钱包命令",
+        "alkanes": "Alkanes 命令",
+        "ord": "Ordinals 命令",
+        "esplora": "Esplora 命令",
+        "espo": "Espo 命令",
+        "brc20prog": "BRC20-Prog 命令",
+        "dataapi": "DataAPI 命令",
+        "deploy": "部署命令",
+        "execute": "执行命令"
+      },
+      "jsonrpc": {
+        "title": "JSON-RPC API",
+        "overview": "概述",
+        "alkanes": "Alkanes 方法",
+        "bitcoind": "Bitcoin Core 方法",
+        "esplora": "Esplora 方法",
+        "espo": "Espo 方法"
+      },
+      "api": {
+        "title": "Subfrost API",
+        "overview": "概述",
+        "rest": "REST 接口",
+        "jsonrpc": "JSON-RPC",
+        "alkanes": "Alkanes 查询"
+      },
+      "contracts": {
+        "title": "合约开发",
+        "setup": "项目配置",
+        "std": "alkanes-std 标准库",
+        "storage": "存储与状态",
+        "testing": "测试",
+        "deployment": "部署上线"
+      },
+      "tutorials": {
+        "title": "实战教程",
+        "wrapBtc": "BTC 封装/解封",
+        "token": "代币开发",
+        "amm": "AMM 开发"
+      },
+      "integration": {
+        "title": "集成示例",
+        "nextjsSetup": "Next.js 配置",
+        "tsSdk": "TS SDK 指南",
+        "tsSdkApi": "TS SDK API 参考",
+        "alkanesWebSys": "获取 Alkane 数据",
+        "luaScripts": "Lua 脚本优化",
+        "marketData": "市值与 TVL"
+      }
+    }
+  },
+  "time": {
+    "justNow": "刚刚",
+    "minutesAgo": "{count} 分钟前",
+    "hoursAgo": "{count} 小时前",
+    "daysAgo": "{count} 天前",
+    "daysLeft": "{count, plural, =0 {不足一天} other {剩余 # 天}}",
+    "hoursLeft": "{count, plural, other {剩余 # 小时}}",
+    "minutesLeft": "{count, plural, other {剩余 # 分钟}}",
+    "ended": "已结束"
+  },
+  "wallet": {
+    "connected": "已连接",
+    "connectWallet": "连接钱包"
+  }
+}

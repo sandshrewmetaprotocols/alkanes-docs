@@ -1,0 +1,42 @@
+# Local Development Only
+# For production, use GCP managed services (Cloud SQL, Memorystore)
+# See: ./gcp/README.md
+#
+# Uses non-standard ports to avoid conflicts with other services:
+# - PostgreSQL: 5433 (instead of 5432)
+# - Redis: 6380 (instead of 6379)
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: alkanes-build-postgres
+    environment:
+      POSTGRES_USER: alkanes
+      POSTGRES_PASSWORD: alkanes_dev_password
+      POSTGRES_DB: alkanes_docs
+    ports:
+      - "5433:5432"
+    volumes:
+      - alkanes_build_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U alkanes -d alkanes_docs"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: alkanes-build-redis
+    ports:
+      - "6380:6379"
+    volumes:
+      - alkanes_build_redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  alkanes_build_postgres_data:
+  alkanes_build_redis_data:

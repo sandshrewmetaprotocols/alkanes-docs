@@ -1,0 +1,377 @@
+name: Deploy to GCP
+
+on:
+  push:
+    branches: [main, staging]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to deploy to'
+        required: true
+        default: 'production'
+        type: choice
+        options:
+          - production
+          - staging
+
+env:
+  PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+  REGION: us-central1
+  REPOSITORY: alkanes-docker
+
+jobs:
+  deploy:
+    name: Deploy to Cloud Run
+    runs-on: ubuntu-latest
+    env:
+      # Determine environment based on branch or manual input
+      DEPLOY_ENV: ${{ github.event.inputs.environment || (github.ref == 'refs/heads/staging' && 'staging') || 'production' }}
+    environment: ${{ github.event.inputs.environment || (github.ref == 'refs/heads/staging' && 'staging') || 'production' }}
+
+    permissions:
+      contents: read
+      id-token: write  # Required for Workload Identity Federation
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set deployment variables
+        id: vars
+        run: |
+          if [ "${{ env.DEPLOY_ENV }}" = "staging" ]; then
+            echo "service_name=alkanes-docs-staging" >> $GITHUB_OUTPUT
+            echo "domain=staging-app.alkanes.build" >> $GITHUB_OUTPUT
+            echo "min_instances=0" >> $GITHUB_OUTPUT
+            echo "max_instances=3" >> $GITHUB_OUTPUT
+          else
+            echo "service_name=alkanes-docs" >> $GITHUB_OUTPUT
+            echo "domain=app.alkanes.build" >> $GITHUB_OUTPUT
+            echo "min_instances=0" >> $GITHUB_OUTPUT
+            echo "max_instances=10" >> $GITHUB_OUTPUT
+          fi
+
+      # Option 1: Workload Identity Federation (Recommended)
+      - name: Authenticate to Google Cloud
+        id: auth
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.WIF_PROVIDER }}
+          service_account: ${{ secrets.WIF_SERVICE_ACCOUNT }}
+
+      # Option 2: Service Account Key (if WIF not configured)
+      # - name: Authenticate to Google Cloud
+      #   uses: google-github-actions/auth@v2
+      #   with:
+      #     credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: ${{ env.PROJECT_ID }}
+
+      - name: Configure Docker for Artifact Registry
+        run: |
+          gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev --quiet
+
+      - name: Build Docker image
+        run: |
+          IMAGE="${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ steps.vars.outputs.service_name }}"
+
+          docker build \
+            --tag "${IMAGE}:${{ github.sha }}" \
+            --tag "${IMAGE}:latest" \
+            --cache-from "${IMAGE}:latest" \
+            .
+
+      - name: Test package endpoint before deployment
+        run: |
+          IMAGE="${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ steps.vars.outputs.service_name }}:${{ github.sha }}"
+
+          echo "Starting container for pre-deployment testing..."
+          CONTAINER_ID=$(docker run -d -p 3000:3000 \
+            -e NODE_ENV=production \
+            -e DATABASE_URL="postgresql://test:test@localhost:5432/test" \
+            "$IMAGE")
+
+          # Wait for container to be ready
+          echo "Waiting for container to start..."
+          for i in {1..30}; do
+            if curl -s http://localhost:3000/api/health > /dev/null 2>&1; then
+              echo "Container is ready"
+              break
+            fi
+            if [ $i -eq 30 ]; then
+              echo "ERROR: Container failed to start"
+              docker logs "$CONTAINER_ID"
+              docker stop "$CONTAINER_ID" || true
+              exit 1
+            fi
+            sleep 2
+          done
+
+          # Test the package endpoint
+          echo "Testing /api/pkg/@alkanes/ts-sdk endpoint..."
+          HTTP_CODE=$(curl -s -o /tmp/sdk.tgz -w "%{http_code}" http://localhost:3000/api/pkg/@alkanes/ts-sdk)
+
+          if [ "$HTTP_CODE" != "200" ]; then
+            echo "ERROR: Package endpoint returned HTTP $HTTP_CODE"
+            docker logs "$CONTAINER_ID"
+            docker stop "$CONTAINER_ID" || true
+            exit 1
+          fi
+
+          # Verify it's a valid tarball
+          if ! tar -tzf /tmp/sdk.tgz > /dev/null 2>&1; then
+            echo "ERROR: Response is not a valid gzip tarball"
+            docker stop "$CONTAINER_ID" || true
+            exit 1
+          fi
+
+          # Verify tarball contents
+          echo "Verifying tarball contents..."
+          CONTENTS=$(tar -tzf /tmp/sdk.tgz)
+
+          for required in "package/package.json" "package/dist/" "package/build/wasm/"; do
+            if ! echo "$CONTENTS" | grep -q "$required"; then
+              echo "ERROR: Missing required file/directory: $required"
+              echo "Tarball contents:"
+              echo "$CONTENTS"
+              docker stop "$CONTAINER_ID" || true
+              exit 1
+            fi
+          done
+
+          # Test npm install from the tarball
+          echo "Testing npm install from tarball..."
+          TEST_DIR=$(mktemp -d)
+          cd "$TEST_DIR"
+          echo '{"name":"test","type":"module"}' > package.json
+
+          if ! npm install /tmp/sdk.tgz; then
+            echo "ERROR: npm install failed"
+            docker stop "$CONTAINER_ID" || true
+            exit 1
+          fi
+
+          # Test import
+          cat > test.mjs << 'EOF'
+          try {
+            const pkg = await import('@alkanes/ts-sdk');
+            console.log('Import successful, exports:', Object.keys(pkg).length);
+            process.exit(0);
+          } catch (e) {
+            console.error('Import failed:', e.message);
+            process.exit(1);
+          }
+          EOF
+
+          if ! node test.mjs; then
+            echo "ERROR: Package import test failed"
+            docker stop "$CONTAINER_ID" || true
+            exit 1
+          fi
+
+          # Cleanup
+          docker stop "$CONTAINER_ID"
+          rm -rf "$TEST_DIR" /tmp/sdk.tgz
+
+          echo "✅ Pre-deployment package verification passed!"
+
+      - name: Push Docker image
+        run: |
+          IMAGE="${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ steps.vars.outputs.service_name }}"
+          docker push "${IMAGE}:${{ github.sha }}"
+          docker push "${IMAGE}:latest"
+
+      - name: Get Cloud SQL connection name
+        id: sql
+        run: |
+          CONNECTION=$(gcloud sql instances describe alkanes-postgres --format='value(connectionName)' 2>/dev/null || echo "")
+          echo "connection=${CONNECTION}" >> $GITHUB_OUTPUT
+
+      - name: Get Redis IP
+        id: redis
+        run: |
+          REDIS_IP=$(gcloud redis instances describe alkanes-redis --region=${{ env.REGION }} --format='value(host)' 2>/dev/null || echo "")
+          echo "ip=${REDIS_IP}" >> $GITHUB_OUTPUT
+
+      - name: Deploy to Cloud Run
+        run: |
+          IMAGE="${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ steps.vars.outputs.service_name }}:${{ github.sha }}"
+
+          gcloud run deploy ${{ steps.vars.outputs.service_name }} \
+            --image "${IMAGE}" \
+            --platform managed \
+            --region ${{ env.REGION }} \
+            --allow-unauthenticated \
+            --port 3000 \
+            --cpu 1 \
+            --memory 512Mi \
+            --min-instances ${{ steps.vars.outputs.min_instances }} \
+            --max-instances ${{ steps.vars.outputs.max_instances }} \
+            --concurrency 80 \
+            --timeout 60 \
+            --vpc-connector alkanes-connector \
+            --add-cloudsql-instances "${{ steps.sql.outputs.connection }}" \
+            --set-env-vars "NODE_ENV=production" \
+            --set-env-vars "NEXT_PUBLIC_NETWORK=mainnet" \
+            --set-env-vars "DEPLOY_ENV=${{ env.DEPLOY_ENV }}" \
+            --set-secrets "DATABASE_URL=db-connection-string:latest"
+
+      - name: Get Service URL
+        id: service
+        run: |
+          URL=$(gcloud run services describe ${{ steps.vars.outputs.service_name }} \
+            --region=${{ env.REGION }} \
+            --format='value(status.url)')
+          echo "url=${URL}" >> $GITHUB_OUTPUT
+          # Extract just the hostname (remove https://)
+          HOSTNAME=$(echo $URL | sed 's|https://||')
+          echo "hostname=${HOSTNAME}" >> $GITHUB_OUTPUT
+          echo "### Deployment Successful! :rocket:" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Environment:** ${{ env.DEPLOY_ENV }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Service URL:** ${URL}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Image:** \`${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
+
+      - name: Create Cloud Run domain mapping
+        continue-on-error: true
+        run: |
+          gcloud run domain-mappings create \
+            --service=${{ steps.vars.outputs.service_name }} \
+            --domain=${{ steps.vars.outputs.domain }} \
+            --region=${{ env.REGION }} 2>/dev/null || \
+          echo "Domain mapping already exists or skipped"
+
+      - name: Update Cloudflare DNS
+        env:
+          CF_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          DOMAIN="${{ steps.vars.outputs.domain }}"
+          # Use Google's domain mapping IP (Cloud Run domain mapping)
+          TARGET="216.239.32.21"
+
+          # Use provided Zone ID or look it up dynamically
+          if [ -n "${{ vars.CLOUDFLARE_ZONE_ID }}" ]; then
+            CF_ZONE_ID="${{ vars.CLOUDFLARE_ZONE_ID }}"
+            echo "Using provided Zone ID: ${CF_ZONE_ID}"
+          else
+            # Extract root domain for zone lookup (handles both apex and subdomains)
+            ROOT_DOMAIN=$(echo "$DOMAIN" | awk -F. '{print $(NF-1)"."$NF}')
+
+            # Get Zone ID dynamically
+            CF_ZONE_ID=$(curl -s -X GET "https://api.cloudflare.com/client/v4/zones?name=${ROOT_DOMAIN}" \
+              -H "Authorization: Bearer ${CF_API_TOKEN}" \
+              -H "Content-Type: application/json" | jq -r '.result[0].id')
+
+            if [ "$CF_ZONE_ID" = "null" ] || [ -z "$CF_ZONE_ID" ]; then
+              echo "Error: Could not find zone for ${ROOT_DOMAIN}"
+              echo "Add CLOUDFLARE_ZONE_ID variable or grant Zone:Read permission to API token"
+              exit 1
+            fi
+          fi
+
+          echo "Using Zone ID: ${CF_ZONE_ID}"
+
+          # Extract root domain for comparison
+          ROOT_DOMAIN=$(echo "$DOMAIN" | awk -F. '{print $(NF-1)"."$NF}')
+
+          # For apex domain, use @ as name
+          if [ "$DOMAIN" = "$ROOT_DOMAIN" ]; then
+            RECORD_NAME="@"
+          else
+            RECORD_NAME="$DOMAIN"
+          fi
+
+          # Check for any existing record (A, AAAA, or CNAME) at this name
+          RESPONSE=$(curl -s -X GET "https://api.cloudflare.com/client/v4/zones/${CF_ZONE_ID}/dns_records?name=${DOMAIN}" \
+            -H "Authorization: Bearer ${CF_API_TOKEN}" \
+            -H "Content-Type: application/json")
+
+          if echo "$RESPONSE" | jq -e '.success == false' > /dev/null; then
+            echo "Cloudflare API error:"
+            echo "$RESPONSE" | jq '.errors'
+            exit 1
+          fi
+
+          # Find existing A, AAAA, or CNAME record
+          RECORD_ID=$(echo "$RESPONSE" | jq -r '.result[] | select(.type == "A" or .type == "AAAA" or .type == "CNAME") | .id' | head -1)
+          RECORD_TYPE=$(echo "$RESPONSE" | jq -r '.result[] | select(.type == "A" or .type == "AAAA" or .type == "CNAME") | .type' | head -1)
+
+          if [ -n "$RECORD_ID" ]; then
+            echo "Found existing ${RECORD_TYPE} record: ${RECORD_ID}"
+            if [ "$RECORD_TYPE" = "A" ]; then
+              # Update existing A record
+              RESPONSE=$(curl -s -X PUT "https://api.cloudflare.com/client/v4/zones/${CF_ZONE_ID}/dns_records/${RECORD_ID}" \
+                -H "Authorization: Bearer ${CF_API_TOKEN}" \
+                -H "Content-Type: application/json" \
+                --data "{\"type\":\"A\",\"name\":\"${RECORD_NAME}\",\"content\":\"${TARGET}\",\"ttl\":1,\"proxied\":false}")
+              echo "Updated A record: ${DOMAIN} -> ${TARGET}"
+            else
+              # Delete AAAA/CNAME and create A record
+              echo "Deleting existing ${RECORD_TYPE} record..."
+              curl -s -X DELETE "https://api.cloudflare.com/client/v4/zones/${CF_ZONE_ID}/dns_records/${RECORD_ID}" \
+                -H "Authorization: Bearer ${CF_API_TOKEN}" \
+                -H "Content-Type: application/json" > /dev/null
+              RESPONSE=$(curl -s -X POST "https://api.cloudflare.com/client/v4/zones/${CF_ZONE_ID}/dns_records" \
+                -H "Authorization: Bearer ${CF_API_TOKEN}" \
+                -H "Content-Type: application/json" \
+                --data "{\"type\":\"A\",\"name\":\"${RECORD_NAME}\",\"content\":\"${TARGET}\",\"ttl\":1,\"proxied\":false}")
+              echo "Created A record: ${DOMAIN} -> ${TARGET}"
+            fi
+          else
+            # Create new A record
+            RESPONSE=$(curl -s -X POST "https://api.cloudflare.com/client/v4/zones/${CF_ZONE_ID}/dns_records" \
+              -H "Authorization: Bearer ${CF_API_TOKEN}" \
+              -H "Content-Type: application/json" \
+              --data "{\"type\":\"A\",\"name\":\"${RECORD_NAME}\",\"content\":\"${TARGET}\",\"ttl\":1,\"proxied\":false}")
+            echo "Created A record: ${DOMAIN} -> ${TARGET}"
+          fi
+
+          # Check final response
+          if echo "$RESPONSE" | jq -e '.success == false' > /dev/null; then
+            echo "Cloudflare API error:"
+            echo "$RESPONSE" | jq '.errors'
+            exit 1
+          fi
+
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Custom Domain:** https://${DOMAIN}" >> $GITHUB_STEP_SUMMARY
+
+  migrate:
+    name: Run Database Migrations
+    runs-on: ubuntu-latest
+    needs: deploy
+    environment: ${{ github.event.inputs.environment || (github.ref == 'refs/heads/staging' && 'staging') || 'production' }}
+
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.WIF_PROVIDER }}
+          service_account: ${{ secrets.WIF_SERVICE_ACCOUNT }}
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Run migrations via Cloud Run Job
+        run: |
+          # Check if migration job exists, create if not
+          if ! gcloud run jobs describe prisma-migrate --region=${{ env.REGION }} > /dev/null 2>&1; then
+            echo "Migration job not found, skipping..."
+            exit 0
+          fi
+
+          gcloud run jobs execute prisma-migrate \
+            --region=${{ env.REGION }} \
+            --wait

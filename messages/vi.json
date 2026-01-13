@@ -1,0 +1,321 @@
+{
+  "common": {
+    "connectWallet": "Kết nối Ví",
+    "disconnect": "Ngắt kết nối",
+    "loading": "Đang tải...",
+    "error": "Lỗi",
+    "success": "Thành công",
+    "cancel": "Hủy",
+    "submit": "Gửi",
+    "save": "Lưu",
+    "delete": "Xóa",
+    "edit": "Chỉnh sửa",
+    "viewAll": "Xem tất cả",
+    "learnMore": "Tìm hiểu thêm",
+    "backTo": "Quay lại {page}",
+    "required": "*"
+  },
+  "navigation": {
+    "dashboard": "Bảng điều khiển",
+    "governance": "Governance",
+      "fuel": "FUEL",
+    "fuel": "FUEL",
+    "forum": "Diễn đàn",
+    "docs": "Tài liệu",
+    "github": "GitHub"
+  },
+  "home": {
+    "hero": {
+      "title": "ALKANES",
+      "subtitle": "Quản trị, kho lợi nhuận và tài liệu cho giao thức Alkanes trên Bitcoin. Stake, bỏ phiếu và định hình tương lai của DeFi Bitcoin.",
+      "viewProposals": "Xem đề xuất",
+      "readDocs": "Đọc tài liệu",
+      "getApiKey": "Nhận Khóa API"
+    },
+    "explore": {
+      "title": "Khám phá DIESEL",
+      "governance": {
+        "title": "Quản trị",
+        "description": "Bỏ phiếu cho đề xuất và định hình giao thức"
+      },
+      "forum": {
+        "title": "Diễn đàn",
+        "description": "Thảo luận đề xuất và ý tưởng cùng cộng đồng"
+      },
+      "docs": {
+        "title": "Tài liệu",
+        "description": "Học cách xây dựng với Alkanes"
+      },
+      "quickstart": {
+        "title": "Bắt đầu nhanh",
+        "description": "Triển khai hợp đồng thông minh đầu tiên"
+      }
+    },
+    "features": {
+      "title": "Tại sao chọn DIESEL?",
+      "security": {
+        "title": "Bảo mật Bitcoin",
+        "description": "Mọi trạng thái đều được neo vào Bitcoin. Không có sidechain, không có bridge — chỉ có Bitcoin thuần túy."
+      },
+      "wasm": {
+        "title": "Runtime WASM",
+        "description": "Viết hợp đồng thông minh bằng Rust, biên dịch sang WebAssembly, triển khai trên Bitcoin."
+      },
+      "governance": {
+        "title": "Quản trị cộng đồng",
+        "description": "Chủ sở hữu DIESEL bỏ phiếu cho các nâng cấp giao thức, phân bổ ngân quỹ và nhiều hơn nữa."
+      }
+    },
+    "cta": {
+      "title": "Sẵn sàng tham gia?",
+      "description": "Kết nối ví để bỏ phiếu cho đề xuất và stake token DIESEL của bạn.",
+      "viewProposals": "Xem đề xuất đang hoạt động",
+      "github": "Khám phá trên GitHub"
+    }
+  },
+  "governance": {
+    "title": "Quản trị DIESEL",
+    "subtitle": "Bỏ phiếu cho đề xuất để định hình tương lai của Alkanes",
+    "createProposal": "Tạo đề xuất",
+    "filters": {
+      "all": "Tất cả",
+      "active": "Đang hoạt động",
+      "pending": "Đang chờ",
+      "closed": "Đã đóng"
+    },
+    "proposal": {
+      "by": "bởi",
+      "votes": "phiếu",
+      "vote": "phiếu",
+      "starts": "Bắt đầu",
+      "diesel": "{amount} DIESEL",
+      "for": "Ủng hộ",
+      "against": "Phản đối"
+    },
+    "states": {
+      "ACTIVE": "Đang hoạt động",
+      "PENDING": "Đang chờ",
+      "CLOSED": "Đã đóng",
+      "EXECUTED": "Đã thực thi",
+      "CANCELLED": "Đã hủy"
+    },
+    "noProposals": "Không tìm thấy đề xuất",
+    "error": "Không thể tải đề xuất"
+  },
+  "forum": {
+    "title": "Thảo luận",
+    "sidebar": {
+      "categories": "Danh mục",
+      "all": "Tất cả",
+      "type": "Loại"
+    },
+    "newDiscussion": "Thảo luận mới",
+    "connectToPost": "Kết nối ví để đăng bài",
+    "noDiscussions": "Không tìm thấy thảo luận",
+    "startFirst": "Bắt đầu thảo luận đầu tiên",
+    "sort": {
+      "label": "Sắp xếp",
+      "latestActivity": "Hoạt động gần nhất",
+      "newest": "Mới nhất",
+      "mostReplies": "Nhiều phản hồi nhất"
+    },
+    "types": {
+      "discussion": "Thảo luận",
+      "proposal": "Đề xuất",
+      "announcement": "Thông báo",
+      "question": "Câu hỏi"
+    },
+    "stats": {
+      "replies": "phản hồi",
+      "views": "lượt xem"
+    },
+    "pagination": {
+      "previous": "Trước",
+      "next": "Tiếp",
+      "page": "Trang {current} / {total}"
+    },
+    "new": {
+      "title": "Thảo luận mới",
+      "backToForum": "Quay lại Diễn đàn",
+      "form": {
+        "title": "Tiêu đề",
+        "titlePlaceholder": "Chủ đề thảo luận của bạn là gì?",
+        "category": "Danh mục",
+        "type": "Loại",
+        "content": "Nội dung",
+        "contentPlaceholder": "Viết nội dung thảo luận... (Hỗ trợ Markdown)",
+        "preview": "Xem trước",
+        "markdownHint": "Hỗ trợ định dạng Markdown. Đề cập người dùng với @địa_chỉ",
+        "creating": "Đang tạo...",
+        "submit": "Tạo thảo luận"
+      },
+      "walletRequired": {
+        "title": "Yêu cầu Ví",
+        "description": "Vui lòng kết nối ví để tạo thảo luận"
+      },
+      "alerts": {
+        "connectWallet": "Vui lòng kết nối ví trước",
+        "fillFields": "Vui lòng điền tất cả các trường bắt buộc",
+        "failed": "Không thể tạo thảo luận"
+      }
+    },
+    "discussion": {
+      "pinned": "Đã ghim",
+      "locked": "Đã khóa",
+      "by": "bởi",
+      "posts": "{count} bài viết",
+      "views": "{count} lượt xem",
+      "linkedProposal": "Đề xuất liên kết",
+      "viewProposal": "Xem đề xuất",
+      "edited": "đã chỉnh sửa",
+      "reply": "Trả lời",
+      "replyingTo": "Trả lời #{postNumber} bởi {author}",
+      "replyingToPost": "Trả lời #{postNumber}",
+      "replyingToUser": "Trả lời {author}",
+      "addReply": "Thêm phản hồi",
+      "replyPlaceholder": "Viết phản hồi... (Hỗ trợ Markdown)",
+      "mentionHint": "Đề cập người dùng với @địa_chỉ",
+      "posting": "Đang đăng...",
+      "postReply": "Đăng phản hồi",
+      "connectToReply": "Kết nối ví để phản hồi thảo luận này",
+      "backToForum": "Quay lại Diễn đàn",
+      "notFound": {
+        "title": "Không tìm thấy",
+        "description": "Thảo luận này không tồn tại"
+      },
+      "alerts": {
+        "replyFailed": "Không thể đăng phản hồi"
+      }
+    }
+  },
+  "dashboard": {
+    "diesel": {
+      "title": "DIESEL",
+      "subtitle": "Token Quản trị",
+      "chart": "Biểu đồ giá 24h",
+      "high": "Cao nhất 24h",
+      "low": "Thấp nhất 24h",
+      "volume": "Khối lượng 24h",
+      "volumeDisclaimer": "Ước tính qua lấy mẫu on-chain",
+      "volumeLink": "Thống kê đầy đủ tại oyl.io/swap",
+      "marketCap": "Vốn hóa thị trường"
+    },
+    "vaults": {
+      "title": "Kho DIESEL",
+      "tvl": "TVL",
+      "apy": "APY",
+      "totalTvl": "Tổng giá trị khóa"
+    },
+    "proposals": {
+      "title": "Đề xuất đang hoạt động",
+      "cta": {
+        "title": "Định hình tương lai của DIESEL",
+        "description": "Bỏ phiếu bằng token DIESEL của bạn",
+        "button": "Tham gia"
+      },
+      "ends": "Kết thúc sau {time}",
+      "starts": "Bắt đầu sau {time}",
+      "by": "Bởi {author}"
+    }
+  },
+  "footer": {
+    "tagline": "Giao thức Alkanes",
+    "links": {
+      "documentation": "Tài liệu",
+      "governance": "Governance",
+      "fuel": "FUEL",
+    "fuel": "FUEL",
+      "forum": "Diễn đàn",
+      "github": "GitHub",
+      "twitter": "Twitter",
+      "privacy": "Chính sách Bảo mật",
+      "terms": "Điều khoản Dịch vụ"
+    },
+    "copyright": "© 2025 Quỹ Alkanes. Xây dựng trên Bitcoin. Giấy phép MIT."
+  },
+  "docs": {
+    "nav": {
+      "menu": "Menu",
+      "title": "Tài liệu",
+      "gettingStarted": {
+        "title": "Bắt đầu",
+        "introduction": "Giới thiệu",
+        "quickStart": "Bắt đầu nhanh",
+        "installation": "Cài đặt"
+      },
+      "coreConcepts": {
+        "title": "Khái niệm cốt lõi",
+        "alkanes": "Cách Alkanes hoạt động",
+        "protorunes": "Protorunes",
+        "diesel": "Token DIESEL",
+        "metashrew": "Indexer Metashrew"
+      },
+      "cli": {
+        "title": "Tham chiếu CLI",
+        "overview": "Tổng quan",
+        "installation": "Cài đặt",
+        "wallet": "Lệnh Ví",
+        "alkanes": "Lệnh Alkanes",
+        "ord": "Lệnh Ordinals",
+        "esplora": "Lệnh Esplora",
+        "espo": "Lệnh Espo",
+        "brc20prog": "Lệnh BRC20-Prog",
+        "dataapi": "Lệnh DataAPI",
+        "deploy": "Lệnh Deploy",
+        "execute": "Lệnh Execute"
+      },
+      "jsonrpc": {
+        "title": "API JSON-RPC",
+        "overview": "Tổng quan",
+        "alkanes": "Phương thức Alkanes",
+        "bitcoind": "Phương thức Bitcoin Core",
+        "esplora": "Phương thức Esplora",
+        "espo": "Phương thức Espo"
+      },
+      "api": {
+        "title": "API Subfrost",
+        "overview": "Tổng quan",
+        "rest": "Điểm cuối REST",
+        "jsonrpc": "JSON-RPC",
+        "alkanes": "Truy vấn Alkanes"
+      },
+      "contracts": {
+        "title": "Xây dựng Hợp đồng",
+        "setup": "Thiết lập Dự án",
+        "std": "Thư viện alkanes-std",
+        "storage": "Lưu trữ & Trạng thái",
+        "testing": "Kiểm thử",
+        "deployment": "Triển khai"
+      },
+      "tutorials": {
+        "title": "Hướng dẫn",
+        "wrapBtc": "Wrap/Unwrap BTC",
+        "token": "Xây dựng Token",
+        "amm": "Xây dựng AMM"
+      },
+      "integration": {
+        "title": "Ví dụ Tích hợp",
+        "nextjsSetup": "Cấu hình Next.js",
+        "tsSdk": "Hướng dẫn TS SDK",
+        "tsSdkApi": "Tài liệu API TS SDK",
+        "alkanesWebSys": "Lấy dữ liệu Alkane",
+        "luaScripts": "Tối ưu Script Lua",
+        "marketData": "Vốn hóa & TVL"
+      }
+    }
+  },
+  "time": {
+    "justNow": "vừa xong",
+    "minutesAgo": "{count} phút trước",
+    "hoursAgo": "{count} giờ trước",
+    "daysAgo": "{count} ngày trước",
+    "daysLeft": "{count, plural, =0 {Ít hơn một ngày} =1 {Còn 1 ngày} other {Còn # ngày}}",
+    "hoursLeft": "{count, plural, =1 {Còn 1 giờ} other {Còn # giờ}}",
+    "minutesLeft": "{count, plural, =1 {Còn 1 phút} other {Còn # phút}}",
+    "ended": "Đã kết thúc"
+  },
+  "wallet": {
+    "connected": "Đã kết nối",
+    "connectWallet": "Kết nối Ví"
+  }
+}

@@ -1,0 +1,409 @@
+{
+  "common": {
+    "connectWallet": "Connect Wallet",
+    "disconnect": "Disconnect",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "viewAll": "View All",
+    "learnMore": "Learn More",
+    "backTo": "Back to {page}",
+    "required": "*"
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "governance": "Governance",
+    "fuel": "FUEL",
+    "forum": "Forum",
+    "docs": "Docs",
+    "github": "GitHub"
+  },
+  "home": {
+    "hero": {
+      "title": "ALKANES",
+      "subtitle": "Governance, vaults, and documentation for the Alkanes metaprotocol on Bitcoin. Stake, vote, and shape the future of Bitcoin DeFi.",
+      "viewProposals": "View Proposals",
+      "readDocs": "Read the Docs",
+      "getApiKey": "Get an API Key"
+    },
+    "explore": {
+      "title": "Explore DIESEL",
+      "governance": {
+        "title": "Governance",
+        "description": "Vote on proposals and shape the protocol"
+      },
+      "forum": {
+        "title": "Forum",
+        "description": "Discuss proposals and ideas with the community"
+      },
+      "docs": {
+        "title": "Documentation",
+        "description": "Learn how to build with Alkanes"
+      },
+      "quickstart": {
+        "title": "Quick Start",
+        "description": "Deploy your first smart contract"
+      }
+    },
+    "features": {
+      "title": "Why DIESEL?",
+      "security": {
+        "title": "Bitcoin Security",
+        "description": "All state is anchored to Bitcoin. No sidechains, no bridges - just Bitcoin."
+      },
+      "wasm": {
+        "title": "WASM Runtime",
+        "description": "Write smart contracts in Rust, compile to WebAssembly, deploy to Bitcoin."
+      },
+      "governance": {
+        "title": "Community Governed",
+        "description": "DIESEL holders vote on protocol upgrades, treasury allocation, and more."
+      }
+    },
+    "cta": {
+      "title": "Ready to participate?",
+      "description": "Connect your wallet to vote on proposals and stake your DIESEL tokens.",
+      "viewProposals": "View Active Proposals",
+      "github": "Explore on GitHub"
+    }
+  },
+  "governance": {
+    "title": "DIESEL Governance",
+    "subtitle": "Vote on proposals to shape the future of Alkanes",
+    "createProposal": "Create Proposal",
+    "backToProposals": "Back to Proposals",
+    "proposalNotFound": "Proposal Not Found",
+    "proposalNotFoundDesc": "The proposal you're looking for doesn't exist or has been removed.",
+    "connectToVote": "Connect Wallet to Vote",
+    "castVote": "Cast Vote",
+    "voting": "Voting...",
+    "youVoted": "You voted for",
+    "posts": "posts",
+    "views": "views",
+    "filters": {
+      "all": "All",
+      "active": "Active",
+      "pending": "Pending",
+      "closed": "Closed"
+    },
+    "proposal": {
+      "by": "by",
+      "votes": "votes",
+      "vote": "vote",
+      "starts": "Starts",
+      "diesel": "{amount} DIESEL",
+      "for": "For",
+      "against": "Against",
+      "description": "Description",
+      "results": "Current Results",
+      "recentVotes": "Recent Votes",
+      "discussion": "Discussion",
+      "info": "Information",
+      "snapshot": "Snapshot",
+      "startDate": "Start Date",
+      "endDate": "End Date"
+    },
+    "states": {
+      "ACTIVE": "Active",
+      "PENDING": "Pending",
+      "CLOSED": "Closed",
+      "EXECUTED": "Executed",
+      "CANCELLED": "Cancelled"
+    },
+    "noProposals": "No proposals found",
+    "error": "Failed to load proposals"
+  },
+  "forum": {
+    "title": "Discussions",
+    "sidebar": {
+      "categories": "Categories",
+      "all": "All",
+      "type": "Type"
+    },
+    "newDiscussion": "New Discussion",
+    "connectToPost": "Connect wallet to post",
+    "noDiscussions": "No discussions found",
+    "startFirst": "Start the first discussion",
+    "sort": {
+      "label": "Sort",
+      "latestActivity": "Latest Activity",
+      "newest": "Newest",
+      "mostReplies": "Most Replies"
+    },
+    "types": {
+      "discussion": "Discussion",
+      "proposal": "Proposal",
+      "announcement": "Announcement",
+      "question": "Question"
+    },
+    "stats": {
+      "replies": "replies",
+      "views": "views"
+    },
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next",
+      "page": "Page {current} of {total}"
+    },
+    "new": {
+      "title": "New Discussion",
+      "backToForum": "Back to Forum",
+      "form": {
+        "title": "Title",
+        "titlePlaceholder": "What's your discussion about?",
+        "category": "Category",
+        "type": "Type",
+        "content": "Content",
+        "contentPlaceholder": "Write your discussion content... (Markdown supported)",
+        "preview": "Preview",
+        "markdownHint": "Supports Markdown formatting. Mention users with @address",
+        "creating": "Creating...",
+        "submit": "Create Discussion"
+      },
+      "walletRequired": {
+        "title": "Wallet Required",
+        "description": "Please connect your wallet to create a discussion"
+      },
+      "alerts": {
+        "connectWallet": "Please connect your wallet first",
+        "fillFields": "Please fill in all required fields",
+        "failed": "Failed to create discussion"
+      }
+    },
+    "discussion": {
+      "pinned": "Pinned",
+      "locked": "Locked",
+      "by": "by",
+      "posts": "{count} posts",
+      "views": "{count} views",
+      "linkedProposal": "Linked Proposal",
+      "viewProposal": "View Proposal",
+      "edited": "edited",
+      "reply": "Reply",
+      "replyingTo": "Replying to #{postNumber} by {author}",
+      "replyingToPost": "Replying to #{postNumber}",
+      "replyingToUser": "Replying to {author}",
+      "addReply": "Add a Reply",
+      "replyPlaceholder": "Write your reply... (Markdown supported)",
+      "mentionHint": "Mention users with @address",
+      "posting": "Posting...",
+      "postReply": "Post Reply",
+      "connectToReply": "Connect your wallet to reply to this discussion",
+      "backToForum": "Back to Forum",
+      "notFound": {
+        "title": "Not Found",
+        "description": "This discussion doesn't exist"
+      },
+      "alerts": {
+        "replyFailed": "Failed to post reply"
+      }
+    }
+  },
+  "dashboard": {
+    "diesel": {
+      "title": "DIESEL",
+      "subtitle": "Governance Token",
+      "chart": "24h Price Chart",
+      "high": "24h High",
+      "low": "24h Low",
+      "volume": "24h Volume",
+      "volumeDisclaimer": "Estimated via on-chain sampling",
+      "volumeLink": "Full stats at oyl.io/swap",
+      "marketCap": "Market Cap"
+    },
+    "vaults": {
+      "title": "DIESEL Vaults",
+      "tvl": "TVL",
+      "apy": "APY",
+      "totalTvl": "Total Value Locked"
+    },
+    "proposals": {
+      "title": "Active Proposals",
+      "cta": {
+        "title": "Shape the future of DIESEL",
+        "description": "Vote with your DIESEL tokens",
+        "button": "Participate"
+      },
+      "ends": "Ends in {time}",
+      "starts": "Starts in {time}",
+      "by": "By {author}"
+    }
+  },
+  "fuel": {
+    "title": "FUEL Token",
+    "subtitle": "Sustainable tokenomics through timelocked LP staking, bonding, and treasury-backed redemption",
+    "overview": {
+      "title": "Overview",
+      "description": "FUEL is a utility token built on Alkanes that implements sustainable tokenomics through timelocked liquidity provider positions. Stake LP tokens to earn FUEL, bond for discounts, or redeem for treasury backing."
+    },
+    "tokenomics": {
+      "title": "Tokenomics",
+      "maxSupply": "Max Supply",
+      "decimals": "Decimals",
+      "treasuryPremine": "Treasury Premine",
+      "teamPremine": "Team Premine",
+      "emissionPool": "Emission Pool"
+    },
+    "staking": {
+      "title": "LP Staking",
+      "description": "Stake DIESEL/frBTC LP tokens to earn FUEL rewards. Longer lock periods earn higher multipliers.",
+      "lockPeriod": "Lock Period",
+      "multiplier": "Multiplier",
+      "noLock": "No Lock",
+      "week": "1 Week",
+      "month": "1 Month",
+      "threeMonths": "3 Months",
+      "sixMonths": "6 Months",
+      "year": "1 Year"
+    },
+    "bonding": {
+      "title": "Bonding",
+      "description": "Bond DIESEL/frBTC LP tokens to receive FUEL at a discount. Bonded tokens vest over 7 days and build protocol-owned liquidity.",
+      "discount": "Bond Discount",
+      "vestingPeriod": "Vesting Period",
+      "days": "days"
+    },
+    "redemption": {
+      "title": "Redemption Floor",
+      "description": "Burn FUEL to redeem a proportional share of treasury backing. This creates a hard price floor based on treasury assets.",
+      "fee": "Redemption Fee",
+      "cooldown": "Cooldown Period",
+      "hours": "hours"
+    },
+    "distribution": {
+      "title": "Community Distribution",
+      "description": "Fair community allocation via merkle-proof claims. Participate in the contribution phase to earn your share.",
+      "lpSeeding": "LP Seeding",
+      "bondingAlloc": "Bonding",
+      "communityAlloc": "Community",
+      "teamVesting": "Team Vesting"
+    },
+    "emissions": {
+      "title": "Emission Schedule",
+      "description": "Follows Bitcoin's halving model - emissions halve every 2 years until the supply cap is reached.",
+      "epoch": "Epoch",
+      "period": "Period",
+      "dailyEmission": "Daily Emission",
+      "years": "years"
+    },
+    "contracts": {
+      "title": "System Contracts",
+      "token": "FUEL Token",
+      "tokenDesc": "Base token with capped supply and emission pool management",
+      "stakingContract": "Staking Gauge",
+      "stakingDesc": "Timelocked LP staking for FUEL emissions",
+      "treasury": "Treasury",
+      "treasuryDesc": "Central treasury for allocations and protocol-owned liquidity",
+      "bondingContract": "Bonding",
+      "bondingDesc": "Bond LP for discounted FUEL with vesting",
+      "redemptionContract": "Redemption",
+      "redemptionDesc": "Burn FUEL to redeem treasury backing",
+      "distributor": "Distributor",
+      "distributorDesc": "Merkle-based community claims"
+    }
+  },
+  "footer": {
+    "tagline": "Alkanes Metaprotocol",
+    "links": {
+      "documentation": "Documentation",
+      "governance": "Governance",
+      "fuel": "FUEL",
+      "forum": "Forum",
+      "github": "GitHub",
+      "twitter": "Twitter",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service"
+    },
+    "copyright": "© 2025 Alkanes Foundation. Built on Bitcoin. MIT Licensed."
+  },
+  "docs": {
+    "nav": {
+      "menu": "Menu",
+      "title": "Documentation",
+      "gettingStarted": {
+        "title": "Getting Started",
+        "introduction": "Introduction",
+        "quickStart": "Quick Start",
+        "installation": "Installation"
+      },
+      "coreConcepts": {
+        "title": "Core Concepts",
+        "alkanes": "How Alkanes Work",
+        "protorunes": "Protorunes",
+        "diesel": "DIESEL Token",
+        "metashrew": "Metashrew Indexer"
+      },
+      "cli": {
+        "title": "CLI Reference",
+        "overview": "Overview",
+        "installation": "Installation",
+        "wallet": "Wallet Commands",
+        "alkanes": "Alkanes Commands",
+        "ord": "Ordinals Commands",
+        "esplora": "Esplora Commands",
+        "espo": "Espo Commands",
+        "brc20prog": "BRC20-Prog Commands",
+        "dataapi": "DataAPI Commands",
+        "deploy": "Deploy Commands",
+        "execute": "Execute Commands"
+      },
+      "jsonrpc": {
+        "title": "JSON-RPC API",
+        "overview": "Overview",
+        "alkanes": "Alkanes Methods",
+        "bitcoind": "Bitcoin Core Methods",
+        "esplora": "Esplora Methods",
+        "espo": "Espo Methods"
+      },
+      "api": {
+        "title": "Subfrost API",
+        "overview": "Overview",
+        "rest": "REST Endpoints",
+        "jsonrpc": "JSON-RPC",
+        "alkanes": "Alkanes Queries"
+      },
+      "contracts": {
+        "title": "Building Contracts",
+        "setup": "Project Setup",
+        "std": "alkanes-std Library",
+        "storage": "Storage & State",
+        "testing": "Testing",
+        "deployment": "Deployment"
+      },
+      "tutorials": {
+        "title": "Tutorials",
+        "wrapBtc": "Wrap/Unwrap BTC",
+        "token": "Build a Token",
+        "amm": "Build an AMM"
+      },
+      "integration": {
+        "title": "Integration Examples",
+        "nextjsSetup": "Next.js Setup",
+        "tsSdk": "TS SDK Guide",
+        "tsSdkApi": "TS SDK API Reference",
+        "alkanesWebSys": "Fetching Alkane Data",
+        "luaScripts": "Lua Script Optimization",
+        "marketData": "Market Cap & TVL"
+      }
+    }
+  },
+  "time": {
+    "justNow": "just now",
+    "minutesAgo": "{count}m ago",
+    "hoursAgo": "{count}h ago",
+    "daysAgo": "{count}d ago",
+    "daysLeft": "{count, plural, =0 {Less than a day} =1 {1 day left} other {# days left}}",
+    "hoursLeft": "{count, plural, =1 {1 hour left} other {# hours left}}",
+    "minutesLeft": "{count, plural, =1 {1 minute left} other {# minutes left}}",
+    "ended": "Ended"
+  },
+  "wallet": {
+    "connected": "Connected",
+    "connectWallet": "Connect Wallet"
+  }
+}
